@@ -1,0 +1,6 @@
+@use './styles/variables.scss' as *;
+
+.app-component {
+  font-family: 'Pretendard', sans-serif;
+  color: $font-color--black;
+}
