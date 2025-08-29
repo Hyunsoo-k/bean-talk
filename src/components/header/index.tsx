@@ -1,17 +1,30 @@
 import type { JSX, MouseEvent } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { CiSearch } from "react-icons/ci";
+import { IoCloseOutline } from "react-icons/io5";
 
 import useSidebar from "@/zustand/useSidebar";
 
 import styles from "./index.module.scss";
+import useSearchModal from "@/zustand/useSearchModal";
 
 const Header = (): JSX.Element => {
-  const { setIsOpen } = useSidebar();
+  const { setIsOpen: setIsSidebarOpen } = useSidebar();
+  const { isOpen: isSearchModalOpen, setIsOpen: setIsSearchModalOpen } = useSearchModal();
 
   const handleClickMenu = (e: MouseEvent<SVGAElement>) => {
     e.stopPropagation();
-    setIsOpen(true);
+    setIsSidebarOpen(true);
+  };
+
+  const handleClickSearch = (e: MouseEvent<SVGAElement>) => {
+    e.stopPropagation();
+    setIsSearchModalOpen(true);
+  };
+
+  const handleClickClose = (e: MouseEvent<SVGAElement>) => {
+    e.stopPropagation();
+    setIsSearchModalOpen(false);
   };
 
   return (
@@ -25,7 +38,18 @@ const Header = (): JSX.Element => {
         <h1 className={styles["banner"]}>BeanTalk</h1>
       </div>
       <div className={styles["right-area"]}>
-        <CiSearch size={24} color="#2C2C2C" />
+        {isSearchModalOpen
+          ? < IoCloseOutline
+                size={24}
+                color="#2C2C2C"
+                onClick={handleClickClose}
+              />
+          : <CiSearch
+              size={24}
+              color="#2C2C2C"
+              onClick={handleClickSearch}
+            />
+        }
       </div>
     </div>
   );
