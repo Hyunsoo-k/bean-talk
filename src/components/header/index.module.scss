@@ -1,0 +1,64 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/responsive.scss' as *;
+
+.header-component {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: #{$header-height--mobile}px;
+  padding: #{$safe-area--mobile}px;
+  background-color: rgba(255,255,255, 0.9);
+  border-bottom: 1px solid $border-color--gray;
+
+  @include tablet {
+    height: #{$header-height--tablet}px;
+    padding: 8px #{$safe-area--tablet}px;
+  }
+
+  .left-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @include tablet {
+      gap: 20px;
+    }
+
+    > svg {
+      position: relative;
+      top: 1px;
+      cursor: pointer;
+
+      @include tablet {
+        top: 1px;
+      }
+    }
+
+    .banner {
+      margin: 0;
+      font-size: 20px;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 500;
+      color: $font-color--black;
+      cursor: pointer;
+
+      @include tablet {
+        font-size: 25px;
+      }
+    }
+  }
+
+  .right-area {
+    > svg {
+      position: relative;
+      top: 2px;
+      cursor: pointer;
+
+      @include tablet {
+        top: 7px;
+      }
+    }
+  }
+}

@@ -1,0 +1,227 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/responsive.scss' as *;
+
+.new-icon {
+  position: relative;
+  top: 3px;
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  background-color: rgb(233, 97, 97);
+  border-radius: 50%;
+  text-align: center;
+  font-size: 11px;
+  color: #FFF;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-component {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  width: 240px;
+  height: 100vh;
+  background-color: #FFF;
+  transition: left 0.3s ease-out;
+
+  @include tablet {
+    width: 300px;
+  }
+
+  .top-area {
+    display: flex;
+    align-items: center;
+    height: 150px;
+    border-bottom: 1px solid $border-color--gray;
+
+    @include tablet {
+      height: 230px;
+    }
+
+    .logged-in {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+      height: 100%;
+
+      @include tablet {
+        gap: 15px;
+      }
+
+      .profile-image {
+        width: 60px;
+        height: 60px;
+        margin-top: 25px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        border-radius: 50%;
+
+        @include tablet {
+          width: 100px;
+          height: 100px;
+        }
+      }
+
+      > svg {
+        position: absolute;
+        top: #{$safe-area--mobile}px;
+        right: #{$safe-area--mobile}px;
+        cursor: pointer;
+
+        @include tablet {
+          top: #{$safe-area--tablet}px;
+          right: #{$safe-area--tablet}px;
+        }
+      }
+
+      .red-dot {
+        position: absolute;
+        top: calc(#{$safe-area--mobile}px - 3px);
+        right: calc(#{$safe-area--mobile}px - 1px);
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: rgb(233, 97, 97);
+
+        @include tablet {
+          top: calc(#{$safe-area--tablet}px - 3px);
+          right: calc(#{$safe-area--tablet}px - 1px); 
+        }
+      }
+
+      > span {
+        text-align: center;
+        font-size: 13px;
+
+        @include tablet {
+          font-size: 15px;
+        }
+      }
+
+      .nickname {
+        font-weight: 500;
+      }
+
+      .email {
+        color: $font-color--dark-gray;
+      }
+    }
+
+    .unlogged-in{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 15px;
+      margin: 0 auto;
+
+      > span {
+        text-align: center;
+        font-size: 13px;
+        font-weight: 500;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+      }
+
+      > a {
+        text-decoration: none;
+        width: 130px;
+        margin: 0 auto;
+        padding: 5px 0;
+        text-align: center;
+        border: 1px solid $border-color--gray;
+        border-radius: 15px;
+        font-size: 13px;
+        color: $font-color--dark-gray;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $font-color--black;
+          border: 1px solid $font-color--black;
+          color: $background-color;
+        }
+      }
+    }
+
+    .profile-image {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background-color: #FFF;
+      cursor: pointer;
+    }
+  }
+
+  .menu-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 20px #{$safe-area--mobile}px;
+
+    @include tablet {
+      padding: 20px #{$safe-area--tablet}px;
+    }
+
+    > li {
+      display: flex;
+      padding: 15px 5px;
+      position: relative;
+      cursor: pointer;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0px;
+        width: 100%;
+        height: 1px;
+        background-color: $font-color--black;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 0.3s;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+
+      > a {
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        position: relative;
+
+        @include tablet {
+          font-size: 16px;
+        }
+
+        > svg {
+          position: relative;
+          width: 20px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.sidebar-component.--open {
+  left: 0;
+}
+
+.sidebar-component.--close {
+  left: -240px;
+  
+  @include tablet {
+    left: -300px;
+  }
+}
