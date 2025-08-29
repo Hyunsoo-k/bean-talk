@@ -4,4 +4,16 @@ $font-color--dark-gray: rgb(100,116,139);
 $font-color--bright-gray: rgb(148,163,184);
 
 /*background color*/
-$background-color: rgb(245,245,245);
+$background-color: rgb(255,255,255);
+
+/*border color*/
+$border-color--gray: rgb(207, 207, 207);
+
+/*safe area*/
+$safe-area--mobile: 8;
+$safe-area--tablet: 20;
+$safe-area--desktop: 20;
+
+/*header height*/
+$header-height--mobile: 45;
+$header-height--tablet: 55;
