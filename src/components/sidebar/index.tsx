@@ -1,7 +1,9 @@
 import { useRef, useEffect, type JSX } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { BsFillThreadsFill } from "react-icons/bs";
 import { GoBell } from "react-icons/go";
 import { TbSpeakerphone } from "react-icons/tb";
+import { CiLogout } from "react-icons/ci";
 
 import defaultProfile from "@/assets/default-images/default-profile.jpg";
 import useSidebar from "@/zustand/useSidebar";
@@ -13,7 +15,12 @@ const Sidebar = (): JSX.Element => {
   const { isOpen, setIsOpen } = useSidebar();
   const { user, setUser } = useUser();
 
+  const location = useLocation();
   const sidebarRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location])
 
   useEffect(() => {
     const handleClickBackDrop = (e: MouseEvent) => {
@@ -40,16 +47,18 @@ const Sidebar = (): JSX.Element => {
         <div className={styles["top-area"]}>
           {user
             ? (
-                <div className={styles["logged-in"]}>
-                  <div
-                    className={styles["profile-image"]}
-                    style={{
-                      backgroundImage: user.profileImage
-                        ? `url(${user.profileImage})`
-                        : `url(${defaultProfile})`,
-                    }}
-                  />
-                <GoBell size={25} />
+              <div className={styles["logged-in"]}>
+                <div
+                  className={styles["profile-image"]}
+                  style={{
+                    backgroundImage: user.profileImage
+                      ? `url(${user.profileImage})`
+                      : `url(${defaultProfile})`,
+                  }}
+                />
+                <Link to="/me/notification">
+                  <GoBell size={25} color="#2C2C2C" />
+                </Link>
                 <div className={styles["red-dot"]}/>
                 <span className={styles["nickanme"]}>
                   운영자
@@ -60,13 +69,13 @@ const Sidebar = (): JSX.Element => {
               </div>
               )
             : (
-                <div className={styles["unlogged-in"]}>
-                  <span className={styles["phrase"]}>
-                    평범한 순간을<br/>
-                    커피와 특별하게
-                  </span>
-                  <a>빈톡 시작하기</a>
-                </div>
+              <div className={styles["unlogged-in"]}>
+                <span className={styles["phrase"]}>
+                  평범한 순간을<br/>
+                  커피와 특별하게
+                </span>
+                <a>빈톡 시작하기</a>
+              </div>
             )}
         </div>
         <ul className={styles["menu-list"]}>
@@ -84,6 +93,9 @@ const Sidebar = (): JSX.Element => {
             </a>
           </li>
           <li>
+            <a>뉴스</a>
+          </li>
+          <li>
             <a>공지사항</a>
           </li>
           <li>
@@ -93,6 +105,15 @@ const Sidebar = (): JSX.Element => {
             <a>건의사항</a>
           </li>
         </ul>
+        <div className={styles["bottom-area"]}>
+          <button
+            type="button"
+            className={styles["logout-button"]}
+          >
+            <CiLogout size={20} />
+            로그아웃
+          </button>
+        </div>
       </div>
     </>
   );
