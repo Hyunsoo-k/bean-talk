@@ -1,4 +1,5 @@
 import type { JSX, MouseEvent } from "react";
+import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { CiSearch } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
@@ -35,7 +36,11 @@ const Header = (): JSX.Element => {
           color="#2C2C2C"
           onClick={handleClickMenu}
         />
-        <h1 className={styles["banner"]}>BeanTalk</h1>
+        <Link to="/">
+          <h1 className={styles["banner"]}>
+            BeanTalk
+          </h1>
+        </Link>
       </div>
       <div className={styles["right-area"]}>
         {isSearchModalOpen
