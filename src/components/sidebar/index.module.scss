@@ -25,12 +25,21 @@
 
 .sidebar-component {
   z-index: 999;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   position: fixed;
   top: 0;
+  display: flex;
+  flex-direction: column;
   width: 240px;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #FFF;
   transition: left 0.3s ease-out;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @include tablet {
     width: 300px;
@@ -73,15 +82,19 @@
         }
       }
 
-      > svg {
+      > a {
+        text-decoration: none;
         position: absolute;
         top: #{$safe-area--mobile}px;
         right: #{$safe-area--mobile}px;
-        cursor: pointer;
 
         @include tablet {
           top: #{$safe-area--tablet}px;
           right: #{$safe-area--tablet}px;
+        }
+
+        > svg {
+          cursor: pointer;
         }
       }
 
@@ -125,11 +138,20 @@
       gap: 15px;
       margin: 0 auto;
 
+      @include tablet {
+        gap: 30px;
+      }
+
       > span {
         text-align: center;
         font-size: 13px;
         font-weight: 500;
         font-family: Georgia, 'Times New Roman', Times, serif;
+
+        @include tablet {
+          font-size: 15px;
+          line-height: 2;
+        }
       }
 
       > a {
@@ -148,6 +170,11 @@
           background-color: $font-color--black;
           border: 1px solid $font-color--black;
           color: $background-color;
+        }
+
+        @include tablet {
+          width: 150px;
+          padding: 8px 0;
         }
       }
     }
@@ -210,6 +237,40 @@
           width: 20px;
           margin-right: 10px;
         }
+      }
+    }
+  }
+
+  .bottom-area {
+    margin-top: auto;
+    padding: 40px #{$safe-area--mobile}px;
+    border-top: 1px solid $border-color--gray;
+
+    .logout-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      outline: none;
+      width: 110px;
+      padding: 8px 0;
+      border: 1px solid $border-color--gray;
+      border-radius: 20px;
+      background-color: inherit;
+      font-size: 13px;
+      color: $font-color--dark-gray;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $font-color--black;
+        border: 1px solid $font-color--black;
+        color: $background-color;
+      }
+
+      > svg {
+        position: relative;
+        top: 0;
+        margin-right: 5px;
       }
     }
   }
