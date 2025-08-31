@@ -1,6 +1,7 @@
 import { type JSX, useState, useEffect, useRef, type MouseEvent } from "react";
 import { createPortal } from "react-dom";
 import { TfiEmail } from "react-icons/tfi";
+import { MdOutlineDriveFileRenameOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 
 import useLoginModal from "@/zustand/useAuthModal";
@@ -89,6 +90,13 @@ const AuthModal = (): JSX.Element => {
                   <TfiEmail size={20} color="rgb(148,163,184" />
                   <input
                     placeholder="E-mail"
+                    autoComplete="off"
+                  />
+                </div>
+                <div className={styles["input-wrapper"]}>
+                  <MdOutlineDriveFileRenameOutline size={20} color="rgb(148,163,184" />
+                  <input
+                    placeholder="Nickname"
                     autoComplete="off"
                   />
                 </div>

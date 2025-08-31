@@ -52,12 +52,14 @@ const Sidebar = (): JSX.Element => {
         <div className={styles["top-area"]}>
           {user ? (
             <div className={styles["logged-in"]}>
-              <div
-                className={styles["profile-image"]}
-                style={{
-                  backgroundImage: user.profileImage ? `url(${user.profileImage})` : `url(${defaultProfile})`,
-                }}
-              />
+              <Link to="/me/information" className={styles["profile-image-wrapper"]}>
+                <div
+                  className={styles["profile-image"]}
+                  style={{
+                    backgroundImage: user.profileImage ? `url(${user.profileImage})` : `url(${defaultProfile})`,
+                  }}
+                />
+              </Link>
               <Link to="/me/notification">
                 <GoBell size={25} color="#2C2C2C" />
               </Link>
