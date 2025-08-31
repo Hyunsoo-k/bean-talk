@@ -1,0 +1,116 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/responsive.scss' as *;
+
+.information-page-layout-component {
+
+  .top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    background-color: $background-color--gray;
+
+    @include tablet {
+      height: 220px;
+    }
+
+    .profile-area {
+      position: relative;
+      top: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include tablet {
+        top: 120px;
+      }
+
+      .profile-image {
+        position: relative;
+        width: 110px;
+        height: 110px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        border-radius: 50%;
+
+        @include tablet {
+          width: 130px;
+          height: 130px;
+        }
+
+        > svg {
+          position: absolute;
+          bottom: 5px;
+          right: 8px;
+          cursor: pointer;
+        }
+      }
+
+      .nickname {
+        padding-top: 10px;
+        letter-spacing: 0.5px;
+        font-size: 15px;
+
+        @include tablet {
+          padding-top: 20px;
+          font-size: 16px;
+        }
+      }
+
+      .email {
+        padding-top: 5px;
+        font-size: 13px;
+        color: $font-color--dark-gray;
+
+        @include tablet {
+          padding-top: 10px;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin: 130px auto;
+    padding: 0 #{$safe-area--mobile}px;
+
+    @include tablet {
+      max-width: calc(#{$max-width}px - 100px);
+      margin-top: 180px;
+      padding: 0 #{$safe-area--tablet}px;
+    }
+
+    .header {
+      display: flex;
+      width: 80%;
+      margin: 0 auto;
+
+      > button {
+        width: 50%;
+        height: 40px;
+        border: none;
+        background-color: inherit;
+        padding-bottom: 1px;
+        cursor: pointer;
+      }
+
+      > button.--selected {
+        padding-bottom: 0;
+        border-bottom: 1px solid $font-color--black;
+      }
+    }
+
+    .item-box {
+      list-style-type: none;
+      margin: 30px auto;
+
+      > li {
+
+      }
+    }
+  }
+}
