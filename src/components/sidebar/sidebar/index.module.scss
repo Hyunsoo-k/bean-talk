@@ -34,7 +34,7 @@
   flex-direction: column;
   width: 240px;
   min-height: 100vh;
-  background-color: #FFF;
+  background-color: $background-color--white;
   transition: left 0.3s ease-out;
 
   &::-webkit-scrollbar {
@@ -154,14 +154,15 @@
         }
       }
 
-      > a {
+      .login-button {
         text-decoration: none;
         width: 130px;
         margin: 0 auto;
         padding: 5px 0;
-        text-align: center;
+        background-color: inherit;
         border: 1px solid $border-color--gray;
         border-radius: 15px;
+        text-align: center;
         font-size: 13px;
         color: $font-color--dark-gray;
         cursor: pointer;
@@ -169,7 +170,7 @@
         &:hover {
           background-color: $font-color--black;
           border: 1px solid $font-color--black;
-          color: $background-color;
+          color: $background-color--white;
         }
 
         @include tablet {
@@ -184,7 +185,7 @@
       height: 90px;
       margin: 0 auto;
       border-radius: 50%;
-      background-color: #FFF;
+      background-color: $background-color--white;
       cursor: pointer;
     }
   }
@@ -264,7 +265,7 @@
       &:hover {
         background-color: $font-color--black;
         border: 1px solid $font-color--black;
-        color: $background-color;
+        color: $background-color--white;
       }
 
       > svg {
