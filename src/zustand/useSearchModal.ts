@@ -2,11 +2,11 @@ import { create } from "zustand";
 
 type SearchModalStore = {
   isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
+  setIsOpen: (isOpenValue: boolean) => void;
 };
 
 const useSearchModal = create<SearchModalStore>((set) => ({
-  isOpen: true,
+  isOpen: false,
   setIsOpen: (isOpenValue: boolean) => set({ isOpen: isOpenValue })
 }));
 
