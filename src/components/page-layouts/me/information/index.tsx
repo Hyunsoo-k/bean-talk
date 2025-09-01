@@ -3,6 +3,7 @@ import { FaCamera } from "react-icons/fa";
 
 import defaultProfile from "@/assets/default-images/default-profile.jpg";
 import useUser from "@/zustand/useUser";
+import Threads from "@/components/threads";
 
 import styles from "./index.module.scss";
 
@@ -59,7 +60,13 @@ const InformationPageLayout = (): JSX.Element => {
         </div>
         <ul className={styles["item-box"]}>
           <li>
-
+            <Threads />
+          </li>
+          <li>
+            <Threads />
+          </li>
+          <li>
+            <Threads />
           </li>
         </ul>
       </div>

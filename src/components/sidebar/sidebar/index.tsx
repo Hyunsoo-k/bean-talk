@@ -20,6 +20,9 @@ const Sidebar = (): JSX.Element => {
   const sidebarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    isSidebarOpen && (document.body.style.overflow = "hidden");
+    !isSidebarOpen && (document.body.style.overflow = "auto");
+    
     const handleClickBackDrop = (e: globalThis.MouseEvent) => {
       if (!sidebarRef.current) return;
       const clickTarget = e.target as HTMLElement;
@@ -32,7 +35,7 @@ const Sidebar = (): JSX.Element => {
     return () => {
       document.removeEventListener("click", handleClickBackDrop);
     };
-  }, []);
+  }, [isSidebarOpen]);
 
   const handleClickLoginButton = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -44,7 +47,14 @@ const Sidebar = (): JSX.Element => {
 
   return (
     <>
-      {isSidebarOpen && <div className={styles["backdrop"]}></div>}
+      {isSidebarOpen && (
+        <div
+          className={styles["backdrop"]}
+          style={{
+            overflow: isSidebarOpen ? "hidden" : ""
+          }}
+        />
+      )}
       <div
         ref={sidebarRef}
         className={`${styles["sidebar-component"]} ${isSidebarOpen ? styles["--open"] : styles["--close"]}`}
