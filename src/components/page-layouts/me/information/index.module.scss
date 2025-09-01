@@ -105,8 +105,12 @@
     }
 
     .item-box {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
       list-style-type: none;
-      margin: 30px auto;
+      margin: 30px 0;
+      padding: 0;
 
       > li {
 

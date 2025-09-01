@@ -1,0 +1,22 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.comment-section-component {
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+  position: relative;
+  width: 100%;
+
+  .comment-item-box {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 0;
+
+    .comment-item-wrapper {
+      width: 100%;
+    }
+  }
+}
