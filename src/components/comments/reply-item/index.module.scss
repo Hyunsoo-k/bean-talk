@@ -1,0 +1,71 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.reply-item-component {
+  display: flex;
+  gap: 15px;
+
+  > svg {
+    flex-shrink: 0;
+    position: relative;
+    top: 2px;
+  }
+
+  .profile-image {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-radius: 50%;
+  }
+
+  .main {
+    .top {
+      display: flex;
+      width: 100%;
+
+      .nickname {
+        flex-grow: 1;
+        letter-spacing: 0.5px;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .created-at {
+        font-size: 12px;
+        color: $font-color--dark-gray;
+      }
+
+      .menu-button-wrapper {
+        position: relative;
+
+        .menu-button {
+          height: 25px;
+          background-color: inherit;
+          border: none;
+          cursor: pointer;
+
+          > svg {
+            position: relative;
+            top: -4px;
+          }
+        }
+      }
+    }
+
+    .body {
+      display: flex;
+      flex-direction: column;
+
+      > span {
+        width: 100%;
+        margin-top: 5px;
+        line-height: 1.6;
+        font-size: 14px;
+        color: $font-color--dark-gray;
+      }
+    }
+  }
+}
