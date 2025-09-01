@@ -1,0 +1,26 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.menu-box-modal-component {
+  list-style-type: none;
+  position: absolute;
+  z-index: 990;
+  right: 0;
+  width: 100px;
+  padding: 0;
+  background-color: $background-color--white;
+  border: 1px solid $font-color--bright-gray;
+
+  > li {
+    padding: 7px 5px;
+    border-bottom: 1px solid $font-color--bright-gray;
+    letter-spacing: 1px;
+    font-size: 12px;
+    color: $font-color--bright-gray;
+    cursor: pointer;
+  }
+
+  > li:last-child {
+    border-bottom: none;
+  }
+}
