@@ -13,7 +13,7 @@ import MainPageLayout from "@/components/page-layouts/main";
 import InformationPageLayout from "@/components/page-layouts/me/information";
 import NotificationPageLayout from "@/components/page-layouts/me/notification";
 
-import "./App.module.scss";
+import styles from "./App.module.scss";
 
 const App = (): JSX.Element => {
   const { isOpen: isSearchModalOpen } = useSearchModal();
