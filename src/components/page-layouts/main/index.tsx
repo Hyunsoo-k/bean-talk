@@ -17,7 +17,7 @@ const MainPageLayout = (): JSX.Element => {
       <div className={styles["threads-area"]}>
         <h2 className={styles["header"]}>
           <BsFillThreadsFill size={20} color="rgb(44, 44, 44)" />
-          스레드
+          Threads
         </h2>
         <ThreadsBox />
         <div className={styles["bottom"]}>
@@ -28,7 +28,7 @@ const MainPageLayout = (): JSX.Element => {
       <div className={styles["promotion-area"]}>
         <h2 className={styles["header"]}>
           <TbSpeakerphone size={20} color="rgb(44, 44, 44)" />
-          프로모션
+          Promotion
         </h2>
         <div className={styles["promotion-carousel-wrapper"]}>
           <ThumbnailCardCarousel />

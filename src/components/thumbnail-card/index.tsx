@@ -33,7 +33,7 @@ const ThumbnailCard = (): JSX.Element => {
           />
           <span className={styles["nickname"]}>운영자</span>
         </div>
-        <button type="button">View</button>
+        <button type="button">Read</button>
       </div>
     </div>
   );

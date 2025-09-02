@@ -9,9 +9,12 @@ import styles from "./index.module.scss";
 
 const InformationPageLayout = (): JSX.Element => {
   const { user, setUser } = useUser();
-  const [currentTab, setCurrentTab] = useState<"myThreads" | "scrap">("myThreads");
+  const [currentTab, setCurrentTab] = useState<"myPosts" | "myScrap">("myPosts");
 
-  const handleClickTab = (e: MouseEvent<HTMLButtonElement>, tab: "myThreads" | "scrap"): void => {
+  const handleClickTab = (
+    e: MouseEvent<HTMLButtonElement>,
+    tab: "myPosts" | "myScrap"
+  ): void => {
     e.stopPropagation();
     setCurrentTab(tab);
   };
@@ -25,7 +28,7 @@ const InformationPageLayout = (): JSX.Element => {
           <div
             className={styles["profile-image"]}
             style={{
-              backgroundImage: user.profileImage ? `url(${user.profileImage})` : `url(${defaultProfile})`,
+              backgroundImage: user?.profileImage ? `url(${user?.profileImage})` : `url(${defaultProfile})`,
             }}
           >
             <FaCamera size={20} color="rgb(44, 44, 44)" />
@@ -39,18 +42,18 @@ const InformationPageLayout = (): JSX.Element => {
           <button
             type="button"
             onClick={(e) => {
-              handleClickTab(e, "myThreads");
+              handleClickTab(e, "myPosts");
             }}
-            className={currentTab === "myThreads" ? styles["--selected"] : ""}
+            className={currentTab === "myPosts" ? styles["--selected"] : ""}
           >
-            내 스레드
+            내 글
           </button>
           <button
             type="button"
             onClick={(e) => {
-              handleClickTab(e, "scrap");
+              handleClickTab(e, "myScrap");
             }}
-            className={currentTab === "scrap" ? styles["--selected"] : ""}
+            className={currentTab === "myScrap" ? styles["--selected"] : ""}
           >
             스크랩
           </button>
