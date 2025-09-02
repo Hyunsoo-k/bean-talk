@@ -1,0 +1,91 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.footer-component {
+  padding: 30px #{$safe-area--mobile}px 50px;
+  background-color: $font-color--black;
+  color: $background-color--white;
+
+  @include tablet {
+    padding: 80px;
+  }
+
+  .top {
+    margin: 20px auto 0;
+
+    > a {
+      text-decoration: none;
+      display: flex;
+      justify-content: space-between;
+      width: 190px;
+      margin: 0 auto;
+      color: $background-color--white;
+
+      @include tablet {
+        width: 290px;
+      }
+
+      .banner {
+        display: inline-block;
+        text-align: center;
+        margin: 0;
+        letter-spacing: 0.5px;
+        font-size: 25px;
+        font-weight: 300;
+        
+        @include tablet {
+          font-size: 40px;
+        }
+      }
+
+      > small {
+        position: relative;
+        top: 0;
+        font-size: 11px;
+        font-weight: 300;
+
+        @include tablet {
+          top: 13px;
+          font-size: 12px;
+        }
+      }
+
+      > svg {
+        display: none;
+
+        @include tablet {
+          display: block;
+          position: relative;
+          top: 28px;
+        }
+      }
+    }
+  }
+
+  .boundary-line {
+    width: 90%;
+    height: 1px;
+    margin: 20px auto;
+    background-color: rgb(100, 100, 100);
+    
+    @include tablet {
+      width: 60%;
+      margin: 30px auto;
+    }
+  }
+
+  .bottom {
+    > span {
+      display: block;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 300;
+
+      @include tablet {
+        letter-spacing: 0.3px;
+        font-size: 14px;
+        font-weight: 350;
+      }
+    }
+  }
+}
