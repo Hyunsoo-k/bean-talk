@@ -12,8 +12,9 @@ import AuthModal from "@/components/modal/auth-modal";
 import MainPageLayout from "@/components/page-layouts/main";
 import InformationPageLayout from "@/components/page-layouts/me/information";
 import NotificationPageLayout from "@/components/page-layouts/me/notification";
+import Footer from "./components/footer";
 
-import styles from "./App.module.scss";
+import "./App.module.scss";
 
 const App = (): JSX.Element => {
   const { isOpen: isSearchModalOpen } = useSearchModal();
@@ -32,6 +33,7 @@ const App = (): JSX.Element => {
         <Route path="/me/information" element={<InformationPageLayout />} />
         <Route path="/me/notification" element={<NotificationPageLayout />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
