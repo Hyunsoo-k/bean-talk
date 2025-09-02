@@ -1,3 +1,108 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
 .main-page-layout-component {
-  height: 3000px;
+
+  .news-carousel-wrapper {
+    margin: 40px auto 0;
+  }
+
+  .boundary-line {
+    max-width: #{$max-width}px;
+    height: 2px;
+    margin: 50px auto;
+    background-color: $border-color--gray;
+  }
+
+  .threads-area {
+    display: flex;
+    flex-direction: column;
+    max-width: #{$max-width}px;
+    margin: 0 auto;
+
+    .header {
+      margin: 0 0 50px;
+      text-align: center;
+      font-weight: 500;
+
+      > svg {
+        margin-right: 10px;
+      }
+    }
+
+    .threads-box {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .bottom {
+      margin-top: 50px;
+
+      > button {
+        display: block;
+        width: 150px;
+        height: 45px;
+        margin: 0 auto;
+        padding: 0 10px;
+        border: none;
+        background-color: $font-color--black;
+        letter-spacing: 0.5px;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: "Pretendard", sans-serif;
+        color: $background-color--white;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $font-color--bright-gray;
+        }
+      }
+    }
+  }
+
+  .promotion-area {
+    display: flex;
+    flex-direction: column;
+    max-width: #{$max-width}px;
+    margin: 0 auto;
+
+    .header {
+      margin: 0 0 20px;
+      text-align: center;
+      font-weight: 500;
+
+      > svg {
+        margin-right: 10px;
+      }
+    }
+
+    .promotion-carousel-wrapper {
+      
+    }
+
+    .bottom {
+      margin-top: 50px;
+
+      > button {
+        display: block;
+        width: 150px;
+        height: 45px;
+        margin: 0 auto;
+        padding: 0 10px;
+        border: none;
+        background-color: $font-color--black;
+        letter-spacing: 0.5px;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: "Pretendard", sans-serif;
+        color: $background-color--white;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $font-color--bright-gray;
+        }
+      }
+    }
+  }
 }

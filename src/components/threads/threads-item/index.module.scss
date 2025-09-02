@@ -1,0 +1,130 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.threads-component {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid $border-color--gray;
+
+  .top {
+    display: flex;
+
+    .profile-image {
+      flex-shrink: 0;
+      width: 33px;
+      height: 33px;
+      margin-right: 10px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      border-radius: 50%;
+
+      @include tablet {
+        margin-right: 15px;
+      }
+    }
+
+    .nickname {
+      flex-grow: 1;
+      letter-spacing: 0.5px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .created-at {
+      font-size: 12px;
+      color: $font-color--dark-gray;
+    }
+
+    .menu-button-wrapper {
+      position: relative;
+
+      .menu-button {
+        height: 25px;
+        margin-left: auto;
+        padding: 0 0 0 10px;
+        background-color: inherit;
+        border: none;
+        cursor: pointer;
+
+        > svg {
+          position: relative;
+          top: -4px;
+        }
+      }
+    }
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    margin: 5px auto 0;
+    cursor: pointer;
+
+    @include tablet {
+      width: 90%;
+      margin: 5px (15px + 33px) 0;
+    }
+
+    .text {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      line-height: 1.6;
+      font-size: 14px;
+      color: $font-color--dark-gray;
+
+      @include tablet {
+        -webkit-line-clamp: 6;
+      }
+    }
+
+    .image-box {
+      list-style-type: none;
+      display: flex;
+      gap: 15px;
+      margin: 15px 0 0;
+      padding: 0;
+
+      @include tablet {
+        margin: 20px 0 0;
+      }
+
+      > li {
+        width: 50%;
+        max-width: 200px;
+        aspect-ratio: 1 / 1;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 20px auto 15px;
+
+    @include tablet {
+      width: 80%;
+    }
+
+    > button {
+      display: flex;
+      align-items: center;
+      background-color: inherit;
+      border: none;
+      color: $font-color--dark-gray;
+      cursor: pointer;
+
+      > svg {
+        margin-right: 5px;
+      }
+    }
+  }
+}

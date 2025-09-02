@@ -1,0 +1,16 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.threads-box-component {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: calc(#{$max-width}px - 100px);
+  margin: 0 auto;
+  padding: 0 #{$safe-area--mobile}px;
+
+  .threads-item-wrapper {
+
+  }
+}

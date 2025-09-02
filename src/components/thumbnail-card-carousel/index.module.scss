@@ -1,0 +1,31 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.thumbnail-card-carousel-component {
+  overflow-x: auto;
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+  margin: 0 auto;
+  padding: 30px #{$safe-area--mobile}px 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include tablet {
+    max-width: #{$max-width}px;
+  }
+
+  .thumbnail-card-wrapper {
+    flex-shrink: 0;
+    width: calc((100% - (20px * 1)) / 2);
+
+    @include tablet {
+      width: calc((100% - (20px * 2)) / 3);
+    }
+  }
+}
+
