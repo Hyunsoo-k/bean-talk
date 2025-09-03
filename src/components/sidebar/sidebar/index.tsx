@@ -92,29 +92,29 @@ const Sidebar = (): JSX.Element => {
         </div>
         <ul className={styles["menu-list"]}>
           <li>
-            <a>
+            <Link to="/threads/list">
               <BsFillThreadsFill size={18} style={{ top: "3px" }} />
-              스레드
-            </a>
-            <NewIcon />
+              <span>스레드</span>
+              <NewIcon />
+            </Link>
           </li>
           <li>
-            <a>
+            <Link to="/">
               <TbSpeakerphone size={20} style={{ top: "4px" }} />
-              홍보
-            </a>
+              <span>홍보</span>
+            </Link>
           </li>
           <li>
-            <a>뉴스</a>
+            <Link to="/">뉴스</Link>
           </li>
           <li>
-            <a>공지사항</a>
+            <Link to="/">공지사항</Link>
           </li>
           <li>
-            <a>이용문의</a>
+            <Link to="/">이용문의</Link>
           </li>
           <li>
-            <a>건의사항</a>
+            <Link to="/">건의사항</Link>
           </li>
         </ul>
         {user && (
