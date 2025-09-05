@@ -1,0 +1,16 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/responsive.scss' as *;
+
+.promotion-list-page-layout-component {
+  margin: 0 auto;
+  padding:
+    #{$page-layout-column-blanck--mobile}px
+    #{$safe-area--mobile}px;
+
+  @include tablet {
+    max-width: #{$max-width}px;
+    padding:
+      #{$page-layout-column-blanck--tablet}px
+      #{$safe-area--tablet}px
+  }
+}

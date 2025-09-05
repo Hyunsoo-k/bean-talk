@@ -6,11 +6,10 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: calc(#{$max-width}px - 100px);
   margin: 0 auto;
-  padding: 0 #{$safe-area--mobile}px;
+  padding: 0;
 
   .threads-item-wrapper {
-
+    max-width: #{$max-width}px;
   }
 }

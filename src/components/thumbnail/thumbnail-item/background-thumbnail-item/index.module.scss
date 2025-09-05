@@ -1,0 +1,100 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/responsive.scss' as *;
+
+.background-thumbnail-item-component {
+  text-decoration: none;
+  overflow: hidden;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  aspect-ratio: 1 / 1.3;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 12px;
+  color: $background-color--white;
+  cursor: pointer;
+  transform: translateY(0);
+  transition: transform 0.3s ease-out;
+
+  &:hover {
+    transform: translateY(-20px);
+  }
+
+  @include tablet {
+  }
+
+  .overlay {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50%;
+    margin-top: auto;
+    padding: 8px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(2px);
+      z-index: 0;
+    }
+
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    @include tablet {
+      padding: 10px;
+    }
+
+    .title {
+      overflow: hidden;
+      display: -webkit-box;
+      margin: 0;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      font-size: 13px;
+      font-weight: 400;
+
+      @include tablet {
+        line-height: 1.7;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
+    .content {
+      display: none;
+
+      @include tablet {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        font-size: 11px;
+        color: #e0e0e0;
+      }
+    }
+
+    .category {
+      font-size: 11px;
+
+      @include tablet {
+        letter-spacing: 1px;
+        font-size: 14px;
+      }
+    }
+
+    .created-at {
+      letter-spacing: 0.5px;
+      font-size: 11px;
+      font-weight: 400;
+      color: #e0e0e0;
+    }
+  }
+}

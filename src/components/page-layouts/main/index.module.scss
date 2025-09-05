@@ -2,9 +2,19 @@
 @use "@/styles/responsive.scss" as *;
 
 .main-page-layout-component {
+  margin: 0 auto;
+  padding:
+    #{$main-page-layout-column-blacnk--mobile}px
+    #{$safe-area--mobile}px;
+
+  @include tablet {
+    max-width: #{$max-width}px;
+    padding:
+      #{$main-page-layout-column-blacnk--tablet}px
+      #{$safe-area--tablet}px
+  }
 
   .news-carousel-wrapper {
-    margin: 40px auto 0;
   }
 
   .boundary-line {

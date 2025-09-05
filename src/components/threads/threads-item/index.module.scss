@@ -73,11 +73,13 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 5;
       line-height: 1.6;
-      font-size: 14px;
+      font-size: 13px;
       color: $font-color--dark-gray;
 
       @include tablet {
         -webkit-line-clamp: 6;
+        line-height: 1.7;
+        font-size: 14px;
       }
     }
 

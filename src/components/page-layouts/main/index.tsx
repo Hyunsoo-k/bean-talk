@@ -2,8 +2,8 @@ import type { JSX } from "react";
 import { BsFillThreadsFill } from "react-icons/bs";
 import { TbSpeakerphone } from "react-icons/tb";
 
-import ThumbnailCardCarousel from "@/components/thumbnail-card-carousel";
-import ThreadsBox from "@/components/threads/threads-box";
+import ThumbnailCarouselBox from "@/components/thumbnail/thumbnail-carousel-box";
+import ThreadsItemBox from "@/components/threads/threads-item-box";
 
 import styles from "./index.module.scss";
 
@@ -11,7 +11,7 @@ const MainPageLayout = (): JSX.Element => {
   return (
     <div className={styles["main-page-layout-component"]}>
       <div className={styles["news-carousel-wrapper"]}>
-        <ThumbnailCardCarousel />
+        <ThumbnailCarouselBox thumbnailItemType="column" />
       </div>
       <div className={styles["boundary-line"]} />
       <div className={styles["threads-area"]}>
@@ -19,7 +19,7 @@ const MainPageLayout = (): JSX.Element => {
           <BsFillThreadsFill size={20} color="rgb(44, 44, 44)" />
           Threads
         </h2>
-        <ThreadsBox />
+        <ThreadsItemBox />
         <div className={styles["bottom"]}>
           <button type="button">View more</button>
         </div>
@@ -31,7 +31,7 @@ const MainPageLayout = (): JSX.Element => {
           Promotion
         </h2>
         <div className={styles["promotion-carousel-wrapper"]}>
-          <ThumbnailCardCarousel />
+          <ThumbnailCarouselBox thumbnailItemType="background" />
         </div>
         <div className={styles["bottom"]}>
           <button type="button">View more</button>

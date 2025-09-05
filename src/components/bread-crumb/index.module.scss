@@ -1,0 +1,37 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.bread-crumb-component {
+  display: flex;
+  gap: 5px;
+  margin: 0 auto 30px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $border-color--gray;
+
+  @include tablet {
+    max-width: #{$max-width}px;
+    margin: 0 auto 50px;
+    padding-bottom: 15px;
+  }
+
+  > a {
+    text-decoration: none;
+    font-size: 15px;
+    color: $font-color--black;
+
+    > svg {
+      position: relative;
+      top: 2px;
+      margin-right: 3px;
+
+      @include tablet {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  > svg {
+    position: relative;
+    top: 5px;
+  }
+}

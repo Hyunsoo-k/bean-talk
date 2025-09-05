@@ -3,7 +3,7 @@ import { FaCamera } from "react-icons/fa";
 
 import defaultProfile from "@/assets/default-images/default-profile.jpg";
 import useUser from "@/zustand/useUser";
-import ThreadsBox from "@/components/threads/threads-box";
+import ThreadsItemBox from "@/components/threads/threads-item-box";
 
 import styles from "./index.module.scss";
 
@@ -11,10 +11,7 @@ const InformationPageLayout = (): JSX.Element => {
   const { user, setUser } = useUser();
   const [currentTab, setCurrentTab] = useState<"myPosts" | "myScrap">("myPosts");
 
-  const handleClickTab = (
-    e: MouseEvent<HTMLButtonElement>,
-    tab: "myPosts" | "myScrap"
-  ): void => {
+  const handleClickTab = (e: MouseEvent<HTMLButtonElement>, tab: "myPosts" | "myScrap"): void => {
     e.stopPropagation();
     setCurrentTab(tab);
   };
@@ -58,7 +55,7 @@ const InformationPageLayout = (): JSX.Element => {
             스크랩
           </button>
         </div>
-        <ThreadsBox />
+        <ThreadsItemBox />
       </div>
     </div>
   );
