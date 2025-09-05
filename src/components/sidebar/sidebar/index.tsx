@@ -99,22 +99,22 @@ const Sidebar = (): JSX.Element => {
             </Link>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/promotion/list">
               <TbSpeakerphone size={20} style={{ top: "4px" }} />
               <span>홍보</span>
             </Link>
           </li>
           <li>
-            <Link to="/">뉴스</Link>
+            <Link to="/news/list">뉴스</Link>
           </li>
           <li>
-            <Link to="/">공지사항</Link>
+            <Link to="/notice/list">공지사항</Link>
           </li>
           <li>
             <Link to="/">이용문의</Link>
           </li>
           <li>
-            <Link to="/">건의사항</Link>
+            <Link to="/suggestion/list">건의사항</Link>
           </li>
         </ul>
         {user && (
