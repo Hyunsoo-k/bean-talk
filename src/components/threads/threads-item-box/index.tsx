@@ -1,9 +1,10 @@
 import type { JSX } from "react";
 
-import styles from "./index.module.scss";
-import ThreadsItem from "../threads-item";
+import ThreadsItem from "@/components/threads/threads-item";
 
-const ThreadsBox = (): JSX.Element => {
+import styles from "./index.module.scss";
+
+const ThreadsItemBox= (): JSX.Element => {
   return (
     <ul className={styles["threads-box-component"]}>
       {[1, 2, 3].map(() => (
@@ -15,4 +16,4 @@ const ThreadsBox = (): JSX.Element => {
   );
 };
 
-export default ThreadsBox;
+export default ThreadsItemBox;

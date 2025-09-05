@@ -1,0 +1,15 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/responsive.scss' as *;
+
+.thumbnail-flex-box-component {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0;
+
+  @include tablet {
+    gap: 30px;
+    margin: 0 auto;
+  }
+}
