@@ -16,8 +16,8 @@
   }
 
   @include tablet {
-    max-width: #{$max-width}px;
-    padding: 30px #{$safe-area--mobile}px 10px;
+    max-width: $max-width;
+    padding: 30px $safe-area--mobile 10px;
   }
 
   .thumbnail-item-wrapper {

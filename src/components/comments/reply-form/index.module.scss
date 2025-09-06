@@ -8,17 +8,22 @@
     overflow: hidden;
     width: 100%;
     margin-bottom: 15px;
-    padding: #{$safe-area--mobile}px #{$safe-area--mobile}px 20px;
+    padding: $safe-area--mobile $safe-area--mobile 20px;
     outline: none;
     background-color: $background-color--gray;
     border: 1px solid $background-color--gray;
     border-radius: 8px;
+    font-size: 13px;
     font-family: "Pretendard", sans-serif;
     resize: none;
 
     &:focus {
       background-color: inherit;
       border: 1px solid $border-color--gray;
+    }
+
+    @include tablet {
+      font-size: 14px;
     }
   }
 
@@ -30,17 +35,21 @@
     background-color: inherit;
     border: none;
     letter-spacing: 1px;
-    font-size: 13px;
+    font-size: 12px;
     font-family: "Pretendard", sans-serif;
     color: $font-color--dark-gray;
     cursor: pointer;
+
+    @include tablet {
+      font-size: 13px;
+    }
   }
 
   .cancel-button {
-    right: #{$safe-area--mobile}px;
+    right: $safe-area--mobile;
   }
 
   .submit-button {
-    right: calc(#{$safe-area--mobile}px + 40px);
+    right: calc($safe-area--mobile + 40px);
   }
 }

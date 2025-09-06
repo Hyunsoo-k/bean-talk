@@ -1,0 +1,70 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-viewer-component {
+  display: flex;
+  flex-direction: column;
+
+  .top {
+    padding-bottom: 20px;
+    border-bottom: 1px solid $font-color--black;
+
+    .title {
+      margin: 0 0 15px;
+      line-height: 1.6;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .information {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .profile-box {
+        display: flex;
+
+        .profile-image {
+          width: 23px;
+          height: 23px;
+          margin-right: 5px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          border-radius: 50%;
+        }
+
+        .nickname {
+          position: relative;
+          top: 2px;
+          font-size: 13px;
+          color: $font-color--dark-gray;
+        }
+      }
+
+      .dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background-color: $font-color--dark-gray;
+      }
+
+      .created-at {
+        font-size: 12px;
+        color: $font-color--bright-gray;
+      }
+    }
+  }
+
+  .body {
+    min-height: 200px;
+    padding: 30px 0;
+    line-height: 1.7;
+    font-size: 14px;
+
+    @include tablet {
+      min-height: 300px;
+      font-size: 15px;
+    }
+  }
+}

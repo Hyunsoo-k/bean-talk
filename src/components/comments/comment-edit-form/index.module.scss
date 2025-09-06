@@ -28,12 +28,17 @@
   > textarea {
     overflow: hidden;
     width: 100%;
-    padding: #{$safe-area--mobile}px #{$safe-area--mobile}px 20px;
+    padding: $safe-area--mobile $safe-area--mobile 20px;
     background-color: inherit;
     border: none;
     outline: none;
+    font-size: 13px;
     font-family: "Pretendard", sans-serif;
     resize: none;
+
+    @include tablet {
+      font-size: 14px;
+    }
   }
 
   > button {
@@ -51,10 +56,10 @@
   }
 
   .cancel-button {
-    right: #{$safe-area--mobile}px;
+    right: $safe-area--mobile;
   }
 
   .submit-button {
-    right: calc(#{$safe-area--mobile}px + 40px);
+    right: calc($safe-area--mobile + 40px);
   }
 }

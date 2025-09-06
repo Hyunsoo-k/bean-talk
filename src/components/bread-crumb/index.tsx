@@ -8,9 +8,12 @@ import { Link } from "react-router-dom";
 type Props = {
   breadCrumbName: string;
   path: string;
+  createOrEdit?: "create" | "edit"; 
 };
 
-const BreadCrumb = ({ breadCrumbName, path }: Props): JSX.Element => {
+const BreadCrumb = ({ breadCrumbName, path, createOrEdit }: Props): JSX.Element => {
+  const isCreateOrEdit = createOrEdit;
+
   return (
     <div className={styles["bread-crumb-component"]}>
       <Link to="/">
@@ -21,6 +24,12 @@ const BreadCrumb = ({ breadCrumbName, path }: Props): JSX.Element => {
       <Link to={path}>
         {breadCrumbName}
       </Link>
+      {isCreateOrEdit && (
+        <>
+          <SlArrowRight size={12} color="rgb(44, 44, 44)" />
+          {isCreateOrEdit === "create" ? "글쓰기" : "수정"}
+        </>
+      )}
     </div>
   );
 };

@@ -15,14 +15,14 @@
   border-radius: 12px;
   color: $background-color--white;
   cursor: pointer;
-  transform: translateY(0);
-  transition: transform 0.3s ease-out;
-
-  &:hover {
-    transform: translateY(-20px);
-  }
 
   @include tablet {
+    transform: translateY(0);
+    transition: transform 0.3s ease-out;
+
+    &:hover {
+      transform: translateY(-20px);
+    }
   }
 
   .overlay {

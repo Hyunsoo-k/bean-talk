@@ -90,8 +90,8 @@
       > a {
         text-decoration: none;
         position: absolute;
-        top: #{$safe-area--mobile}px;
-        right: #{$safe-area--mobile}px;
+        top: $safe-area--mobile;
+        right: $safe-area--mobile;
 
         @include tablet {
           top: #{$safe-area--tablet}px;
@@ -105,16 +105,16 @@
 
       .red-dot {
         position: absolute;
-        top: calc(#{$safe-area--mobile}px - 3px);
-        right: calc(#{$safe-area--mobile}px - 1px);
+        top: calc($safe-area--mobile - 3px);
+        right: calc($safe-area--mobile - 1px);
         width: 7px;
         height: 7px;
         border-radius: 50%;
         background-color: rgb(233, 97, 97);
 
         @include tablet {
-          top: calc(#{$safe-area--tablet}px - 3px);
-          right: calc(#{$safe-area--tablet}px - 1px); 
+          top: calc($safe-area--tablet - 3px);
+          right: calc($safe-area--tablet - 1px); 
         }
       }
 
@@ -198,10 +198,10 @@
   .menu-list {
     list-style-type: none;
     margin: 0;
-    padding: 20px #{$safe-area--mobile}px;
+    padding: 20px $safe-area--mobile;
 
     @include tablet {
-      padding: 20px #{$safe-area--tablet}px;
+      padding: 20px $safe-area--tablet;
     }
 
     > li {
@@ -255,7 +255,7 @@
 
   .bottom-area {
     margin-top: auto;
-    padding: 40px #{$safe-area--mobile}px;
+    padding: 40px $safe-area--mobile;
     border-top: 1px solid $border-color--gray;
 
     .logout-button {

@@ -13,12 +13,12 @@ body {
   position: relative;
   height: 100%;
   margin: 0;
-  padding-top: #{$header-height--mobile}px;
+  padding-top: $header-height--mobile;
   background-color: $background-color--white;
   font-family: 'Pretendard', sans-serif;
   color: $font-color--black;
 
   @include tablet {
-    padding-top: #{$header-height--tablet}px;
+    padding-top: $header-height--tablet;
   }
 }

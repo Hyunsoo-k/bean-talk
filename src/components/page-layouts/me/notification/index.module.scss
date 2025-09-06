@@ -16,12 +16,12 @@
 }
 
 .notification-page-layout-component {
-  padding: 30px #{$safe-area--mobile}px;
+  padding: 30px $safe-area--mobile;
 
   @include tablet {
-    max-width: calc(#{$max-width}px - 100px);
+    max-width: calc($max-width - 100px);
     margin: 0 auto;
-    padding: 80px #{$safe-area--tablet}px;
+    padding: 80px $safe-area--tablet;
   }
 
   .header {
