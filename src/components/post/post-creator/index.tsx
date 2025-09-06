@@ -14,7 +14,7 @@ const PostCreator = (): JSX.Element => {
           autoComplete="off"
           className={styles["title"]}
         />
-        <div className={styles["information"]}>
+        <div className={styles["information-and-button-box"]}>
           <div className={styles["profile-box"]}>
             <div
               className={styles["profile-image"]}
