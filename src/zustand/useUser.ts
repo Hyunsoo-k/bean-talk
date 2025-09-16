@@ -13,7 +13,7 @@ type UserStore = {
 };
 
 const useUser = create<UserStore>((set) => ({
-  user: true,
+  user: null,
   setUser: (userData: User) => set({ user: userData })
 }));
 

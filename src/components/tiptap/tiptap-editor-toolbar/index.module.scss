@@ -1,0 +1,24 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/responsive.scss' as *;
+
+.tiptap-editor-toolbar-component {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  border-bottom: 1px solid $border-color--gray;
+
+  > button {
+    padding: 0;
+    background-color: inherit;
+    border: none;
+
+    @include tablet {
+      cursor: pointer;
+    }
+
+    > svg {
+      position: relative;
+    }
+  }
+}
