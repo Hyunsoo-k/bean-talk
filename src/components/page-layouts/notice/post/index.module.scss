@@ -1,0 +1,18 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/responsive.scss' as *;
+
+.notice-post-page-layout-component {
+  min-height: $page-layout-min-height--mobile;
+  margin: 0 auto;
+  padding:
+    $page-layout-column-blanck--mobile
+    $safe-area--mobile;
+
+  @include tablet {
+    max-width: $max-width;
+    min-height: $page-layout-min-height--tablet;
+    padding:
+      $page-layout-column-blanck--tablet
+      $safe-area--tablet;
+  }
+}

@@ -10,6 +10,6 @@
   padding: 0;
 
   .threads-item-wrapper {
-    max-width: #{$max-width}px;
+    max-width: $max-width;
   }
 }

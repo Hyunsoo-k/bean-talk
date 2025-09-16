@@ -78,16 +78,16 @@
     margin: 130px auto;
 
     @include tablet {
-      max-width: calc(#{$max-width}px - 100px);
+      max-width: calc($max-width - 100px);
       margin-top: 180px;
-      padding: 0 #{$safe-area--tablet}px;
+      padding: 0 $safe-area--tablet;
     }
 
     .header {
       display: flex;
       width: 80%;
       margin: 0 auto 30px;
-      padding: 0 #{$safe-area--mobile}px;
+      padding: 0 $safe-area--mobile;
 
       > button {
         width: 50%;

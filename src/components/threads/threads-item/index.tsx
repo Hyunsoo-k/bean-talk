@@ -69,7 +69,10 @@ const ThreadsItem = (): JSX.Element => {
           </button>
         </div>
       </div>
-      <CommentSection isCommentSectionOpen={isCommentSectionOpen} />
+      <CommentSection
+        isPostPage={false}
+        isCommentSectionOpen={isCommentSectionOpen}
+      />
     </div>
   );
 };

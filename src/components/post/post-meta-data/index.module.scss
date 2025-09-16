@@ -1,0 +1,26 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-meta-data-component {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 20px auto 15px;
+
+  @include tablet {
+    width: 80%;
+  }
+
+  > button {
+    display: flex;
+    align-items: center;
+    background-color: inherit;
+    border: none;
+    color: $font-color--dark-gray;
+    cursor: pointer;
+
+    > svg {
+      margin-right: 5px;
+    }
+  }
+}

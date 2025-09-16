@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 
 import BreadCrumb from "@/components/bread-crumb";
-import ThumbnailGridBox from "@/components/thumbnail/thumbnail-grid-box";
+import ThumbnailGridBox from "@/components/thumbnail/thumbnail-box/thumbnail-grid-box";
 
 import styles from "./index.module.scss";
 

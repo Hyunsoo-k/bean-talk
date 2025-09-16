@@ -2,7 +2,7 @@ import type { JSX } from "react";
 import { BsFillThreadsFill } from "react-icons/bs";
 import { TbSpeakerphone } from "react-icons/tb";
 
-import ThumbnailCarouselBox from "@/components/thumbnail/thumbnail-carousel-box";
+import ThumbnailCarouselBox from "@/components/thumbnail/thumbnail-box/thumbnail-carousel-box";
 import ThreadsItemBox from "@/components/threads/threads-item-box";
 
 import styles from "./index.module.scss";

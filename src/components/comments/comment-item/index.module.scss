@@ -65,8 +65,12 @@
           width: 100%;
           margin-top: 5px;
           line-height: 1.6;
-          font-size: 14px;
+          font-size: 13px;
           color: $font-color--dark-gray;
+
+          @include tablet {
+            font-size: 14px;
+          }
         }
 
         .create-reply-button {

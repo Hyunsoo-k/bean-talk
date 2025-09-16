@@ -4,13 +4,13 @@
 .notice-list-page-layout-component {
   margin: 0 auto;
   padding:
-    #{$page-layout-column-blanck--mobile}px
-    #{$safe-area--mobile}px;
+   $page-layout-column-blanck--mobile
+   $safe-area--mobile;
 
   @include tablet {
-    max-width: #{$max-width}px;
+    max-width: $max-width;
     padding:
-      #{$page-layout-column-blanck--tablet}px
-      #{$safe-area--tablet}px
+      $page-layout-column-blanck--tablet
+      $safe-area--tablet;
   }
 }

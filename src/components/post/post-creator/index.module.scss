@@ -1,0 +1,104 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-creator-component {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .top {
+    padding-bottom: 20px;
+    border-bottom: 1px solid $font-color--black;
+
+    .title {
+      display: block;
+      width: 100%;
+      margin: 0 0 15px;
+      border: none;
+      outline: none;
+      line-height: 1.6;
+      font-size: 16px;
+      font-weight: 500;
+      color: $font-color--black;
+
+      &::placeholder {
+        letter-spacing: 0.5px;
+        font-weight: 400;
+      }
+    }
+
+    .information-and-button-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .profile-box {
+        display: flex;
+
+        .profile-image {
+          width: 23px;
+          height: 23px;
+          margin-right: 5px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          border-radius: 50%;
+        }
+
+        .nickname {
+          position: relative;
+          top: 2px;
+          font-size: 13px;
+          color: $font-color--dark-gray;
+        }
+      }
+
+      .button-box {
+        display: flex;
+        margin-left: auto;
+
+        > button {
+          background-color: inherit;
+          border: none;
+          letter-spacing: 1px;
+          cursor: pointer;
+        }
+
+        .cancel-button {
+          font-family: 'Pretendard', sans-serif;
+          color: $font-color--dark-gray;
+        }
+
+        .submit-button {
+          font-family: 'Pretendard', sans-serif;
+        }
+      }
+    }
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    margin-top: 20px;
+    border: 1px solid $border-color--gray;
+    font-size: 14px;
+
+    @include tablet {
+      min-height: 400px;
+      font-size: 15px;
+    }
+
+    .toolbar-wrapper {
+
+    }
+
+    .content-wrapper {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      // line-height: 1.7;
+    }
+  }
+}

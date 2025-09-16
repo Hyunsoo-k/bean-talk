@@ -4,21 +4,21 @@
 .main-page-layout-component {
   margin: 0 auto;
   padding:
-    #{$main-page-layout-column-blacnk--mobile}px
-    #{$safe-area--mobile}px;
+    $main-page-layout-column-blank--mobile
+    $safe-area--mobile;
 
   @include tablet {
-    max-width: #{$max-width}px;
+    max-width: $max-width;
     padding:
-      #{$main-page-layout-column-blacnk--tablet}px
-      #{$safe-area--tablet}px
+      $main-page-layout-column-blank--tablet
+      $safe-area--tablet
   }
 
   .news-carousel-wrapper {
   }
 
   .boundary-line {
-    max-width: #{$max-width}px;
+    max-width: $max-width;
     height: 2px;
     margin: 50px auto;
     background-color: $border-color--gray;
@@ -27,7 +27,7 @@
   .threads-area {
     display: flex;
     flex-direction: column;
-    max-width: #{$max-width}px;
+    max-width: $max-width;
     margin: 0 auto;
 
     .header {

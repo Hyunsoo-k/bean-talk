@@ -2,12 +2,14 @@
 @use "@/styles/responsive.scss" as *;
 
 .footer-component {
-  padding: 30px #{$safe-area--mobile}px 50px;
+  height: 210px;
+  padding: 30px $safe-area--mobile 0;
   background-color: $font-color--black;
   color: $background-color--white;
 
   @include tablet {
-    padding: 80px;
+    height: 320px;
+    padding: 80px 80px 0;
   }
 
   .top {
@@ -83,7 +85,7 @@
 
       @include tablet {
         letter-spacing: 0.3px;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 350;
       }
     }

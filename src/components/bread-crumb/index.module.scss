@@ -7,9 +7,11 @@
   margin: 0 auto 30px;
   padding-bottom: 8px;
   border-bottom: 1px solid $border-color--gray;
+  font-size: 15px;
+  color: $font-color--black;
 
   @include tablet {
-    max-width: #{$max-width}px;
+    max-width: $max-width;
     margin: 0 auto 50px;
     padding-bottom: 15px;
   }

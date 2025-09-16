@@ -6,16 +6,17 @@ import CommentItem from "@/components/comments/comment-item";
 import styles from "./index.module.scss";
 
 type Props = {
-  isCommentSectionOpen: boolean;
+  isPostPage: boolean;
+  isCommentSectionOpen?: boolean;
 };
 
-const CommentSection = ({ isCommentSectionOpen }: Props): JSX.Element => {
+const CommentSection = ({ isPostPage, isCommentSectionOpen }: Props): JSX.Element => {
   const [openReplyId, setOpenReplyId] = useState<string | null>(null);
 
   return (
     <div
       className={styles["comment-section-component"]}
-      style={{ display: isCommentSectionOpen ? "block" : "none" }}
+      style={{ display: isPostPage || isCommentSectionOpen ? "block" : "none" }}
     >
       <CommentForm />
       <ul className={styles["comment-item-box"]}>
