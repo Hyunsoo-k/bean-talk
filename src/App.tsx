@@ -1,12 +1,23 @@
-import { type JSX } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import type { JSX } from "react";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
+import {CookiesProvider} from 'react-cookie';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 
-import useSearchModal from "@/zustand/useSearchModal";
-import useAuthModal from "@/zustand/useAuthModal";
+import useSearchModalStore from "@/zustand/use-search-modal-store";
+import useAuthModalStore from "@/zustand/use-auth-modal-store";
+import useAlertModalStore from "./zustand/use-alert-modal-store";
 import Header from "@/components/header";
-import Sidebar from "@/components/sidebar/sidebar";
-import SidebarWatcher from "@/components/sidebar/sidebar-watcher";
+import Sidebar from "@/components/sidebar";
+import SidebarWatcher from "@/components/sidebar-watcher";
 import ModalWatcher from "@/components/modal/modal-watcher";
+import AlertModal from "./components/modal/alert-modal";
 import SearchModal from "@/components/modal/search-modal";
 import AuthModal from "@/components/modal/auth-modal";
 import MainPageLayout from "@/components/page-layouts/main";
@@ -16,6 +27,7 @@ import ThreadsListPageLayout from "@/components/page-layouts/threads/list";
 import ThreadsPostPageLayout from "@/components/page-layouts/threads/post";
 import PromotionListPageLayout from "@/components/page-layouts/promotion/list";
 import PromotionPostPageLayout from "@/components/page-layouts/promotion/post";
+import JobPageLayout from "@/components/page-layouts/job/list";
 import NewsListPageLayout from "@/components/page-layouts/news/list";
 import NewsPostPageLayout from "@/components/page-layouts/news/post";
 import NewsPostCreatePageLayout from "@/components/page-layouts/news/post/create";
@@ -27,36 +39,45 @@ import Footer from "@/components/footer";
 
 import "./App.module.scss";
 
+const queryClient = new QueryClient();
+
 const App = (): JSX.Element => {
-  const { isOpen: isSearchModalOpen } = useSearchModal();
-  const { isOpen: isLAuthModalOpen } = useAuthModal();
+  const { isOpen: isSearchModalOpen } = useSearchModalStore();
+  const { isOpen: isLAuthModalOpen } = useAuthModalStore();
+  const { isOpen: isAlertModalOpen } = useAlertModalStore();
 
   return (
-    <BrowserRouter>
-      <Header />
-      <Sidebar />
-      <SidebarWatcher />
-      <ModalWatcher />
-      {isSearchModalOpen && <SearchModal />}
-      {isLAuthModalOpen && <AuthModal />}
-      <Routes>
-        <Route path="/" element={<MainPageLayout />} />
-        <Route path="/me/information" element={<InformationPageLayout />} />
-        <Route path="/me/notification" element={<NotificationPageLayout />} />
-        <Route path="/threads/list" element={<ThreadsListPageLayout />} />
-        <Route path="/threads/post/:post_id" element={<ThreadsPostPageLayout />} />
-        <Route path="/promotion/list" element={<PromotionListPageLayout />} />
-        <Route path="/promotion/post/:post_id" element={<PromotionPostPageLayout />} />
-        <Route path="/news/list" element={<NewsListPageLayout />} />
-        <Route path="/news/post/create" element={<NewsPostCreatePageLayout />} />
-        <Route path="/news/post/:post_id" element={<NewsPostPageLayout />} />
-        <Route path="/notice/list" element={<NoticeListPageLayout />} />
-        <Route path="/notice/post/:post_id" element={<NoticePostPageLayout />} />
-        <Route path="/suggestion/list" element={<SuggestionListPageLayout />} />
-        <Route path="/suggestion/post/:post_id" element={<SuggestionPostPageLayout />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <CookiesProvider>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Header />
+          <Sidebar />
+          <SidebarWatcher />
+          <ModalWatcher />
+          {isSearchModalOpen && <SearchModal />}
+          {isLAuthModalOpen && <AuthModal />}
+          {isAlertModalOpen && <AlertModal />}
+          <Routes>
+            <Route path="/" element={<MainPageLayout />} />
+            <Route path="/me/information" element={<InformationPageLayout />} />
+            <Route path="/me/notification" element={<NotificationPageLayout />} />
+            <Route path="/bbs/categories/thread/posts" element={<ThreadsListPageLayout />} />
+            <Route path="/bbs/categories/thread/posts/:post_id" element={<ThreadsPostPageLayout />} />
+            <Route path="/bbs/categories/promotion/posts" element={<PromotionListPageLayout />} />
+            <Route path="/bbs/categories/promotion/posts/:post_id" element={<PromotionPostPageLayout />} />
+            <Route path="/bbs/categories/job/posts" element={<JobPageLayout />} />
+            <Route path="/bbs/categories/job/posts/:post_id" element={<NewsListPageLayout />} />
+            <Route path="/bbs/categories/news/posts" element={<NewsPostCreatePageLayout />} />
+            <Route path="/bbs/categories/news/posts/:post_id" element={<NewsPostPageLayout />} />
+            <Route path="/bbs/categories/notice/posts" element={<NoticeListPageLayout />} />
+            <Route path="/bbs/categories/notice/posts/:post_id" element={<NoticePostPageLayout />} />
+            <Route path="/bbs/categories/suggestion/posts" element={<SuggestionListPageLayout />} />
+            <Route path="/bbs/categories/suggestion/posts/:post_id" element={<SuggestionPostPageLayout />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </QueryClientProvider>
+    </CookiesProvider>
   );
 };
 

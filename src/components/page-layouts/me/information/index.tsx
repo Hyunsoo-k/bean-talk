@@ -2,13 +2,11 @@ import { useState, type JSX, type MouseEvent } from "react";
 import { FaCamera } from "react-icons/fa";
 
 import defaultProfile from "@/assets/default-images/default-profile.jpg";
-import useUser from "@/zustand/useUser";
-import ThreadsItemBox from "@/components/threads/threads-item-box";
+import ThreadsContainer from "@/components/threads-container";
 
 import styles from "./index.module.scss";
 
 const InformationPageLayout = (): JSX.Element => {
-  const { user, setUser } = useUser();
   const [currentTab, setCurrentTab] = useState<"myPosts" | "myScrap">("myPosts");
 
   const handleClickTab = (e: MouseEvent<HTMLButtonElement>, tab: "myPosts" | "myScrap"): void => {
@@ -25,7 +23,7 @@ const InformationPageLayout = (): JSX.Element => {
           <div
             className={styles["profile-image"]}
             style={{
-              backgroundImage: user?.profileImage ? `url(${user?.profileImage})` : `url(${defaultProfile})`,
+              backgroundImage: defaultProfile ? `url(${defaultProfile})` : `url(${defaultProfile})`,
             }}
           >
             <FaCamera size={20} color="rgb(44, 44, 44)" />
@@ -55,7 +53,7 @@ const InformationPageLayout = (): JSX.Element => {
             스크랩
           </button>
         </div>
-        <ThreadsItemBox />
+        <ThreadsContainer />
       </div>
     </div>
   );

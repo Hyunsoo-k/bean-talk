@@ -1,0 +1,279 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/responsive.scss' as *;
+
+.backdrop {
+  z-index: 998;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-component {
+  z-index: 999;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  min-height: 100vh;
+  background-color: $background-color--white;
+  transition: left 0.3s ease-out;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include tablet {
+    width: 300px;
+  }
+
+  .top-area {
+    display: flex;
+    align-items: center;
+    height: 150px;
+    border-bottom: 1px solid $border-color--gray;
+
+    @include tablet {
+      height: 230px;
+    }
+
+    .logged-in {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+      height: 100%;
+
+      @include tablet {
+        gap: 15px;
+      }
+
+      .profile-image-wrapper {
+        position: static;
+        display: block;
+
+        .profile-image {
+          width: 60px;
+          height: 60px;
+          margin-top: 25px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          border-radius: 50%;
+
+          @include tablet {
+            width: 100px;
+            height: 100px;
+          }
+        }
+      }
+
+      > a {
+        text-decoration: none;
+        position: absolute;
+        top: $safe-area--mobile;
+        right: $safe-area--mobile;
+
+        @include tablet {
+          top: #{$safe-area--tablet}px;
+          right: #{$safe-area--tablet}px;
+        }
+
+        > svg {
+          cursor: pointer;
+        }
+      }
+
+      .red-dot {
+        position: absolute;
+        top: calc($safe-area--mobile - 3px);
+        right: calc($safe-area--mobile - 1px);
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: rgb(233, 97, 97);
+      }
+
+      > span {
+        text-align: center;
+        font-size: 13px;
+
+        @include tablet {
+          font-size: 15px;
+        }
+      }
+
+      .nickname {
+        font-weight: 500;
+      }
+
+      .email {
+        color: $font-color--dark-gray;
+      }
+    }
+
+    .unlogged-in{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 15px;
+      margin: 0 auto;
+
+      @include tablet {
+        gap: 30px;
+      }
+
+      > span {
+        text-align: center;
+        font-size: 13px;
+        font-weight: 500;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+
+        @include tablet {
+          font-size: 15px;
+          line-height: 2;
+        }
+      }
+
+      .login-button {
+        text-decoration: none;
+        width: 130px;
+        margin: 0 auto;
+        padding: 5px 0;
+        background-color: inherit;
+        border: 1px solid $border-color--gray;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 13px;
+        color: $font-color--dark-gray;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $font-color--black;
+          border: 1px solid $font-color--black;
+          color: $background-color--white;
+        }
+
+        @include tablet {
+          width: 150px;
+          padding: 8px 0;
+        }
+      }
+    }
+
+    .profile-image {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background-color: $background-color--white;
+      cursor: pointer;
+    }
+  }
+
+  .menu-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 20px $safe-area--mobile;
+
+    @include tablet {
+      padding: 20px $safe-area--tablet;
+    }
+
+    > li {
+      padding: 15px 0;
+      position: relative;
+      cursor: pointer;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0px;
+        width: 100%;
+        height: 1px;
+        background-color: $font-color--black;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 0.3s;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+
+      > a {
+        position: relative;
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        color: $font-color--black;
+        cursor: pointer;
+
+        @include tablet {
+          font-size: 16px;
+        }
+
+        > svg {
+          position: relative;
+          width: 20px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .bottom-area {
+    margin-top: auto;
+    padding: 40px $safe-area--mobile;
+    border-top: 1px solid $border-color--gray;
+
+    .logout-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      outline: none;
+      width: 110px;
+      padding: 8px 0;
+      border: 1px solid $border-color--gray;
+      border-radius: 20px;
+      background-color: inherit;
+      font-size: 13px;
+      color: $font-color--dark-gray;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $font-color--black;
+        border: 1px solid $font-color--black;
+        color: $background-color--white;
+      }
+
+      > svg {
+        position: relative;
+        top: 0;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.sidebar-component.--open {
+  left: 0;
+}
+
+.sidebar-component.--close {
+  left: -240px;
+  
+  @include tablet {
+    left: -300px;
+  }
+}
