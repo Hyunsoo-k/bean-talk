@@ -4,22 +4,27 @@
 .bread-crumb-component {
   display: flex;
   gap: 5px;
-  margin: 0 auto 30px;
+  margin: 0 auto 15px;
   padding-bottom: 8px;
-  border-bottom: 1px solid $border-color--gray;
+  border-bottom: 1px solid $font-color--black;
   font-size: 15px;
   color: $font-color--black;
 
   @include tablet {
     max-width: $max-width;
-    margin: 0 auto 50px;
+    margin: 0 auto 40px;
     padding-bottom: 15px;
   }
 
   > a {
     text-decoration: none;
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: 500;
     color: $font-color--black;
+
+    @include tablet {
+      font-size: 15px;
+    }
 
     > svg {
       position: relative;

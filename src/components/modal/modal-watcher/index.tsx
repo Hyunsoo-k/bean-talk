@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import useSearchModal from "@/zustand/useSearchModal";
-import useAuthModal from "@/zustand/useAuthModal";
+import useSearchModalStore from "@/zustand/use-search-modal-store";
+import useAuthModalStore from "@/zustand/use-auth-modal-store";
 
 const ModalWatcher = (): null => {
-  const { setIsOpen: setIsSearchModalOpen } = useSearchModal();
-  const { setIsOpen: setIsAuthModalOpen } = useAuthModal();
+  const { setIsOpen: setIsSearchModalOpen } = useSearchModalStore();
+  const { setIsOpen: setIsAuthModalOpen } = useAuthModalStore();
   const location = useLocation();
 
   useEffect(() => {

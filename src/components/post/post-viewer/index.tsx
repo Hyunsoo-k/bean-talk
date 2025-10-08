@@ -2,7 +2,7 @@ import { useState, type JSX } from "react";
 
 import defaultProfile from "@/assets/default-images/default-profile.jpg";
 import PostMetaData from "@/components/post/post-meta-data";
-import CommentSection from "@/components/comments/comment-section";
+import CommentSection from "@/components/comment/comment-section";
 
 import styles from "./index.module.scss";
 

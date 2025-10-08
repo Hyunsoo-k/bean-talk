@@ -2,115 +2,75 @@
 @use "@/styles/responsive.scss" as *;
 
 .main-page-layout-component {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
   margin: 0 auto;
-  padding:
-    $main-page-layout-column-blank--mobile
-    $safe-area--mobile;
+  padding: $main-page-layout-column-blank--mobile $safe-area--mobile;
 
   @include tablet {
+    gap: 100px;
     max-width: $max-width;
-    padding:
-      $main-page-layout-column-blank--tablet
-      $safe-area--tablet
-  }
-
-  .news-carousel-wrapper {
+    padding: $main-page-layout-column-blank--tablet $safe-area--tablet;
   }
 
   .boundary-line {
     max-width: $max-width;
-    height: 2px;
-    margin: 50px auto;
+    height: 1px;
+    margin: 60px auto;
     background-color: $border-color--gray;
   }
 
-  .threads-area {
+  .section {
     display: flex;
     flex-direction: column;
-    max-width: $max-width;
-    margin: 0 auto;
 
     .header {
-      margin: 0 0 50px;
-      text-align: center;
-      font-weight: 500;
-
-      > svg {
-        margin-right: 10px;
-      }
-    }
-
-    .threads-box {
       display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
+      justify-content: space-between;
+      align-items: end;
+      margin: 0 0 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid $font-color--black;
 
-    .bottom {
-      margin-top: 50px;
+      @include tablet {
+        margin: 0 0 40px;
+        padding-bottom: 25px;
+      }
 
-      > button {
-        display: block;
-        width: 150px;
-        height: 45px;
-        margin: 0 auto;
-        padding: 0 10px;
-        border: none;
-        background-color: $font-color--black;
-        letter-spacing: 0.5px;
-        font-size: 16px;
+      .title {
+        margin: 0;
+        font-size: 15px;
         font-weight: 500;
-        font-family: "Pretendard", sans-serif;
-        color: $background-color--white;
-        cursor: pointer;
 
-        &:hover {
-          background-color: $font-color--bright-gray;
+        @include tablet {
+          font-size: 17px;
+        }
+
+        .category-icon {
+          position: relative;
+          top: 2px;
+          margin-right: 10px;
         }
       }
-    }
-  }
 
-  .promotion-area {
-    display: flex;
-    flex-direction: column;
-    max-width: #{$max-width}px;
-    margin: 0 auto;
-
-    .header {
-      margin: 0 0 20px;
-      text-align: center;
-      font-weight: 500;
-
-      > svg {
-        margin-right: 10px;
-      }
-    }
-
-    .promotion-carousel-wrapper {
-      
-    }
-
-    .bottom {
-      margin-top: 50px;
-
-      > button {
-        display: block;
-        width: 150px;
-        height: 45px;
-        margin: 0 auto;
-        padding: 0 10px;
-        border: none;
-        background-color: $font-color--black;
-        letter-spacing: 0.5px;
-        font-size: 16px;
-        font-weight: 500;
+      .view-more-button {
         font-family: "Pretendard", sans-serif;
-        color: $background-color--white;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        text-decoration: none;
+        color: inherit;
         cursor: pointer;
 
-        &:hover {
-          background-color: $font-color--bright-gray;
+        @include tablet {
+          font-size: 16px;
+        }
+
+        .view-more-arrow-image {
+          position: relative;
+          top: 5px;
+          margin-left: 5px;
         }
       }
     }

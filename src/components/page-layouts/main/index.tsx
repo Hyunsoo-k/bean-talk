@@ -1,9 +1,14 @@
 import type { JSX } from "react";
+import { Link } from "react-router-dom";
+import { RxDoubleArrowRight } from "react-icons/rx";
 import { BsFillThreadsFill } from "react-icons/bs";
-import { TbSpeakerphone } from "react-icons/tb";
+import { VscMegaphone } from "react-icons/vsc";
+import { HiOutlineBuildingOffice } from "react-icons/hi2";
 
-import ThumbnailCarouselBox from "@/components/thumbnail/thumbnail-box/thumbnail-carousel-box";
-import ThreadsItemBox from "@/components/threads/threads-item-box";
+import ThumbnailCarouselSingle from "@/components/thumbnail-carousel/thumbnail-carousel-single";
+import ThumbnailCarouselMultiple from "@/components/thumbnail-carousel/thumbnail-carousel-multiple";
+import ThumbnailContainerFlex from "@/components/thumbnail-container/thumbnail-container-flex";
+import ThreadsContainer from "@/components/threads-container";
 
 import styles from "./index.module.scss";
 
@@ -11,33 +16,63 @@ const MainPageLayout = (): JSX.Element => {
   return (
     <div className={styles["main-page-layout-component"]}>
       <div className={styles["news-carousel-wrapper"]}>
-        <ThumbnailCarouselBox thumbnailItemType="column" />
+        <ThumbnailCarouselSingle category="news" />
       </div>
-      <div className={styles["boundary-line"]} />
-      <div className={styles["threads-area"]}>
-        <h2 className={styles["header"]}>
-          <BsFillThreadsFill size={20} color="rgb(44, 44, 44)" />
-          Threads
-        </h2>
-        <ThreadsItemBox />
-        <div className={styles["bottom"]}>
-          <button type="button">View more</button>
+      <section className={styles["section"]}>
+        <div className={styles["header"]}>
+          <h2 className={styles["title"]}>
+            <VscMegaphone
+              size={20}
+              color="rgb(210, 110, 105)"
+              className={styles["category-icon"]}
+            />
+            카페·납품 홍보
+          </h2>
+          <Link to="/bbs/categories/promotion/posts" className={styles["view-more-button"]}>
+            View more
+            <RxDoubleArrowRight size={20} className={styles["view-more-arrow-image"]} />
+          </Link>
         </div>
-      </div>
-      <div className={styles["boundary-line"]} />
-      <div className={styles["promotion-area"]}>
-        <h2 className={styles["header"]}>
-          <TbSpeakerphone size={20} color="rgb(44, 44, 44)" />
-          Promotion
-        </h2>
         <div className={styles["promotion-carousel-wrapper"]}>
-          <ThumbnailCarouselBox thumbnailItemType="background" />
+          <ThumbnailCarouselMultiple category="promotion" />
         </div>
-        <div className={styles["bottom"]}>
-          <button type="button">View more</button>
+      </section>
+      <section className={styles["section"]}>
+        <div className={styles["header"]}>
+          <h2 className={styles["title"]}>
+            <HiOutlineBuildingOffice
+              size={20}
+              color="rgb(44, 44, 44)"
+              className={styles["category-icon"]}
+            />
+            구인·구직
+          </h2>
+          <Link to="/bbs/categories/job/posts" className={styles["view-more-button"]}>
+            View more
+            <RxDoubleArrowRight size={20} className={styles["view-more-arrow-image"]} />
+          </Link>
         </div>
-      </div>
-      <div className={styles["boundary-line"]} />
+        <ThumbnailContainerFlex category="job" />
+      </section>
+      <section className={styles["section"]}>
+        <div className={styles["header"]}>
+          <h2 className={styles["title"]}>
+            <BsFillThreadsFill
+              size={18}
+              color="rgb(44, 44, 44)"
+              className={styles["category-icon"]}
+            />
+            Threads
+          </h2>
+          <Link to="/bbs/categories/thread/posts" className={styles["view-more-button"]}>
+            View more
+            <RxDoubleArrowRight size={20} className={styles["view-more-arrow-image"]} />
+          </Link>
+        </div>
+        <div className={styles["threadsContainer-wrapper"]}>
+          <ThreadsContainer isRenderedOnMainPage={true} />
+        </div>
+      </section>
     </div>
   );
 };

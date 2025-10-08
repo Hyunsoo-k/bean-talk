@@ -4,14 +4,14 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { CiSearch } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
 
-import useSidebar from "@/zustand/useSidebar";
+import useSidebarStore from "@/zustand/use-sidebar-store";
 
 import styles from "./index.module.scss";
-import useSearchModal from "@/zustand/useSearchModal";
+import useSearchModalStore from "@/zustand/use-search-modal-store";
 
 const Header = (): JSX.Element => {
-  const { setIsOpen: setIsSidebarOpen } = useSidebar();
-  const { isOpen: isSearchModalOpen, setIsOpen: setIsSearchModalOpen } = useSearchModal();
+  const { setIsOpen: setIsSidebarOpen } = useSidebarStore();
+  const { isOpen: isSearchModalOpen, setIsOpen: setIsSearchModalOpen } = useSearchModalStore();
 
   const handleClickMenu = (e: MouseEvent<SVGAElement>) => {
     e.stopPropagation();
@@ -31,30 +31,17 @@ const Header = (): JSX.Element => {
   return (
     <div className={styles["header-component"]}>
       <div className={styles["left-area"]}>
-        <RxHamburgerMenu
-          size={22}
-          color="#2C2C2C"
-          onClick={handleClickMenu}
-        />
+        <RxHamburgerMenu size={22} color="#2C2C2C" onClick={handleClickMenu} />
         <Link to="/">
-          <h1 className={styles["banner"]}>
-            BeanTalk
-          </h1>
+          <h1 className={styles["banner"]}>BeanTalk</h1>
         </Link>
       </div>
       <div className={styles["right-area"]}>
-        {isSearchModalOpen
-          ? < IoCloseOutline
-                size={24}
-                color="#2C2C2C"
-                onClick={handleClickClose}
-              />
-          : <CiSearch
-              size={24}
-              color="#2C2C2C"
-              onClick={handleClickSearch}
-            />
-        }
+        {isSearchModalOpen ? (
+          <IoCloseOutline size={24} color="#2C2C2C" onClick={handleClickClose} />
+        ) : (
+          <CiSearch size={24} color="#2C2C2C" onClick={handleClickSearch} />
+        )}
       </div>
     </div>
   );

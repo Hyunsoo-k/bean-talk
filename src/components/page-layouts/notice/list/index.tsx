@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 
 import BreadCrumb from "@/components/bread-crumb";
-import ThumbnailFlexBox from "@/components/thumbnail/thumbnail-box/thumbnail-flex-box";
+import ThumbnailContainerFlex from "@/components/thumbnail-container/thumbnail-container-flex";
 
 import styles from "./index.module.scss";
 
@@ -10,7 +10,7 @@ const NoticeListPageLayout = (): JSX.Element => {
     <div className={styles["notice-list-page-layout-component"]}>
       <BreadCrumb breadCrumbName="공지사항" path="/notice/list" />
       <div className={styles["main"]}>
-        <ThumbnailFlexBox />
+        <ThumbnailContainerFlex />
       </div>
     </div>
   );
