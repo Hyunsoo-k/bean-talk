@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCookies } from "react-cookie";
 
-import type { LoginFormValue } from "@/types/auth/auth-type";
+import type { LoginFormValue } from "@/types/auth-type";
 import instance from "@/axios/instance";
 import useAlertModalStore from "@/zustand/use-alert-modal-store";
 import queryKeys from "@/query-keys";

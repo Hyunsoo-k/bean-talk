@@ -1,3 +1,5 @@
+import type { Comment } from "@/types/comment";
+
 type Post = {
   _id: string;
   __v: string;
@@ -13,6 +15,7 @@ type Post = {
   title: string;
   content: string;
   commentCount: number;
+  comments?: Comment[];
   likes: string[];
   scraps: string[];
 };

@@ -5,14 +5,32 @@ import { LuMessageCircleMore } from "react-icons/lu";
 import { FaBookmark } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 
+import type { Post } from "@/types/post";
+import formatDateToKST from "@/utils/format-date-to-kst";
 import MenuModal from "@/components/modal/menu-modal";
-import CommentSection from "@/components/comments/comment-section";
+import CommentSection from "@/components/comment/comment-section";
 
 import defaultProfile from "@/assets/default-images/default-profile.jpg";
-import threeDotsinThread from "@/assets/images/three-dots-in-thread.png"
+import threeDotsinThread from "@/assets/images/three-dots-in-thread.png";
 import styles from "./index.module.scss";
 
-const Thread = (): JSX.Element => {
+type Props = {
+  post: Post;
+};
+
+const Thread = ({ post }: Props): JSX.Element => {
+  const {
+    createdAt,
+    author: { nickname },
+    content,
+    commentCount,
+    comments,
+    likes,
+    scraps
+  } = post;
+
+  console.log(comments)
+
   const [isMenuModalOpen, setIsMenuModalOpen] = useState<boolean>(false);
   const [isEditFormOpen, setIsEditFormOpen] = useState<boolean>(false);
   const [isCommentSectionOpen, setIsCommentSectionOpen] = useState<boolean>(false);
@@ -33,24 +51,24 @@ const Thread = (): JSX.Element => {
         <div
           className={styles["profile-image"]}
           style={{
-            backgroundImage: `url(${defaultProfile})`
+            backgroundImage: `url(${defaultProfile})`,
           }}
         />
-        <div className={styles["line"]}/>
+        <div className={styles["line"]} />
         <div
           className={styles["three-dots-image"]}
           style={{
-            backgroundImage: `url(${threeDotsinThread})`
+            backgroundImage: `url(${threeDotsinThread})`,
           }}
         />
       </div>
       <div className={styles["main"]}>
         <div className={styles["top"]}>
           <span className={styles["author"]}>
-            운영자
+            {nickname}
           </span>
           <span className={styles["created-at"]}>
-            2025년 8월 30일
+            {formatDateToKST(createdAt)}
           </span>
           <div className={styles["menu-button-wrapper"]}>
             <button
@@ -61,33 +79,38 @@ const Thread = (): JSX.Element => {
               <GoKebabHorizontal size={20} color="rgb(100,116,139)" />
             </button>
             {isMenuModalOpen && (
-              <MenuModal setIsMenuModalOpen={setIsMenuModalOpen} setIsEditFormOpen={setIsEditFormOpen} />
+              <MenuModal
+                setIsMenuModalOpen={setIsMenuModalOpen}
+                setIsEditFormOpen={setIsEditFormOpen}
+              />
             )}
           </div>
         </div>
         <div className={styles["middle"]}>
           <p className={styles["content"]}>
-            커피는 단순한 음료가 아니라 작은 휴식이자 대화의 시작점이다. 갓 갈아낸 원두의 향은 바쁜 일상 속에서 잠시
-            멈춤을 선물하고, 뜨거운 에스프레소의 농도는 집중을, 부드러운 라떼의 거품은 위로를 건넨다. 카페 구석 창가에
-            앉아 바라보는 도시의 풍경 속에서도 커피는 늘 곁에 있다.
+            {content}
           </p>
         </div>
         <div className={styles["bottom"]}>
           <button type="button" onClick={handleClickCommentCount}>
             <LuMessageCircleMore size={19} color="rgb(148,163,184)" />
-            3
+            {commentCount}
           </button>
           <button type="button">
             <FaRegHeart size={18} color="rgb(148,163,184)" />
-            3
+            {likes.length}
           </button>
           <button type="button">
             <FaBookmark size={15} color="rgb(148,163,184)" />
-            0
+            {scraps.length}
           </button>
         </div>
+        <CommentSection
+          isPostPage={false}
+          isCommentSectionOpen={isCommentSectionOpen}
+          comments={comments}
+        />
       </div>
-      <CommentSection isPostPage={false} isCommentSectionOpen={isCommentSectionOpen} />
     </div>
   );
 };

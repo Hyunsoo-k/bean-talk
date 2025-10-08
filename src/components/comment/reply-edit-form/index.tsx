@@ -1,4 +1,5 @@
-import { useRef, type Dispatch, type JSX, type MouseEvent, type SetStateAction } from "react";
+import type { Dispatch, JSX, MouseEvent, SetStateAction } from "react";
+import { useRef } from "react";
 import { PiArrowElbowDownRight } from "react-icons/pi";
 
 import styles from "./index.module.scss";

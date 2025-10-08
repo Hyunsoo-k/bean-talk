@@ -7,15 +7,16 @@
   position: relative;
   width: 100%;
 
-  .comment-item-box {
-    list-style-type: none;
+  .comments-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    list-style-type: none;
     margin-bottom: 20px;
-    padding: 0;
+    padding: 20px 0 0 0;
+    border-top: 1px solid $border-color--gray;
 
-    .comment-item-wrapper {
+    .comment-wrapper {
       width: 100%;
     }
   }

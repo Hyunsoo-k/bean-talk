@@ -1,12 +1,22 @@
-import { useRef, type Dispatch, type JSX, type MouseEvent, type SetStateAction } from "react";
+import type { Dispatch, JSX, MouseEvent, SetStateAction } from "react";
+import { useRef } from "react";
 
 import styles from "./index.module.scss";
 
 type Props = {
   setIsEditFormOpen: Dispatch<SetStateAction<boolean>>;
+  author: {
+    _id: string;
+    nickname: string;
+  };
+  content: string;
 };
 
-const CommentEditForm = ({ setIsEditFormOpen }: Props): JSX.Element => {
+const CommentEditForm = ({
+  setIsEditFormOpen,
+  author,
+  content
+}: Props): JSX.Element => {
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const handleResizeTextArea = () => {
@@ -24,7 +34,9 @@ const CommentEditForm = ({ setIsEditFormOpen }: Props): JSX.Element => {
   return (
     <form className={styles["comment-edit-form-component"]}>
       <div className={styles["top"]}>
-        <span className={styles["nickname"]}>운영자</span>
+        <span className={styles["nickname"]}>
+          {author.nickname}
+        </span>
       </div>
       <textarea
         placeholder="댓글을 입력해 주세요."
@@ -39,7 +51,9 @@ const CommentEditForm = ({ setIsEditFormOpen }: Props): JSX.Element => {
       >
         취소
       </button>
-      <button className={styles["submit-button"]}>등록</button>
+      <button className={styles["submit-button"]}>
+        등록
+      </button>
     </form>
   );
 };

@@ -70,7 +70,7 @@ const MainPageLayout = (): JSX.Element => {
           </Link>
         </div>
         <div className={styles["threadsContainer-wrapper"]}>
-          <ThreadsContainer />
+          <ThreadsContainer isRenderedOnMainPage={true} />
         </div>
       </section>
     </div>

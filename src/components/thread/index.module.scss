@@ -47,6 +47,7 @@
   .main {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     gap: 10px;
 
     .top {
@@ -56,7 +57,7 @@
         flex-grow: 1;
         letter-spacing: 0.5px;
         font-size: 14px;
-        font-weight: 500;
+        font-weight: 450;
       }
 
       .created-at {
@@ -99,15 +100,16 @@
         font-size: 13px;
         color: $font-color--dark-gray;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 5;
-        line-clamp: 5;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
         line-height: 1.6;
         overflow: hidden;
 
         @include tablet {
-          -webkit-line-clamp: 6;
-          line-height: 1.7;
           font-size: 14px;
+          -webkit-line-clamp: 4;
+          line-clamp: 4;
+          line-height: 1.7;
         }
       }
 

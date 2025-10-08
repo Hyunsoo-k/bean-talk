@@ -1,11 +1,8 @@
-import type {
-  Dispatch,
-  SetStateAction,
-} from "react";
+import type { Dispatch, SetStateAction } from "react";
 import type { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 
-import type { SignupFormValue } from "@/types/auth/auth-type";
+import type { SignupFormValue } from "@/types/auth-type";
 import instance from "@/axios/instance";
 import useAlertModalStore from "@/zustand/use-alert-modal-store";
 
@@ -16,13 +13,7 @@ const mutationFn = async (requestBody: SignupFormValue) => {
 };
 
 const useSignupMutation = (setFormType: Dispatch<SetStateAction<"login" | "signup">>) => {
-  const {
-    setIsOpen,
-    setTitle,
-    setMessage,
-    setHandleClick,
-    resetStore,
-  } = useAlertModalStore();
+  const { setIsOpen, setTitle, setMessage, setHandleClick, resetStore } = useAlertModalStore();
 
   return useMutation({
     mutationFn,

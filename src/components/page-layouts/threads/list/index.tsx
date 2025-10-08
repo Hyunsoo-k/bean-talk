@@ -9,9 +9,7 @@ const ThreadsListPageLayout = (): JSX.Element => {
   return (
     <div className={styles["threads-list-page-layout-component"]}>
       <BreadCrumb breadCrumbName="스레드" path="/threads/list" />
-      <div className={styles["main"]}>
-        <ThreadsContainer />
-      </div>
+      <ThreadsContainer isRenderedOnMainPage={false} />
     </div>
   );
 };

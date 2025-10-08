@@ -5,13 +5,13 @@
   position: relative;
   width: 100%;
   margin-bottom: 15px;
-  background-color: $background-color--gray;
   border: 1px solid $background-color--gray;
   border-radius: 8px;
+  background-color: $background-color--gray;
 
   &:focus-within {
-    background-color: $background-color--white;
     border: 1px solid $border-color--gray;
+    background-color: $background-color--white;
   }
 
   .top {
@@ -21,7 +21,7 @@
     .nickname {
       padding: 5px 5px 5px 12px;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 450;
     }
   }
 
@@ -29,11 +29,11 @@
     overflow: hidden;
     width: 100%;
     padding: $safe-area--mobile $safe-area--mobile 20px;
-    background-color: inherit;
     border: none;
     outline: none;
-    font-size: 13px;
+    background-color: inherit;
     font-family: "Pretendard", sans-serif;
+    font-size: 13px;
     resize: none;
 
     @include tablet {
@@ -46,12 +46,12 @@
     bottom: 15px;
     width: 40px;
     height: 20px;
-    background-color: inherit;
     border: none;
-    letter-spacing: 1px;
-    font-size: 13px;
+    background-color: inherit;
     font-family: "Pretendard", sans-serif;
+    font-size: 12px;
     color: $font-color--dark-gray;
+    letter-spacing: 1px;
     cursor: pointer;
   }
 
