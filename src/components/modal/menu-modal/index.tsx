@@ -1,21 +1,32 @@
-import { type Dispatch, type JSX, type MouseEvent, type SetStateAction, useEffect, useRef } from "react";
+import type { Dispatch, JSX, SetStateAction } from "react";
+import { useEffect, useRef } from "react";
 
 import styles from "./index.module.scss";
 
 type Props = {
   setIsMenuModalOpen: Dispatch<SetStateAction<boolean>>;
-  setIsEditFormOpen: Dispatch<SetStateAction<boolean>>;
+  handleClickEdit: () => void;
+  handleClickDelete: () => void;
 };
 
-const MenuModal = ({ setIsMenuModalOpen, setIsEditFormOpen }: Props): JSX.Element => {
+const MenuModal = ({
+  setIsMenuModalOpen,
+  handleClickEdit,
+  handleClickDelete
+}: Props): JSX.Element => {
   const modalRef = useRef<HTMLUListElement | null>(null);
 
   useEffect(() => {
     const handleClickOutside = (e: globalThis.MouseEvent) => {
-      if (!modalRef.current) return;
+      if (!modalRef.current) {
+        return;
+      }
+
       const clickTarget = e.target as HTMLElement;
 
-      if (!modalRef.current.contains(clickTarget)) setIsMenuModalOpen(false);
+      if (!modalRef.current.contains(clickTarget)) {
+        setIsMenuModalOpen(false);
+      }
     };
 
     document.addEventListener("click", handleClickOutside);
@@ -23,20 +34,22 @@ const MenuModal = ({ setIsMenuModalOpen, setIsEditFormOpen }: Props): JSX.Elemen
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
-
-  const handleClickEdit = (e: MouseEvent<HTMLLIElement>) => {
-    e.stopPropagation();
-    setIsEditFormOpen(true);
-    setIsMenuModalOpen(false);
-  };
+  }, [setIsMenuModalOpen]);
 
   return (
     <ul ref={modalRef} className={styles["menu-box-modal-component"]}>
-      <li onClick={handleClickEdit}>수정</li>
-      <li>삭제</li>
-      <li>신고</li>
-      <li>URL 복사</li>
+      <li onClick={handleClickEdit}>
+        수정
+      </li>
+      <li onClick={handleClickDelete}>
+        삭제
+      </li>
+      <li>
+        신고
+      </li>
+      <li>
+        URL 복사
+      </li>
     </ul>
   );
 };

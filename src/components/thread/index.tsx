@@ -20,6 +20,7 @@ type Props = {
 
 const Thread = ({ post }: Props): JSX.Element => {
   const {
+    _id: post_id,
     createdAt,
     author: { nickname },
     content,
@@ -29,19 +30,18 @@ const Thread = ({ post }: Props): JSX.Element => {
     scraps
   } = post;
 
-  console.log(comments)
-
   const [isMenuModalOpen, setIsMenuModalOpen] = useState<boolean>(false);
-  const [isEditFormOpen, setIsEditFormOpen] = useState<boolean>(false);
   const [isCommentSectionOpen, setIsCommentSectionOpen] = useState<boolean>(false);
 
   const handleClickMenuButton = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+
     setIsMenuModalOpen((prev: boolean) => !prev);
   };
 
   const handleClickCommentCount = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+
     setIsCommentSectionOpen((prev: boolean) => !prev);
   };
 
@@ -81,7 +81,8 @@ const Thread = ({ post }: Props): JSX.Element => {
             {isMenuModalOpen && (
               <MenuModal
                 setIsMenuModalOpen={setIsMenuModalOpen}
-                setIsEditFormOpen={setIsEditFormOpen}
+                handleClickEdit={() => {}}
+                handleClickDelete={() => {}}
               />
             )}
           </div>
@@ -108,6 +109,8 @@ const Thread = ({ post }: Props): JSX.Element => {
         <CommentSection
           isPostPage={false}
           isCommentSectionOpen={isCommentSectionOpen}
+          category="thread"
+          post_id={post_id}
           comments={comments}
         />
       </div>

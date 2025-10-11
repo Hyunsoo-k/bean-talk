@@ -1,24 +1,26 @@
 import type { JSX } from "react";
 import { useRef, useEffect } from "react";
 
+import type { Category } from "@/types/category";
 import type { Post } from "@/types/post";
 import useGetPostsQuery from "@/hooks/api/posts/use-get-posts-query";
-import Thread from "@/components/thread";
+import ThumbnailColumn from "@/components/thumbnails/thumbnail-column";
 
 import styles from "./index.module.scss";
 
 type Props = {
+  category: Category;
   isRenderedOnMainPage: boolean;
 };
 
-const ThreadsContainer = ({ isRenderedOnMainPage }: Props): JSX.Element => {
-  const threadContainerRef = useRef<HTMLLIElement | null>(null);
+const ThumbnailCarouselMultiple = ({ category, isRenderedOnMainPage }: Props): JSX.Element => {
+  const thumbnailContainerRef = useRef<HTMLUListElement | null>(null);
 
   const {
     data: queryData,
     hasNextPage,
     fetchNextPage
-  } = useGetPostsQuery("thread");
+  } = useGetPostsQuery(category);
 
   const allPosts: Post[] = queryData?.pages?.flatMap((page) => page.posts) ?? [];
   const postsToRender = isRenderedOnMainPage
@@ -26,7 +28,7 @@ const ThreadsContainer = ({ isRenderedOnMainPage }: Props): JSX.Element => {
     : allPosts;
 
   useEffect(() => {
-    const threadContainer = threadContainerRef.current;
+    const threadContainer = thumbnailContainerRef.current;
     if (!threadContainer || isRenderedOnMainPage) {
       return;
     };
@@ -50,23 +52,19 @@ const ThreadsContainer = ({ isRenderedOnMainPage }: Props): JSX.Element => {
     };
   }, [hasNextPage, fetchNextPage, isRenderedOnMainPage]);
 
+  if (!postsToRender) {
+    return <ul></ul>;
+  }
+
   return (
-    <ul className={styles["thread-container-component"]}>
-      {postsToRender.map((post, index) => (
-        <li
-          key={post._id}
-          className={styles["carousel-wrapper"]}
-          ref={
-            index === postsToRender.length - 1
-              ? threadContainerRef
-              : null
-          }
-        >
-          <Thread post={post} />
+    <ul ref={thumbnailContainerRef} className={styles["thumbnail-carousel-multiple-component"]}>
+      {postsToRender.map((post: Post) => (
+        <li key={post._id} className={styles["thumbnail-wrapper"]}>
+          <ThumbnailColumn post={post} />
         </li>
       ))}
     </ul>
   );
 };
 
-export default ThreadsContainer;
+export default ThumbnailCarouselMultiple;

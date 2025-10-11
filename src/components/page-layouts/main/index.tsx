@@ -5,9 +5,9 @@ import { BsFillThreadsFill } from "react-icons/bs";
 import { VscMegaphone } from "react-icons/vsc";
 import { HiOutlineBuildingOffice } from "react-icons/hi2";
 
-import ThumbnailCarouselSingle from "@/components/thumbnail-carousel/thumbnail-carousel-single";
-import ThumbnailCarouselMultiple from "@/components/thumbnail-carousel/thumbnail-carousel-multiple";
-import ThumbnailContainerFlex from "@/components/thumbnail-container/thumbnail-container-flex";
+import ThumbnailCarouselSingle from "@/components/thumbnail-carousels/thumbnail-carousel-single";
+import ThumbnailCarouselMultiple from "@/components/thumbnail-carousels/thumbnail-carousel-multiple";
+import ThumbnailContainerFlex from "@/components/thumbnail-containers/thumbnail-container-flex";
 import ThreadsContainer from "@/components/threads-container";
 
 import styles from "./index.module.scss";
@@ -34,7 +34,7 @@ const MainPageLayout = (): JSX.Element => {
           </Link>
         </div>
         <div className={styles["promotion-carousel-wrapper"]}>
-          <ThumbnailCarouselMultiple category="promotion" />
+          <ThumbnailCarouselMultiple category="promotion" isRenderedOnMainPage={true} />
         </div>
       </section>
       <section className={styles["section"]}>

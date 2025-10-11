@@ -59,7 +59,8 @@ const Reply = ({ reply }: Props): JSX.Element => {
                   {isMenuModalOpen && (
                     <MenuModal
                       setIsMenuModalOpen={setIsMenuModalOpen}
-                      setIsEditFormOpen={setIsEditFormOpen}
+                      handleClickEdit={() => {}}
+                      handleClickDelete={() => {}}
                     />
                   )}
                 </div>

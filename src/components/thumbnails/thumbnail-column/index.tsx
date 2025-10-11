@@ -6,7 +6,6 @@ import { SUB_CATEGORY_TO_KOREAN_MAP } from "@/constants/sub-category-map";
 import formatDateToKST from "@/utils/format-date-to-kst";
 
 import mockImage from "@/assets/default-images/mock-image.jpg";
-import defaultProfile from "@/assets/default-images/default-profile.jpg";
 import styles from "./index.module.scss";
 
 type Props = {
@@ -18,12 +17,11 @@ const ThumbnailColumn = ({ post }: Props): JSX.Element => {
     thumbnailUrl,
     subCategory,
     createdAt,
+    views,
     author,
     title,
     content,
   } = post;
-
-  console.log(post)
 
   return (
     <Link to="" className={styles["thumbnail-column-component"]}>
@@ -70,7 +68,7 @@ const ThumbnailColumn = ({ post }: Props): JSX.Element => {
             </small>
             <div className={styles["boundary-dot"]}/>
             <small className={styles["views"]}>
-              조회 300
+              조회 {views}
             </small>
           </div>
         </div>

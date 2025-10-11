@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 
-import ThumbnailBackground from "@/components/thumbnail/thumbnail-background";
-import ThumbnailColumn from "@/components/thumbnail/thumbnail-column";
+import ThumbnailBackground from "@/components/thumbnails/thumbnail-background";
+import ThumbnailColumn from "@/components/thumbnails/thumbnail-column";
 
 import styles from "./index.module.scss";
 

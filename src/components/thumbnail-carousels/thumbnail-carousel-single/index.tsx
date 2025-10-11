@@ -1,12 +1,17 @@
 import type { JSX } from "react";
-import { useState, useRef, useEffect } from "react";
+import {
+  useState,
+  useRef,
+  useEffect,
+  useCallback
+} from "react";
 import { GoLinkExternal } from "react-icons/go";
 
 import type { Category } from "@/types/category";
 import type { Post } from "@/types/post";
 import useGetPostsQuery from "@/hooks/api/posts/use-get-posts-query";
 import formatDateToKST from "@/utils/format-date-to-kst";
-import ThumbnailBackground from "@/components/thumbnail/thumbnail-background";
+import ThumbnailBackground from "@/components/thumbnails/thumbnail-background";
 
 import styles from "./index.module.scss";
 
@@ -19,11 +24,13 @@ const ThumbnailCarouselSingle = ({ category }: Props): JSX.Element => {
   const thumbnailContainerRef = useRef<HTMLUListElement | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const { data: queryData } = useGetPostsQuery(category, "all");
-  const posts = queryData?.posts?.slice(0, 5);
+ const { data: queryData } = useGetPostsQuery(category);
 
-  const startAutoSlide = () => {
-    if (!posts) {
+  const allPosts: Post[] = queryData?.pages?.flatMap((page) => page.posts) ?? [];
+  const postsToRender = allPosts.slice(0, 5);
+
+  const startAutoSlide = useCallback(() => {
+    if (!postsToRender) {
       return;
     }
 
@@ -33,9 +40,7 @@ const ThumbnailCarouselSingle = ({ category }: Props): JSX.Element => {
     }
 
     intervalRef.current = setInterval(() => {
-      const nextIndex = currentPostIndex >= posts.length - 1
-        ? 0
-        : currentPostIndex + 1;
+      const nextIndex = currentPostIndex >= postsToRender.length - 1 ? 0 : currentPostIndex + 1;
       setCurrentPostIndex(nextIndex);
 
       const targetThumbnail = thumbnailContainer.children[nextIndex] as HTMLElement;
@@ -48,7 +53,7 @@ const ThumbnailCarouselSingle = ({ category }: Props): JSX.Element => {
         behavior: "smooth",
       });
     }, 5000);
-  };
+  }, [postsToRender, currentPostIndex]);
 
   useEffect(() => {
     startAutoSlide();
@@ -58,7 +63,7 @@ const ThumbnailCarouselSingle = ({ category }: Props): JSX.Element => {
         clearInterval(intervalRef.current);
       }
     };
-  }, [queryData, currentPostIndex]);
+  }, [startAutoSlide]);
 
   const handleClickNavigationButton = (index: number): void => {
     setCurrentPostIndex(index);
@@ -85,7 +90,7 @@ const ThumbnailCarouselSingle = ({ category }: Props): JSX.Element => {
     startAutoSlide();
   };
 
-  if (!posts) {
+  if (!postsToRender) {
     return (
       <div className={styles["thumbnail-carousel-single-skeleton-component"]}>
         <div className={styles["thumbnail-container-skeleton"]} />
@@ -96,9 +101,9 @@ const ThumbnailCarouselSingle = ({ category }: Props): JSX.Element => {
 
   return (
     <div className={styles["thumbnail-carousel-single-component"]}>
-      <div className={styles["gradient-overlay"]}/>
+      <div className={styles["gradient-overlay"]} />
       <ul ref={thumbnailContainerRef} className={styles["thumbnail-container"]}>
-        {posts.map((post: Post) => (
+        {postsToRender.map((post: Post) => (
           <li
             key={post._id}
             data-post-id={post._id}
@@ -114,13 +119,13 @@ const ThumbnailCarouselSingle = ({ category }: Props): JSX.Element => {
             {category}
           </span>
           <span className={styles["created-at"]}>
-            {formatDateToKST(posts[currentPostIndex]?.createdAt)}
+            {formatDateToKST(postsToRender[currentPostIndex]?.createdAt)}
           </span>
           <GoLinkExternal size={25} className={styles["link-icon"]} />
         </div>
         <div className={styles["body"]}>
           <h2 className={styles["title"]}>
-            {posts[currentPostIndex]?.title}
+            {postsToRender[currentPostIndex]?.title}
           </h2>
           <button className={styles["read-more-button"]}>
             Read more
@@ -128,16 +133,16 @@ const ThumbnailCarouselSingle = ({ category }: Props): JSX.Element => {
         </div>
         <div className={styles["bottom"]}>
           <ul className={styles["carousel-navigation"]}>
-            {posts.map((post: Post, index: number) => (
-              <li
-                key={post._id}
-                className={styles["navigation-button-wrapper"]}
-              >
+            {postsToRender.map((post: Post, index: number) => (
+              <li key={post._id} className={styles["navigation-button-wrapper"]}>
                 <button
                   onClick={() => handleClickNavigationButton(index)}
                   className={`
                     ${styles["navigation-button"]}
-                    ${currentPostIndex === index ? styles["navigation-button--active"] : ""}
+                    ${currentPostIndex === index
+                      ? styles["navigation-button--active"]
+                      : ""
+                    }
                   `}
                 >
                   <div

@@ -22,7 +22,6 @@ const Sidebar = (): JSX.Element => {
   const { setIsOpen: setIsAuthModalOpen } = useAuthModalStore();
   const { data: userMeQuery } = useGetUserMeQuery();
   const { data: notificationsQuery } = useGetNotificationsQuery();
-  console.log(notificationsQuery);
   const logout = useLogout();
 
   useEffect(() => {

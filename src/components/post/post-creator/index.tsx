@@ -1,4 +1,4 @@
-import { useState, type JSX } from "react";
+import type { JSX } from "react";
 import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";

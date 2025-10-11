@@ -9,7 +9,12 @@ import useLoginMutation from "@/hooks/api/auth/use-login-mutation";
 import styles from "./index.module.scss";
 
 const LoginForm = (): JSX.Element => {
-  const { register, formState, handleSubmit } = useForm<LoginFormValue>({ mode: "onChange" });
+  const {
+    register,
+    formState,
+    handleSubmit: handleRHFSubmit
+  } = useForm<LoginFormValue>({ mode: "onChange" });
+  
   const { isPending, mutate: LoginMutate } = useLoginMutation();
 
   const submit = (formValue: LoginFormValue) => {
@@ -19,7 +24,7 @@ const LoginForm = (): JSX.Element => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submit)} className={styles["login-form-component"]}>
+    <form onSubmit={handleRHFSubmit(submit)} className={styles["login-form-component"]}>
       <div className={styles["input-wrapper"]}>
         <TfiEmail size={20} color="rgb(148,163,184" />
         <input
@@ -34,7 +39,9 @@ const LoginForm = (): JSX.Element => {
           })}
         />
         {formState.errors.email?.message && (
-          <small className={styles["error-message"]}>{formState.errors.email?.message as string}</small>
+          <small className={styles["error-message"]}>
+            {formState.errors.email?.message as string}
+          </small>
         )}
       </div>
       <div className={styles["input-wrapper"]}>
@@ -52,14 +59,20 @@ const LoginForm = (): JSX.Element => {
           })}
         />
         {formState.errors.password?.message && (
-          <small className={styles["error-message"]}>{formState.errors.password?.message as string}</small>
+          <small className={styles["error-message"]}>
+            {formState.errors.password?.message as string}
+          </small>
         )}
       </div>
       <div className={styles["checkbox-wrapper"]}>
         <input type="checkbox" />
-        <span>로그인 상태 유지</span>
+        <span>
+          로그인 상태 유지
+        </span>
       </div>
-      <button>LOGIN</button>
+      <button>
+        LOGIN
+      </button>
     </form>
   );
 };

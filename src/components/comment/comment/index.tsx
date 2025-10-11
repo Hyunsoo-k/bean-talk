@@ -2,6 +2,7 @@ import type { JSX, MouseEvent } from "react";
 import { useState } from "react";
 import { GoKebabHorizontal } from "react-icons/go";
 
+import type { Category } from "@/types/category";
 import type { Comment } from "@/types/comment";
 import type { Reply as ReplyType} from "@/types/reply";
 import formatDateToKST from "@/utils/format-date-to-kst";
@@ -14,15 +15,15 @@ import defaultProfile from "@/assets/default-images/default-profile.jpg";
 import styles from "./index.module.scss";
 
 type Props = {
+  category: Category;
+  post_id: string;
   comment: Comment;
 };
 
-const Comment = ({ comment }: Props): JSX.Element => {
+const Comment = ({ category, post_id, comment }: Props): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isEditFormOpen, setIsEditFormOpen] = useState<boolean>(false);
   const [isReplyFormOpen, setIsReplyFormOpen] = useState<boolean>(false);
-
-  const hasReply = true;
 
   const {
     author,
@@ -76,7 +77,8 @@ const Comment = ({ comment }: Props): JSX.Element => {
                   {isModalOpen && (
                     <MenuModal
                       setIsMenuModalOpen={setIsModalOpen}
-                      setIsEditFormOpen={setIsEditFormOpen}
+                      handleClickEdit={() => {}}
+                      handleClickDelete={() => {}}
                     />
                   )}
                 </div>
@@ -96,7 +98,14 @@ const Comment = ({ comment }: Props): JSX.Element => {
           </div>
         )
       }
-      {isReplyFormOpen && (<ReplyForm setIsReplyFormOpen={setIsReplyFormOpen} />)}
+      {isReplyFormOpen && (
+        <ReplyForm
+          setIsReplyFormOpen={setIsReplyFormOpen}
+          category={category}
+          post_id={post_id}
+          comment_id={comment._id}
+        />
+      )}
       {replies.length > 0 && (
         <ul className={styles["reply-container"]}>
           {replies.map((reply: ReplyType) => (
