@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 
-import NewIcon from "@/components/new-icon";
+import NewIcon from "@/components/ui/new-icon/NewIcon";
 
 import styles from "./index.module.scss";
 

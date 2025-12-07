@@ -1,0 +1,96 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-card-job-component {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 30px;
+  padding: 0 0 20px;
+  border-bottom: 1px solid $border-color--gray;
+  text-decoration: none;
+  color: inherit;
+
+  @include tablet {
+    gap: 30px;
+    padding: 0 0 30px;
+  }
+
+  .information {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 500;
+
+      @include tablet {
+        font-size: 13px;
+      }
+
+      .author {
+        color: $font-color--dark-gray;
+      }
+
+      .created-at {
+        color: $font-color--dark-gray;
+      }
+
+      .sub-category {
+        color: rgb(210, 110, 105);
+      }
+
+      .boundary-dot {
+        width: 3px;
+        height: 3px;
+        background-color: $font-color--dark-gray;
+        border-radius: 50%;
+      }
+    }
+
+    .middle {
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        font-size: 14px;
+        font-weight: 500;
+
+        @include tablet {
+          font-size: 16px;
+        }
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        font-size: 12px;
+        color: $font-color--dark-gray;
+
+        @include tablet {
+          gap: 10px;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  .thumbnail-image {
+    display: none;
+
+    @include tablet {
+      display: block;
+      flex: 0 0 190px;
+      aspect-ratio: 1 / 0.8;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      border-radius: 8px;
+    }
+  }
+}

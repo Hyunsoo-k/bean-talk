@@ -1,0 +1,13 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/responsive.scss' as *;
+
+.main-layout-component {
+  
+  .main {
+    min-height: calc(100vh - $header-height--mobile - $footer-height--mobile);
+
+    @include tablet {
+      min-height: calc(100vh - $header-height--tablet - $footer-height--tablet);
+    }
+  }
+}

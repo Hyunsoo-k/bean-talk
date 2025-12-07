@@ -1,0 +1,181 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-card-column-component {
+  text-decoration: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 200px;
+  color: $font-color--black;
+  cursor: pointer;
+
+  @include tablet {
+    height: 300px;
+  }
+
+  .thumbnail-image-wrapper {
+    width: 100%;
+    height: 45%;
+    overflow: hidden;
+
+    .thumbnail-image {
+      position: relative;
+      flex-shrink: 0;
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transform-origin: center;
+      transition: transform 0.3s ease-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .information {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 55%;
+    padding: 10px 0;
+
+    @include tablet {
+      padding: 20px 0 10px;
+    }
+
+    .top {
+      .title {
+        overflow: hidden;
+        margin: 0;
+        display: -webkit-box;
+        font-size: 13px;
+        font-weight: 500;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        line-height: 1.7;
+
+        @include tablet {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .middle {
+      margin-top: 5px;
+
+      @include tablet {
+        margin-top: 8px;
+      }
+
+      .content {
+        display: -webkit-box;
+        margin: 0px;
+        -webkit-box-orient: vertical;
+        font-size: 12px;
+        color: $font-color--dark-gray;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        overflow: hidden;
+
+        @include tablet {
+          display: -webkit-box;
+          line-height: 1.7;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
+        }
+      }
+    }
+
+    .bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: auto;
+
+      @include tablet {
+        gap: 10px;
+      }
+
+      .author-and-sub-category-area {
+        display: flex;
+        align-items: end;
+
+        .author {
+          font-size: 12px;
+          letter-spacing: 0.5px;
+
+          @include tablet {
+            padding-top: 5px;
+            font-size: 13px;
+          }
+        }
+
+        .boundary-dot {
+          position: relative;
+          top: -6px;
+          width: 3px;
+          height: 3px;
+          margin: 0 7px;
+          background-color: $font-color--dark-gray;
+          border-radius: 50%;
+
+          @include tablet {
+            top: -8px;
+          }
+        }
+
+        .sub-category {
+          font-size: 12px;
+          font-weight: 500;
+          color: rgb(210, 110, 105);
+          letter-spacing: 0.5px;
+
+          @include tablet {
+            font-size: 13px;
+          }
+        }
+      }
+
+      .created-at-and-views-area {
+        display: flex;
+        align-items: end;
+
+        .created-at {
+          font-size: 12px;
+          color: $font-color--dark-gray;
+          letter-spacing: 0.5px;
+
+          @include tablet {
+            font-weight: 500;
+          }
+        }
+
+        .boundary-dot {
+          position: relative;
+          top: -6px;
+          width: 3px;
+          height: 3px;
+          margin: 0 7px;
+          background-color: $font-color--dark-gray;
+          border-radius: 50%;
+        }
+
+        .views {
+          font-size: 12px;
+          color: $font-color--dark-gray;
+          letter-spacing: 0.5px;
+
+          @include tablet {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}

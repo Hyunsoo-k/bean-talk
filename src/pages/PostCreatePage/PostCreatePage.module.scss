@@ -1,0 +1,22 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-create-page-component {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	padding: $page-layout-column-blanck--mobile $safe-area--mobile;
+
+	> :nth-child(1) {
+		margin-bottom: 15px;
+
+		@include tablet {
+			margin-bottom: 20px;
+		}
+	}
+
+	@include tablet {
+		max-width: $max-width;
+		padding: $page-layout-column-blanck--tablet $safe-area--tablet;
+	}
+}

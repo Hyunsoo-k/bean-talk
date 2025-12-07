@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 
-import BreadCrumb from "@/components/bread-crumb";
-import PostCreator from "@/components/post/post-creator";
+import BreadCrumb from "@/components/ui/BreadCrumb/BreadCrumb";
+import PostCreator from "@/components/PostEditor/PostEditor";
 
 import styles from "./index.module.scss";
 

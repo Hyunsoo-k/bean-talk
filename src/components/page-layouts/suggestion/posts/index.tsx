@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 
-import BreadCrumb from "@/components/bread-crumb";
-import ThumbnailContainerFlex from "@/components/thumbnail-containers/thumbnail-container-flex";
+import BreadCrumb from "@/components/ui/BreadCrumb/BreadCrumb";
+import ThumbnailContainerFlex from "@/features/posts/components/thumbnail-containers/thumbnail-container-flex";
 
 import styles from "./index.module.scss";
 

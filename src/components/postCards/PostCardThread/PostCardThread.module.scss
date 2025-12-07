@@ -1,0 +1,139 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-card-thread-component {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	border-bottom: 1px solid $font-color--bright-gray;
+
+	.link-area {
+		text-decoration: none;
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		padding-bottom: 15px;
+		color: $font-color--black;
+
+		.header {
+			display: flex;
+			align-items: center;
+			font-size: 13px;
+
+			.profile-image {
+				flex-shrink: 0;
+				width: 30px;
+				height: 30px;
+				margin-right: 12px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;
+				border-radius: 50%;
+
+				@include tablet {
+					width: 35px;
+					height: 35px;
+				}
+			}
+
+			.author {
+				letter-spacing: 0.5px;
+				font-weight: 450;
+			}
+
+			.dot {
+				width: 3px;
+				height: 3px;
+				margin: 0 8px;
+				background-color: $font-color--dark-gray;
+				border-radius: 50%;
+			}
+
+			.created-at {
+				letter-spacing: 0.5px;
+				color: $font-color--dark-gray;
+			}
+
+			.three-dots-image {
+				flex-shrink: 0;
+				width: 30px;
+				height: 30px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+		}
+
+		.body {
+			display: flex;
+			flex-direction: column;
+			margin: 5px 0 0;
+			font-size: 13px;
+			cursor: pointer;
+
+			@include tablet {
+				width: calc(100% - 30px);
+			}
+
+			.content {
+				display: -webkit-box;
+				margin: 0;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 3;
+				line-clamp: 3;
+				line-height: 1.6;
+				overflow: hidden;
+
+				@include tablet {
+					font-size: 14px;
+					-webkit-line-clamp: 4;
+					line-clamp: 4;
+					line-height: 1.7;
+				}
+			}
+
+			.image-box {
+				list-style-type: none;
+				display: flex;
+				gap: 15px;
+				margin: 15px 0 0;
+				padding: 0;
+
+				@include tablet {
+					margin: 20px 0 0;
+				}
+
+				> li {
+					width: 50%;
+					max-width: 200px;
+					aspect-ratio: 1 / 1;
+					background-repeat: no-repeat;
+					background-position: center;
+					background-size: cover;
+					border-radius: 8px;
+				}
+			}
+		}
+
+		.footer {
+			display: flex;
+			gap: 30px;
+			padding-top: 15px;
+
+			> button {
+				display: flex;
+				align-items: center;
+				padding: 0;
+				background-color: inherit;
+				border: none;
+				font-size: 14px;
+				font-weight: 450;
+				cursor: pointer;
+
+				> svg {
+					margin-right: 3px;
+				}
+			}
+		}
+	}
+}

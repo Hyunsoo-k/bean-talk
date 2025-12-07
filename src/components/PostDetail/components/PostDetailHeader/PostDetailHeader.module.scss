@@ -1,0 +1,67 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-detail-header-component {
+	padding-bottom: 20px;
+	border-bottom: 2px solid $font-color--black;
+
+	.title {
+		margin: 0 0 15px;
+		line-height: 1.6;
+		font-size: 16px;
+		font-weight: 500;
+
+		@include tablet {
+			margin: 0 0 20px;
+			font-size: 24px;
+		}
+	}
+
+	.control-bar {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		font-size: 13px;
+
+		.profile-image {
+			width: 23px;
+			height: 23px;
+			margin-right: 5px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			border-radius: 50%;
+		}
+
+		.nickname {
+			font-weight: 450;
+		}
+
+		.boundary-line {
+			width: 2px;
+			height: 12px;
+			background-color: $border-color--gray;
+		}
+
+		.created-at {
+		}
+
+		.data-control-button-box {
+			display: flex;
+			gap: 10px;
+			margin-left: auto;
+
+			> a {
+				text-decoration: none;
+				color: $font-color--black;
+			}
+
+			> button {
+				padding: 0;
+				background-color: inherit;
+				border: none;
+				cursor: pointer;
+			}
+		}
+	}
+}

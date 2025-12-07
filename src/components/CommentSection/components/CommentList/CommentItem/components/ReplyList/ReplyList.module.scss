@@ -1,0 +1,15 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.reply-list-component {
+	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	margin-top: 10px;
+	padding: 0;
+
+	.reply-item-wrapper {
+		width: 100%;
+	}
+}

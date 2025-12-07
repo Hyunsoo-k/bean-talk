@@ -2,7 +2,7 @@ import { useState, type JSX, type MouseEvent } from "react";
 import { FaCamera } from "react-icons/fa";
 
 import defaultProfile from "@/assets/default-images/default-profile.jpg";
-import ThreadsContainer from "@/components/threads-container";
+import ThreadsContainer from "@/features/posts/components/thumbnail-containers/threads-container";
 
 import styles from "./index.module.scss";
 
