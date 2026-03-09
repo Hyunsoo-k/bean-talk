@@ -1,0 +1,21 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/responsive.scss' as *;
+
+.editor-toolbar-component {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-start;
+  order: 2;
+  gap: 5px;
+  width: 40px;
+
+  .toolbar-button {
+    padding: 0;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+  }
+}

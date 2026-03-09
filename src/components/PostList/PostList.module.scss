@@ -2,8 +2,13 @@
 @use "@/styles/responsive.scss" as *;
 
 .post-list-component {
+  min-height: 500px;
   list-style-type: none;
   padding: 0;
+
+  @include tablet {
+    min-height: 700px;
+  }
 
   &.flex {
     display: flex;
@@ -23,14 +28,19 @@
     grid-template-columns: repeat(2, 1fr);
     margin: 0;
     padding: 0;
-    row-gap: 20px;
+    row-gap: 30px;
     column-gap: 10px;
 
     @include tablet {
       grid-template-rows: auto;
       grid-template-columns: repeat(3, 1fr);
-      row-gap: 30px;
+      row-gap: 40px;
       column-gap: 20px;
+    }
+
+    @include desktop {
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }

@@ -4,26 +4,29 @@
 .home-page-layout-component {
   display: flex;
   flex-direction: column;
-  gap: 70px;
-  margin: 0 auto;
-  padding: $main-page-layout-column-blank--mobile $safe-area--mobile;
+  gap: 60px;
 
   @include tablet {
-    gap: 100px;
-    max-width: $max-width;
-    padding: $main-page-layout-column-blank--tablet $safe-area--tablet;
+    gap: 150px;
   }
 
   .boundary-line {
     max-width: $max-width;
     height: 1px;
-    margin: 60px auto;
     background-color: $border-color--gray;
   }
 
   .section {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 $safe-area--mobile;
+
+    @include tablet {
+      max-width: $max-width;
+      padding: 0 $safe-area--tablet;
+    }
 
     .header {
       display: flex;

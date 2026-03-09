@@ -4,7 +4,9 @@ import { getCookie } from "@/utils/cookie";
 
 const axiosInstance = axios.create({
   baseURL: "https://bean-talk-server.vercel.app",
-  headers: { "Content-Type": "application/json" }
+  headers: {
+    "Content-Type": "application/json"
+  }
 });
 
 axiosInstance.interceptors.request.use((config) => {

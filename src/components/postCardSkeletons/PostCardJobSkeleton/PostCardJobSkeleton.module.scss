@@ -1,0 +1,113 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-card-job-skeleton-component {
+  display: flex;
+  gap: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid $border-color--gray;
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .header {
+      margin-bottom: 15px;
+
+      .author {
+        position: relative;
+        width: 200px;
+        height: 15px;
+        background-color: $background-color--skeleton--dark-gray;
+        border-radius: 3px;
+      }
+    }
+
+    .body {
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        position: relative;
+        width: 80%;
+        height: 20px;
+        margin-bottom: 15px;
+        background-color: $background-color--skeleton--dark-gray;
+        border-radius: 3px;
+      }
+
+      .detail {
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+
+        .content {
+          position: relative;
+          height: 15px;
+          background-color: $background-color--skeleton--dark-gray;
+          border-radius: 3px;
+
+          &.--first-line {
+            width: 50%;
+            max-width: 300px;
+          }
+
+          &.--second-line {
+            width: 40%;
+            max-width: 350px;
+          }
+
+          &.--third-line {
+            width: 60%;
+            max-width: 500px;
+          }
+
+          &.--fourth-line {
+            width: 70%;
+            max-width: 650px;
+          }
+        }
+      }
+    }
+  }
+
+  .thumbnail {
+    position: relative;
+    flex-shrink: 0;
+    width: 190px;
+    height: 150px;
+    margin-left: auto;
+    background-color: $background-color--skeleton--dark-gray;
+    border-radius: 3px;
+  }
+}
+
+.author::after,
+.title::after,
+.content::after,
+.thumbnail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 1.0s infinite;
+} 
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

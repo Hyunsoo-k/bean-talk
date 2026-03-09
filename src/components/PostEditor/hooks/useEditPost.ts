@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query"
 
 import type { Category, PostRequestBody } from "@/types";
 import { axiosInstance } from "@/services";
-import { useAlertModal } from "@/zustand";
+import { useAlertModalStore } from "@/zustand";
 import { queryClient } from "@/constants/queryClient";
 import { QUERY_KEYS } from "@/constants";
 
@@ -24,11 +24,9 @@ const useEditPost = (category: Category, post_id: string) => {
   const navigate = useNavigate();
 
   const {
-    setIsOpen,
-    setMessage,
-    setHandleClick,
-    resetStore
-  } = useAlertModal();
+    open: openAlertModal,
+    close: closeAlertModel
+  } = useAlertModalStore();
 
   return useMutation({
     mutationFn: (requestBody: PostRequestBody<typeof category>) =>
@@ -39,9 +37,10 @@ const useEditPost = (category: Category, post_id: string) => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.post(category, post_id) });
     },
     onError: () => {
-      setIsOpen(true);
-      setMessage("게시글 작성을 실패하였습니다.");
-      setHandleClick(resetStore);
+      openAlertModal(
+        "게시글 작성을 실패하였습니다.",
+        closeAlertModel
+      );
     },
   });
 };

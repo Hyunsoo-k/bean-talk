@@ -1,51 +1,74 @@
-import type { JSX } from "react";
 import { Link } from "react-router-dom";
 
 import type { Category } from "@/types/category";
 import type { Post } from "@/types/post";
+import { JOB_DETAIL_FORM_MAP_TO_KOR, SUB_CATEGORY_TO_KR_MAP } from "@/constants";
+import { formatDate } from "@/utils";
 
 import defaultImage from "@/assets/default-images/default-image.jpg";
 import styles from "./PostCardJob.module.scss";
 
-type Props = {
+type Props<T extends Category> = {
   category: Category
-  post: Post;
+  post: Post<T>;
 };
 
-const PostCardJob = ({ category, post }: Props): JSX.Element => {
+const PostCardJob = <T extends Category>({ category, post }: Props<T>) => {
+  const {
+    _id,
+    subCategory,
+    author: { nickname },
+    createdAt,
+    title,
+    position,
+    employmentType,
+    payAmount,
+    startTime,
+    endTime,
+    address
+  } = post;
+
   return (
-    <Link to="" className={styles["post-card-job-component"]}>
+    <Link
+      to={`/categories/job/posts/${_id}`}
+      className={styles["post-card-job-component"]}
+    >
       <div className={styles["information"]}>
-        <div className={styles["top"]}>
+        <div className={styles["meta-data"]}>
           <span className={styles["author"]}>
-            운영자
+            {nickname}
           </span>
           <div className={styles["boundary-dot"]}/>
           <span className={styles["created-at"]}>
-            2025/10/05
+            {formatDate(createdAt)}
           </span>
           <div className={styles["boundary-dot"]}/>
           <span className={styles["sub-category"]}>
-            구인
+            {SUB_CATEGORY_TO_KR_MAP[subCategory]}
           </span>
         </div>
-        <div className={styles["middle"]}>
+        <div className={styles["body"]}>
           <h2 className={styles["title"]}>
-            주 5일제 직원 구합니다 주 5일제 직원 구합니다 주 5일제 직원 구합니다
+            {title}
           </h2>
-          <div className={styles["content"]}>
+          <div className={styles["detail"]}>
             <span>
-              모집 분야: 바리스타
+              모집 분야: {JOB_DETAIL_FORM_MAP_TO_KOR[position]}
             </span>
             <span>
-              시급: 12,000원
+              {employmentType === "partTime"
+                ? `시급: ${payAmount}원`
+                : `월급: ${payAmount}만원`
+              }
             </span>
             <span>
-              근무 시간: 15:00 ~ 22:30
+              근무 시간: {startTime} ~ {endTime}
             </span>
-            <span>
-              매장 위치: 경기도 안양시 만안구 문예로 20 안양아트센터 101호
-            </span>
+            {subCategory === "hiring" && (
+              <span>
+                매장 위치: {address}
+              </span>
+            )}
           </div>
         </div>
       </div>

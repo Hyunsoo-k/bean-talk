@@ -1,11 +1,10 @@
-import type { JSX } from "react";
 import type { FieldErrors } from "react-hook-form";
 import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 
 import type { Category } from "@/types";
 import { QUERY_KEYS } from "@/constants";
-import { useAlertModal } from "@/zustand";
+import { useAlertModalStore } from "@/zustand";
 import { queryClient } from "@/constants/queryClient";
 import { useCreateComment } from "./hooks/useCreateComment";
 
@@ -16,7 +15,7 @@ type Props = {
   post_id: string;
 };
 
-const CommentForm = ({ category, post_id }: Props): JSX.Element => {
+const CommentForm = ({ category, post_id }: Props) => {
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
   const [isInputFocused, setIsInputFocused] = useState(false);
 
@@ -34,7 +33,10 @@ const CommentForm = ({ category, post_id }: Props): JSX.Element => {
     setIsInputFocused
   );
   
-  const { open: openAlertModal, close: closeAlertModal } = useAlertModal();
+  const {
+    open: openAlertModal,
+    close: closeAlertModal
+  } = useAlertModalStore();
 
   const userMe = queryClient.getQueryData(QUERY_KEYS.userMe);
 

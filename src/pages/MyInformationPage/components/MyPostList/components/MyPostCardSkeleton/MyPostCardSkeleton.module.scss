@@ -1,0 +1,80 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.my-post-card-skeleton-component {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 8px 15px;
+  border-bottom: 1px solid $border-color--gray;
+
+  .header {
+    margin-bottom: 15px;
+
+    .title {
+      position: relative;
+      width: 50%;
+      height: 20px;
+      background-color: $background-color--skeleton--dark-gray;
+      border-radius: 3px;
+    }
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+
+    .content {
+      position: relative;
+      height: 18px;
+      background-color: $background-color--skeleton--dark-gray;
+      border-radius: 3px;
+
+      &.--first-line {
+        width: 100%;
+      }
+      &.--second-line {
+        width: 70%;
+      }
+    }
+  }
+
+  .footer {
+    .created-at {
+      position: relative;
+      width: 40%;
+      height: 15px;
+      background-color: $background-color--skeleton--dark-gray;
+      border-radius: 3px;
+    }
+  }
+}
+
+.title::after,
+.content::after,
+.created-at::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 1.0s infinite;
+} 
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

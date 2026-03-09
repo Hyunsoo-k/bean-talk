@@ -1,47 +1,25 @@
 import type { JSX } from "react";
-import type { SubmitErrorHandler } from "react-hook-form";
 import { useFormContext } from "react-hook-form";
 
-
-import type { Category, PostRequestBody } from "@/types";
-import { EditorContentWrapper, EditorToolbar } from "@/components/PostEditor/components/tiptap";
 import { usePostEditor } from "@/hooks";
-import { PostEditorHeader } from "./components/PostEditorHeader";
+import { EditorToolbar } from "./components/EditorToolbar";
+import { EditorContentWrapper } from "./components/EditorContentWrapper/EditorContentWrapper";
 
 import styles from "./PostEditor.module.scss";
-
-type Props <T extends Category>= {
-  category: Category;
-  isPending: boolean;
-  submitHandler: (watch: PostRequestBody<T>) => void;
-  submitError: (error: SubmitErrorHandler<PostRequestBody<T>>) => void;
+type Props = {
+  initialContent?: string;
 };
 
-const PostEditor = <T extends Category>({
-  category,
-  isPending,
-  submitHandler,
-  submitError
-}: Props<T>): JSX.Element => {
-  const { handleSubmit } = useFormContext();
+const PostEditor = ({ initialContent }: Props): JSX.Element => {
+  const { setValue } = useFormContext();
 
-  const editor = usePostEditor();
+  const editor = usePostEditor(setValue, initialContent);
 
   return (
-    <form
-      onSubmit={handleSubmit(submitHandler, submitError)}
-      className={styles["post-creator-component"]}
-    >
-      <PostEditorHeader category={category} isPending={isPending} />
-      <div className={styles["body"]}>
-        <div className={styles["toolbar-wrapper"]}>
-          <EditorToolbar editor={editor} />
-        </div>
-        <div className={styles["content-wrapper"]}>
-          <EditorContentWrapper editor={editor} />
-        </div>
-      </div>
-    </form>
+    <div className={styles["post-editor-component"]}>
+      <EditorToolbar editor={editor} />
+      <EditorContentWrapper editor={editor} />
+    </div>
   );
 };
 

@@ -1,73 +1,59 @@
-import type { JSX } from "react";
 import { Link } from "react-router-dom";
 import { RxDoubleArrowRight } from "react-icons/rx";
 import { BsFillThreadsFill } from "react-icons/bs";
 import { VscMegaphone } from "react-icons/vsc";
-import { HiOutlineBuildingOffice } from "react-icons/hi2";
+import { IoNewspaperOutline } from "react-icons/io5";
 
-import { PostCarousel } from "@/components/PostCarousel";
+import { MainPageNoticeSection } from "@/components/MainPageNoticeSection";
+import { useInfinitePosts } from "@/hooks";
+import { FullPageSpinner } from "@/components/spinners";
+import { CarouselSingle } from "@/components/carousels";
 import { PostList } from "@/components/PostList/PostList";
 
 import styles from "./HomePage.module.scss";
-import { useInfinitePosts } from "@/components/PostList/hooks";
 
-const HomePage = (): JSX.Element => {
-  const { data: jobPostsData } = useInfinitePosts({ category: "job" });
-  const { data: threadPostsData } = useInfinitePosts({ category: "thread" });
+const HomePage = () => {
+  const {
+    data: newsData,
+    isLoading: isNewsDataLoading
+  } = useInfinitePosts({ category: "news" });
+  const {
+    data: promotionsData,
+    isLoading: isPromotionsDataLoading
+  } = useInfinitePosts({ category: "promotion" });
+  const {
+    data: threadsData,
+    isLoading: isThreadsDataLoading
+  } = useInfinitePosts({ category: "thread" });
 
-  const jobPosts = jobPostsData?.pages?.flatMap((page) => page.posts) ?? [];
-  const theadPosts = threadPostsData?.pages?.flatMap((page) => page.posts) ?? [];
+  const newsPosts = newsData?.pages?.flatMap((page) => page.posts) ?? [];
+  const promotionPosts = promotionsData?.pages?.flatMap((page) => page.posts) ?? [];
+  const theadPosts = threadsData?.pages?.flatMap((page) => page.posts) ?? [];
+
+  if (isNewsDataLoading) {
+    return <FullPageSpinner />
+  }
 
   return (
     <div className={styles["home-page-layout-component"]}>
-      <div className={styles["news-carousel-wrapper"]}>
-        <PostCarousel
-          type="single"
-          category="news"
-          isRenderedOnMainPage={true}
-        />
-      </div>
+      <section className={styles["news-carousel-wrapper"]}>
+        <CarouselSingle posts={newsPosts} />
+      </section>
+      <section className={styles["section"]}>
+        <MainPageNoticeSection />
+      </section>
       <section className={styles["section"]}>
         <div className={styles["header"]}>
           <h2 className={styles["title"]}>
             <VscMegaphone
               size={20}
-              color="rgb(210, 110, 105)"
+              color="rgb(44, 44, 44)"
               className={styles["category-icon"]}
             />
             카페·납품 홍보
           </h2>
           <Link
-            to="/bbs/categories/promotion/posts"
-            className={styles["view-more-button"]}
-          >
-            View more
-            <RxDoubleArrowRight
-              size={20}
-              className={styles["view-more-arrow-image"]}
-            />
-          </Link>
-        </div>
-        <div className={styles["promotion-carousel-wrapper"]}>
-          <PostCarousel
-            type="multiple"
-            category="promotion"
-            isRenderedOnMainPage={true}
-          />
-        </div>
-      </section>
-      <section className={styles["section"]}>
-        <div className={styles["header"]}>
-          <h2 className={styles["title"]}>
-            <HiOutlineBuildingOffice
-              size={20}
-              color="rgb(44, 44, 44)"
-              className={styles["category-icon"]}
-            />
-            구인·구직
-          </h2>
-          <Link
-            to="/bbs/categories/job/posts"
+            to="/categories/promotion/posts"
             className={styles["view-more-button"]}
           >
             View more
@@ -78,11 +64,40 @@ const HomePage = (): JSX.Element => {
           </Link>
         </div>
         <PostList
-          type="flex"
-          cardType="job"
-          category="job"
-          posts={jobPosts}
-          isRenderedOnMainPage={true}
+          type="grid"
+          cardType="column"
+          category="promotion"
+          posts={promotionPosts}
+          isLoading={isPromotionsDataLoading}
+        />
+      </section>
+      <section className={styles["section"]}>
+        <div className={styles["header"]}>
+          <h2 className={styles["title"]}>
+            <IoNewspaperOutline
+              size={20}
+              color="rgb(44, 44, 44)"
+              className={styles["category-icon"]}
+            />
+            뉴스
+          </h2>
+          <Link
+            to="/categories/news/posts"
+            className={styles["view-more-button"]}
+          >
+            View more
+            <RxDoubleArrowRight
+              size={20}
+              className={styles["view-more-arrow-image"]}
+            />
+          </Link>
+        </div>
+        <PostList
+          type="grid"
+          cardType="background"
+          category="news"
+          posts={newsPosts}
+          isLoading={isNewsDataLoading}
         />
       </section>
       <section className={styles["section"]}>
@@ -93,10 +108,10 @@ const HomePage = (): JSX.Element => {
               color="rgb(44, 44, 44)"
               className={styles["category-icon"]}
             />
-            Threads
+            스레드
           </h2>
           <Link
-            to="/bbs/categories/thread/posts"
+            to="/categories/thread/posts"
             className={styles["view-more-button"]}
           >
             View more
@@ -112,7 +127,7 @@ const HomePage = (): JSX.Element => {
             cardType="thread"
             category="thread"
             posts={theadPosts}
-            isRenderedOnMainPage={true}
+            isLoading={isThreadsDataLoading}
           />
         </div>
       </section>

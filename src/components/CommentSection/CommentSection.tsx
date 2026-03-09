@@ -1,5 +1,4 @@
 import type { JSX } from "react";
-import { useState } from "react";
 
 import type { Category } from "@/types/category";
 import { useGetComments } from "./hooks";
@@ -14,8 +13,6 @@ type Props = {
 };
 
 const CommentSection = ({ category, post_id }: Props): JSX.Element => {
-  const [currentOpenForm_id, setCurrentOpenForm_id] = useState<string | null>(null);
-
   const { data: queryData, isLoading } = useGetComments(category, post_id);
 
   if (isLoading) {

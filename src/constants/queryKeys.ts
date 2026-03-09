@@ -1,4 +1,8 @@
-import type { Category, SubCategory } from "@/types/category";
+import type {
+  Category,
+  CategoryHavingSubCategory,
+  SubCategory
+} from "@/types/category";
 import type { QueryOption } from "@/types/queryOption";
 
 const QUERY_KEYS = {
@@ -6,7 +10,7 @@ const QUERY_KEYS = {
   notifications: ["notifications"],
   posts: (
     category: Category,
-    subCategory?: SubCategory,
+    subCategory?: SubCategory<CategoryHavingSubCategory>,
     queryOption?: QueryOption,
     keyword?: string
   ) => {
@@ -22,6 +26,8 @@ const QUERY_KEYS = {
 
     return queryKey;
   },
+  myPosts: ["myPosts"],
+  scraps: ["scraps"],
   post: (category: Category, post_id: string) => ["post", category, post_id],
   comments: (category: Category, post_id: string) => ["comments", category, post_id]
 };

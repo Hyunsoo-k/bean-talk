@@ -1,3 +1,3 @@
-import { CARD_COMPONENT_MAP } from "./cardComponentMap";
+import { CARD_COMPONENT_MAP } from "./cardComponentMaps";
 
 export { CARD_COMPONENT_MAP };

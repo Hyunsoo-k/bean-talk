@@ -1,1 +1,3 @@
-import 
+import { PostDetailHeader } from "./PostDetailHeader"
+
+export { PostDetailHeader };

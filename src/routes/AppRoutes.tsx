@@ -6,6 +6,9 @@ import { PostListPage } from "@/pages/PostListPage";
 import { PostDetailPage } from "@/pages/PostDetailPage/PostDetailPage";
 import { PostCreatePage } from "@/pages/PostCreatePage/PostCreatePage";
 import { PostEditPage } from "@/pages/PostEditPage/PostEditPage";
+import { Notificationpage } from "@/pages/NotificationPage";
+import { NotFoundPage } from "@/pages/NotFoundPage";
+import { MyInformationPage } from "@/pages/MyInformationPage";
 
 const AppRoutes = (): JSX.Element => {
   return (
@@ -18,7 +21,6 @@ const AppRoutes = (): JSX.Element => {
             type="flex"
             cardType="thread"
             category="thread"
-            isRenderedOnMainPage={false}
           />
         }
       />
@@ -38,12 +40,15 @@ const AppRoutes = (): JSX.Element => {
         path="/categories/promotion/posts"
         element={
           <PostListPage
-            type="flex"
-            cardType="row"
+            type="grid"
+            cardType="column"
             category="promotion"
-            isRenderedOnMainPage={false}
           />
         }
+      />
+      <Route
+        path="/categories/promotion/posts/:post_id"
+        element={<PostDetailPage category="promotion" />}
       />
       <Route
         path="/categories/promotion/posts/create"
@@ -60,9 +65,12 @@ const AppRoutes = (): JSX.Element => {
             type="flex"
             cardType="job"
             category="job"
-            isRenderedOnMainPage={false}
           />
         }
+      />
+      <Route
+        path="/categories/job/posts/:post_id"
+        element={<PostDetailPage category="job" />}
       />
       <Route
         path="/categories/job/posts/create"
@@ -76,10 +84,9 @@ const AppRoutes = (): JSX.Element => {
         path="/categories/news/posts"
         element={
           <PostListPage
-            type="flex"
-            cardType="row"
+            type="grid"
+            cardType="background"
             category="news"
-            isRenderedOnMainPage={false}
           />
         }
       />
@@ -102,10 +109,31 @@ const AppRoutes = (): JSX.Element => {
             type="flex"
             cardType="row"
             category="notice"
-            isRenderedOnMainPage={false}
           />
         }
       />
+      <Route
+        path="/categories/notice/posts/:post_id"
+        element={<PostDetailPage category="notice" />}
+      />
+      <Route
+        path="/categories/notice/posts/create"
+        element={<PostCreatePage category="notice" />}
+      />
+      <Route
+        path="/categories/notice/posts/:post_id/edit"
+        element={<PostEditPage category="notice" />}
+      />
+      <Route
+       path="/me/information"
+       element={<MyInformationPage />}
+      />
+      <Route
+       path="/me/notification"
+       element={<Notificationpage />}
+      />
+      {/* 404*/}
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };

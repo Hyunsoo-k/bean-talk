@@ -1,32 +1,21 @@
+import type { Dispatch, SetStateAction } from "react";
+import type { UseFormReset } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import type { Category } from "@/types/category";
-import { axiosInstance } from "@/services";
 import { QUERY_KEYS } from "@/constants";
-
-const mutationFn = async (
-  category: Category,
-  post_id: string,
-  requestBody: Record<"content", string>
-) => {
-  const response = await axiosInstance.post(
-    `/categories/${category}/posts/${post_id}/comments`,
-    requestBody
-  );
-
-  return response.data;
-};
+import { createComment } from "@/api";
 
 const useCreateComment = (
   category: Category,
   post_id: string,
-  reset,
-  setIsInputFocused
+  reset: UseFormReset<Record<"content", string>>,
+  setIsInputFocused: Dispatch<SetStateAction<boolean>>
 ) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (requestBody: Record<"content", string>) => mutationFn(
+    mutationFn: (requestBody: Record<"content", string>) => createComment(
       category,
       post_id,
       requestBody

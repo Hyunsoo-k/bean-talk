@@ -1,0 +1,100 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-card-thread-skeleton-component {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid $font-color--bright-gray;
+  
+  .header {
+    display: flex;
+    align-items: center;
+
+    .profile-image {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      margin-right: 12px;
+      background-color: $background-color--skeleton--dark-gray;
+      border-radius: 50%;
+
+      @include tablet {
+        width: 35px;
+        height: 35px;
+      }
+    }
+    
+    .author {
+      position: relative;
+      width: 130px;
+      height: 15px;
+      background-color: $background-color--skeleton--dark-gray;
+      border-radius: 3px;
+    }
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .content {
+      position: relative;
+      height: 15px;
+      background-color: $background-color--skeleton--dark-gray;
+      border-radius: 3px;
+
+      &.--first-line {
+        width: 100%;
+      }
+
+      &.--second-line {
+        width: 60%;
+      }
+    }
+  }
+
+  .footer {
+    padding: 10px 0;
+
+    .meta-stats {
+      position: relative;
+      width: 80%;
+      max-width: 300px;
+      height: 15px;
+      background-color: $background-color--skeleton--dark-gray;
+      border-radius: 3px;
+    }
+  }
+}
+
+.profile-image::after,
+.author::after,
+.content::after,
+.meta-stats::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 1.0s infinite;
+} 
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

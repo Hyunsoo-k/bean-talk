@@ -1,0 +1,95 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-editor-header-component {
+	margin-bottom: 50px;
+	padding-bottom: 20px;
+	border-bottom: 2px solid $font-color--black;
+
+	.title {
+		display: block;
+		width: 100%;
+		margin: 0 0 15px;
+		border: none;
+		outline: none;
+		line-height: 1.6;
+		font-size: 16px;
+		font-weight: 500;
+
+		@include tablet {
+			margin: 0 0 20px;
+			font-size: 24px;
+		}
+
+		&::placeholder {
+			letter-spacing: 0.5px;
+			font-weight: 400;
+		}
+	}
+
+	.control-bar {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		font-size: 13px;
+
+		.profile-image {
+			width: 23px;
+			height: 23px;
+			margin-right: 5px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			border-radius: 50%;
+		}
+
+		.nickname {
+			margin-right: 10px;
+			font-weight: 450;
+		}
+
+		.classification {
+			color: $font-color--dark-gray;
+		}
+
+		.boundary-line {
+			width: 2px;
+			height: 12px;
+			background-color: $font-color--bright-gray;
+		}
+
+		.sub-category {
+			padding: 0;
+			background-color: inherit;
+			border: none;
+			letter-spacing: 1px;
+			cursor: pointer;
+
+			&.selected {
+				color: $font-color--rose;
+			}
+		}
+
+		.data-control-box-box {
+			display: flex;
+			margin-left: auto;
+
+			.cancel-button,
+			.submit-button {
+				position: relative;
+				top: 1px;
+				background-color: inherit;
+				border: none;
+				letter-spacing: 1px;
+				text-decoration: none;
+				font-size: 11px;
+				color: inherit;
+				cursor: pointer;
+
+				@include tablet {
+					font-size: 13px;
+				}
+			}
+		}
+	}
+}

@@ -1,12 +1,13 @@
-import { useAuthModal } from "./useAuthModal";
-import { useSearchModal } from "./useSearchModal";
-import { useAlertModal, useConfirmModal } from "./useModal";
-import { useSidebar } from "./useSidebar";
+import { useAuthModalStore } from "./useAuthModalStore";
+import { useAlertModalStore } from "./useAlertModalStore";
+import { useConfirmModalStore } from "./useConfirmModalStore";
+import { useSidebarStore } from "./useSidebarStore";
+import { useEditUserModalStore } from "./useEditUserModalStore";
 
 export {
-  useAuthModal,
-  useSearchModal,
-  useAlertModal,
-  useConfirmModal,
-  useSidebar
+  useAuthModalStore,
+  useAlertModalStore,
+  useConfirmModalStore,
+  useSidebarStore,
+  useEditUserModalStore
 };

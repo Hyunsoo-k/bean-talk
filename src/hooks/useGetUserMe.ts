@@ -1,14 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useCookies } from "react-cookie";
 
-import { axiosInstance } from "@/services/axiosInstance";
 import { QUERY_KEYS } from "@/constants";
-
-const queryFn = async () => {
-  const response = await axiosInstance.get("/users/me");
-
-  return response.data;
-};
+import { getUserMe } from "@/api";
 
 const useGetUserMe = () => {
   const [cookies] = useCookies(["accessToken"]);
@@ -16,7 +10,7 @@ const useGetUserMe = () => {
 
   return useQuery({
     queryKey: QUERY_KEYS.userMe,
-    queryFn,
+    queryFn: getUserMe,
     enabled: hasToken
   });
 };

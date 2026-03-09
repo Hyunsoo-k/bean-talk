@@ -1,0 +1,108 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.my-information-page-component {
+	padding: $page-layout-column-blanck--mobile $safe-area--mobile;
+
+	@include tablet {
+		padding: $page-layout-column-blanck--tablet $safe-area--tablet;
+	}
+
+	.profile {
+		margin-bottom: 30px;
+
+		@include tablet {
+			margin-bottom: 50px;
+		}
+
+		.profile-image-wrapper {
+			position: relative;
+			width: 100px;
+			height: 100px;
+			margin: 0 auto 30px;
+
+			.profile-image {
+				width: 100%;
+				height: 100%;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: contain;
+				border-radius: 50%;
+			}
+
+			.setting-icon-wrapper {	
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 23px;
+				height: 23px;
+				background-color: $font-color--black;
+				border-radius: 50%;
+
+				.setting-icon {
+					cursor: pointer;
+				}
+			}
+		}
+
+		.text {
+			display: flex;
+			flex-direction: column;
+
+			.nickname {
+				margin: 0 auto 10px;
+				font-size: 17px;
+				font-weight: 450;
+				text-align: cetner;
+				letter-spacing: 1px;
+			}
+
+			.email {
+				margin: 0 auto;
+				font-size: 15px;
+				color: $font-color--bright-gray;
+				text-align: cetner;
+				letter-spacing: 0.5px;
+			}
+		}
+	}
+
+	.my-activity {
+		display: flex;
+		width: 250px;
+		margin: 0 auto 30px;
+		padding: 0;
+		list-style-type: none;
+
+		@include tablet {
+			margin-bottom: 50px;
+		}
+
+		.my-activity-button-wrapper {
+			font-size: 15px;
+
+			@include tablet {
+				font-size: 16px;
+			}
+
+			.my-activity-button {
+				width: 125px;
+				height: 40px;
+				background-color: inherit;
+				border: none;
+				border-bottom: 1px solid transparent;
+				font-family: inherit;
+				font-size: inherit;
+				text-align: center;
+				cursor: pointer;
+
+				&.active {
+					border-bottom: 1px solid $font-color--black;
+				}
+			}
+		}
+	}
+}

@@ -1,8 +1,9 @@
 import type { JSX } from "react";
 import { useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 import type { Category } from "@/types";
-import { useInfinitePosts, useInfiniteScrollObserver } from "@/components/PostList/hooks";
+import { useInfinitePosts, useInfiniteScrollObserver } from "@/hooks";
 import { PostListHeader } from "@/components/PostLIstHeader";
 import { PostList } from "@/components/PostList/PostList";
 
@@ -12,26 +13,28 @@ type Props = {
   type: "flex" | "grid";
   cardType: "background" | "column" | "job" | "row" | "thread";
   category: Category;
-  isRenderedOnMainPage: boolean;
 };
 
 const PostListPage = ({ 
   type,
   cardType,
   category,
-  isRenderedOnMainPage
  }: Props): JSX.Element => {
+  const { pathname } = useLocation();
+  const isMainPage = pathname === "/";
+
   const lastPostRef = useRef<HTMLLIElement | null>(null);
 
   const {
     data: queryData,
+    isLoading,
     hasNextPage,
     fetchNextPage,
   } = useInfinitePosts({ category });
 
   useInfiniteScrollObserver(
     lastPostRef,
-    isRenderedOnMainPage,
+    isMainPage,
     hasNextPage,
     fetchNextPage
   );
@@ -46,7 +49,7 @@ const PostListPage = ({
         cardType={cardType}
         category={category}
         posts={posts}
-        isRenderedOnMainPage={isRenderedOnMainPage}
+        isLoading={isLoading}
         lastPostRef={lastPostRef}
       />
     </div>

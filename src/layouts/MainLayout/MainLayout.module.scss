@@ -4,10 +4,16 @@
 .main-layout-component {
   
   .main {
+    max-width: $max-width;
     min-height: calc(100vh - $header-height--mobile - $footer-height--mobile);
+    margin: 0 auto;
 
     @include tablet {
       min-height: calc(100vh - $header-height--tablet - $footer-height--tablet);
+    }
+
+    &.--main-page {
+      max-width: none;
     }
   }
 }

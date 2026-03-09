@@ -1,33 +1,33 @@
-import type { JSX } from "react";
 import { Link } from "react-router-dom";
+import { SlArrowRight } from "react-icons/sl";
 
-import type { Category } from "@/types/category";
+import type { Category, SubCategory } from "@/types/category";
 import type { Post } from "@/types/post";
 import { SUB_CATEGORY_TO_KR_MAP } from "@/constants/subCategoryMap";
-import { formatDate } from "@/utils";
 
 import mockImage from "@/assets/default-images/mock-image.jpg";
 import styles from "./PostCardColumn.module.scss";
 
-type Props = {
+type Props<T extends Category> = {
   category: Category;
-  post: Post;
+  post: Post<T>;
 };
 
-const PostCardColumn = ({ category, post }: Props): JSX.Element => {
+const PostCardColumn = <T extends Category>({ category, post }: Props<T>) => {
   const {
     _id: post_id,
     thumbnailUrl,
     subCategory,
-    createdAt,
-    views,
     author,
     title,
     content,
   } = post;
 
   return (
-    <Link to="" className={styles["post-card-column-component"]}>
+    <Link
+      to={`/categories/${category}/posts/${post_id}`}
+      className={styles["post-card-column-component"]}
+    >
       <div className={styles["thumbnail-image-wrapper"]}>
         <div
           className={styles["thumbnail-image"]}
@@ -40,40 +40,34 @@ const PostCardColumn = ({ category, post }: Props): JSX.Element => {
           }}
         />
       </div>
-      <div className={styles["information"]}>
-        <div className={styles["top"]}>
+      <div className={styles["main"]}>
+        <div className={styles["header"]}>
+          <div className={styles["author-and-sub-category"]}>
+            <span className={styles["author"]}>
+              {author.nickname}
+            </span>
+            <div className={styles["boundary-dot"]} />
+            <span className={styles["sub-category"]}>
+              {SUB_CATEGORY_TO_KR_MAP[subCategory as SubCategory<T>]}
+            </span>
+          </div>
           <h2 className={styles["title"]}>
             {title}
           </h2>
         </div>
-        <div className={styles["middle"]}>
+        <div className={styles["body"]}>
           <p className={styles["content"]}>
-            {content}
+            {content}{content}{content}{content}{content}{content}
           </p>
         </div>
-        <div className={styles["bottom"]}>
-          <div className={styles["author-and-sub-category-area"]}>
-            <span className={styles["author"]}>
-              {author.nickname}
-            </span>
-            {subCategory && (
-              <>
-                <div className={styles["boundary-dot"]}/>
-                <small className={styles["sub-category"]}>
-                  {SUB_CATEGORY_TO_KR_MAP[subCategory]}
-                </small>
-              </>
-            )}
-          </div>
-          <div className={styles["created-at-and-views-area"]}>
-            <small className={styles["created-at"]}>
-              {formatDate(createdAt)}
-            </small>
-            <div className={styles["boundary-dot"]}/>
-            <small className={styles["views"]}>
-              조회 {views}
-            </small>
-          </div>
+        <div className={styles["footer"]}>
+          <button
+            type="button"
+            className={styles["read-more-button"]}
+            >
+              Read more
+              <SlArrowRight size={11} />
+          </button>
         </div>
       </div>
     </Link>

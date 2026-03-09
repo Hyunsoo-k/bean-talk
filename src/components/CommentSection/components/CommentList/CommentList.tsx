@@ -2,7 +2,7 @@ import type { JSX } from "react";
 
 import type { Category } from "@/types/category";
 import type { Comment as CommentType } from "../../types";
-import { CommentItem } from "./CommentItem";
+import { CommentItem } from "./components/CommentItem";
 
 import styles from "./CommentList.module.scss";
 

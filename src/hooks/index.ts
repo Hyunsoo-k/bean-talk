@@ -1,19 +1,19 @@
-import { useGetNotifications } from "./useGetNotifications";
-import { useGetPostDetail } from "./useGetPostDetail";
 import { useGetUserMe } from "./useGetUserMe";
-import { useInfiniteScrollObserver } from "./useInfiniteScrollObserver";
 import { useLogout } from "./useLogout";
 import { useRemoveCookie } from "./useRemoveCookie";
+import { useGetNotifications } from "../pages/NotificationPage/hooks/useGetNotifications";
+import { useInfinitePosts } from "./useInfinitiePosts";
+import { useInfiniteScrollObserver } from "./useInfiniteScrollObserver";
+import { useGetPostDetail } from "./useGetPostDetail";
 import { usePostEditor } from "./usePostEditor";
-// import { useSubCategory } from "./useSubCategory";
 
 export {
-  useGetNotifications,
-  useGetPostDetail,
   useGetUserMe,
-  useInfiniteScrollObserver,
   useLogout,
   useRemoveCookie,
+  useGetNotifications,
+  useInfinitePosts,
+  useInfiniteScrollObserver,
+  useGetPostDetail,
   usePostEditor,
-  // useSubCategory
 };

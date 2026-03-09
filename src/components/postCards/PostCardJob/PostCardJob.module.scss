@@ -13,6 +13,7 @@
 
   @include tablet {
     gap: 30px;
+    height: 185px;
     padding: 0 0 30px;
   }
 
@@ -20,8 +21,9 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    height: 100%;
 
-    .top {
+    .meta-data {
       display: flex;
       align-items: center;
       gap: 7px;
@@ -32,12 +34,8 @@
         font-size: 13px;
       }
 
-      .author {
-        color: $font-color--dark-gray;
-      }
-
       .created-at {
-        color: $font-color--dark-gray;
+        letter-spacing: 0.5px;
       }
 
       .sub-category {
@@ -52,7 +50,7 @@
       }
     }
 
-    .middle {
+    .body {
       display: flex;
       flex-direction: column;
 
@@ -65,7 +63,7 @@
         }
       }
 
-      .content {
+      .detail {
         display: flex;
         flex-direction: column;
         gap: 5px;
@@ -73,7 +71,7 @@
         color: $font-color--dark-gray;
 
         @include tablet {
-          gap: 10px;
+          gap: 13px;
           font-size: 13px;
         }
       }

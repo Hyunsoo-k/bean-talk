@@ -2,6 +2,7 @@
 @use '@/styles/responsive.scss' as *;
 
 .post-list-page-component {
+  width: 100%;
   margin: 0 auto;
   padding:
     $page-layout-column-blanck--mobile

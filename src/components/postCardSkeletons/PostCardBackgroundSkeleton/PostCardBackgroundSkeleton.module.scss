@@ -1,0 +1,107 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-card-background-skeleton-component {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 240px;
+  padding: 50px 8px 30px;
+  background-color: $background-color--skeleton--bright-gray;
+  border-radius: 3px;
+
+  @include tablet {
+    height: 340px;
+    padding: 80px 20px 70px;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 60px;
+    margin-bottom: 30px;
+
+    .title {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 25px;
+      background-color: $background-color--skeleton--dark-gray;
+      border-radius: 3px;
+
+      &.--second-line {
+        width: 40%;
+      }
+    }
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 35px;
+    margin-bottom: 30px;
+
+    .content {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 15px;
+      background-color: $background-color--skeleton--dark-gray;
+      border-radius: 3px;
+
+      &.--second-line {
+        width: 70%;
+      }
+    }
+  }
+
+  .footer {
+    .read-more-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80px;
+      height: 25px;
+      background-color: $font-color--orange;
+      border-radius: 3px;
+      font-size: 11px;
+      color: $background-color--white;
+
+      @include tablet {
+        width: 100px;
+        height: 35px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.title::after,
+.content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 1.0s infinite;
+} 
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

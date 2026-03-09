@@ -1,19 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 
 import type { Category } from "@/types";
-import { axiosInstance } from "@/services";
 import { QUERY_KEYS } from "@/constants";
-
-const queryFn = async (category: Category, post_id: string) => {
-  const response = await axiosInstance.get(`/categories/${category}/posts/${post_id}/comments`);
-
-  return response.data;
-};
+import { getComments } from "@/api";
 
 const useGetComments = (category: Category, post_id: string) => {
   return useQuery({
     queryKey: QUERY_KEYS.comments(category, post_id),
-    queryFn: () => queryFn(category, post_id)
+    queryFn: () => getComments(category, post_id)
   });
 };
 

@@ -1,0 +1,22 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+@use "@/styles/fonts.scss" as *;
+
+.market-trend-section-component {
+  overflow: scroll;
+  display: flex;
+  gap: 30px;
+  height: 300px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include tablet {
+    justify-content: space-between;
+    gap: 0;
+    height: 450px;
+  }
+}

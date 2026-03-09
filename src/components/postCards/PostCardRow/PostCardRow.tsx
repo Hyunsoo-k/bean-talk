@@ -1,34 +1,26 @@
-import type { JSX } from "react";
 import { Link } from "react-router-dom";
-import { IoEyeOutline } from "react-icons/io5";
-import { LuMessageCircleMore } from "react-icons/lu";
-import { FaRegHeart } from "react-icons/fa6";
 
-import type { Category, SubCategory } from "@/types/category";
+import type { Category } from "@/types/category";
 import type { Post } from "@/types/post";
 import { formatDate } from "@/utils";
-import { SUB_CATEGORY_TO_KR_MAP } from "@/constants";
 
 import mockImage from "@/assets/default-images/mock-image.jpg";
 import styles from "./PostCardRow.module.scss";
+import { PostMetaStats } from "@/components/PostMetaStats";
 
-type Props = {
+type Props<T extends Category> = {
   category: Category;
-  post: Post<"news">;
+  post: Post<T>;
 };
 
-const PostCardRow = ({ category, post }: Props): JSX.Element => {
+const PostCardRow = <T extends Category>({ category, post }: Props<T>) => {
   const {
     _id: post_id,
-    subCategory,
     thumbnailUrl,
     createdAt,
     author,
     title,
-    content,
-    views,
-    commentCount,
-    likes
+    content
   } = post;
 
   return (
@@ -40,10 +32,6 @@ const PostCardRow = ({ category, post }: Props): JSX.Element => {
         <div className={styles.dot} />
         <span className={styles["created-at"]}>
           {formatDate(createdAt)}
-        </span>
-        <div className={styles.dot} />
-        <span className={styles["sub-category"]}>
-          {SUB_CATEGORY_TO_KR_MAP[subCategory as SubCategory]}
         </span>
       </div>
       <div className={styles["body"]}>
@@ -57,22 +45,14 @@ const PostCardRow = ({ category, post }: Props): JSX.Element => {
         </div>
         <div
           className={styles["thumbnail"]}
-          style={{ backgroundImage: `url(${mockImage})` }}
+          style={{ backgroundImage: `url(${thumbnailUrl || mockImage})` }}
         />
       </div>
       <div className={styles["footer"]}>
-        <div className={styles["icon-wrapper"]}>
-          <IoEyeOutline size={19} color="rgb(44, 44, 44)" />
-          {views}
-        </div>
-        <div className={styles["icon-wrapper"]}>
-          <LuMessageCircleMore size={19} color="rgb(44, 44, 44)" />
-          {commentCount}
-        </div>
-        <div className={styles["icon-wrapper"]}>
-          <FaRegHeart size={19} color="rgb(44, 44, 44)" />
-          {likes.length}
-        </div>
+        <PostMetaStats
+          category={category}
+          post={post}
+        />
       </div>
     </Link>
   );
