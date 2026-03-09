@@ -1,0 +1,14 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.full-page-spinner-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100vh - $header-height--mobile - $footer-height--mobile);
+
+  @include tablet {
+    min-height: calc(100vh - $header-height--tablet - $footer-height--tablet);
+  }
+}

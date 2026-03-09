@@ -38,3 +38,19 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'BookkMyungjo';
+  src: url('@/assets/fonts//BookkMyungjo_Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BookkMyungjo';
+  src: url('@/assets/fonts//BookkMyungjo_Bold.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,91 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.not-found-page-component {
+  padding: $page-layout-column-blanck--mobile $safe-area--mobile;
+
+  @include tablet {
+    padding: $page-layout-column-blanck--tablet $safe-area--tablet
+  }
+
+  .not-found-image {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto 0;
+
+    @include tablet {
+      margin-top: 50px;
+    }
+  }
+
+  .text {
+    margin: 30px 0;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 1px;
+
+    @include tablet {
+      margin: 50px 0;
+      font-size: 18px;
+    }
+  }
+
+  .link-list {
+    display: flex;
+    justify-content: space-between;
+    width: 160px;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+
+    @include tablet {
+      width: 230px;
+    }
+
+    .link-wrapper {
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      width: 70px;
+      height: 35px;
+      border: 1px solid $font-color--black;
+      border-radius: 4px;
+      text-align: center;
+      cursor: pointer;
+
+      @include tablet {
+        width: 100px;
+        height: 40px;
+      }
+
+      .hyper-text {
+        display: flex;
+        align-items: center;
+        font-family: inherit;
+        font-size: 14px;
+        color: $font-color--black;
+        letter-spacing: 1px;
+        text-decoration: none;
+
+        @include tablet {
+          font-size: 16px;
+        }
+      }
+
+      .button-link {
+        background-color: inherit;
+        border: none;
+        font-family: inherit;
+        font-size: 14px;
+        color: $font-color--black;
+        letter-spacing: 1px;
+        cursor: pointer;
+
+        @include tablet {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

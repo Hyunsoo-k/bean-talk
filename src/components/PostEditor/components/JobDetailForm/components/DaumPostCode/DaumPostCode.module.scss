@@ -1,0 +1,18 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.daum-post-code-component {
+	width: 70px;
+	height: 35px;
+	background-color: inherit;
+	border: 1px solid $border-color--gray;
+	border-radius: 8px;
+	font-family: inherit;
+	font-size: 12px;
+	color: inherit;
+	cursor: pointer;
+
+	@include tablet {
+		width: 120px;
+	}
+}

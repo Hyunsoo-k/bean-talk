@@ -1,0 +1,110 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-card-row-skeleton-component {
+  padding-bottom: 15px;
+  border-bottom: 1px solid $border-color--gray;
+
+  .header {
+    padding-bottom: 10px;
+
+    .author {
+      position: relative;
+      width: 200px;
+      height: 15px;
+      background-color: $background-color--skeleton--dark-gray;
+      border-radius: 3px;
+    }
+  }
+
+  .body {
+    display: flex;
+    gap: 15px;
+
+    @include tablet {
+			gap: 20px;
+		}
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+
+      .title {
+        position: relative;
+        width: 100%;
+        height: 20px;
+        margin-bottom: 10px;
+        background-color: $background-color--skeleton--dark-gray;
+        border-radius: 3px;
+      }
+
+      .content {
+        position: relative;
+        height: 15px;
+        background-color: $background-color--skeleton--dark-gray;
+        border-radius: 3px;
+
+        &.--first-line {
+          width: 70%;
+          margin-bottom: 10px;
+        }
+
+        &.--second-line {
+          width: 90%;
+        }
+      }
+    }
+
+    .thumbnail {
+      position: relative;
+      flex-shrink: 0;
+      width: 120px;
+      height: 110px;
+      margin-left: auto;
+      background-color: $background-color--skeleton--dark-gray;
+      border-radius: 3px;
+    }
+  }
+
+  .footer {
+    .meta-stats {
+      position: relative;
+      width: 80%;
+      max-width: 300px;
+      height: 15px;
+      background-color: $background-color--skeleton--dark-gray;
+      border-radius: 3px;
+    }
+  }
+}
+
+.author::after,
+.title::after,
+.content::after,
+.thumbnail::after,
+.meta-stats::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 1.0s infinite;
+} 
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

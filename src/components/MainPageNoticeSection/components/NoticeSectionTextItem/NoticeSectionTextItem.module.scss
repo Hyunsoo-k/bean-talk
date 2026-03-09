@@ -1,0 +1,78 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+@use "@/styles/fonts.scss" as *;
+
+.notice-section-text-item-component {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+	width: 80%;
+  height: 100%;
+
+  @include tablet {
+    flex-shrink: 1;
+    width: 37%;
+  }
+
+	.header {
+    margin-bottom: 30px;
+
+		.about-bean-talk {
+      margin: 0 0 15px;
+			color: $font-color--orange;
+		}
+
+		.title {
+			overflow: hidden;
+			display: -webkit-box;
+      margin: 0;
+			line-height: 1.6;
+			font-size: 16px;
+			font-weight: 500;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+
+      @include tablet {
+        font-size: 17px;
+			  font-weight: 600;
+        -webkit-line-clamp: 3;
+      }
+		}
+	}
+
+  .body {
+    margin-bottom: 20px;
+
+    .content {
+      overflow: hidden;
+      display: -webkit-box;
+      margin: 0;
+      line-height: 1.6;
+      font-size: 14px;
+      font-weight: 350;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+
+      @include tablet {
+        font-size: 15px;
+        -webkit-line-clamp: 9;
+      }
+    }
+  }
+
+  .footer {
+    margin-top: auto;
+
+    .read-more-button {
+      width: 110px;
+      height: 35px;
+      background-color: $font-color--orange;
+      border: none;
+      border-radius: 3px;
+      letter-spacing: 0.5px;
+      font-size: 15px;
+      color: $background-color--white;
+      cursor: pointer;
+    }
+  }
+}

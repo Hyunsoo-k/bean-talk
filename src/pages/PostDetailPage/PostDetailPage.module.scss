@@ -1,0 +1,32 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-detail-page-component {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	padding: $page-layout-column-blanck--mobile $safe-area--mobile;
+
+	> :nth-child(1) {
+		margin-bottom: 25px;
+
+		@include tablet {
+			margin-bottom: 30px;
+		}
+	}
+
+	.section-title {
+		margin: 0 0 50px;
+		font-size: 20px;
+		font-weight: 450;
+
+    &:nth-of-type(2) {
+      margin: 0 0 20px
+    }
+	}
+
+	@include tablet {
+		max-width: $max-width;
+		padding: $page-layout-column-blanck--tablet $safe-area--tablet;
+	}
+}

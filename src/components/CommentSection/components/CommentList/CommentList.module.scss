@@ -1,0 +1,15 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.comment-list-component {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style-type: none;
+  margin-bottom: 20px;
+  padding: 20px 0 0 0;
+
+  .comment-wrapper {
+    width: 100%;
+  }
+}

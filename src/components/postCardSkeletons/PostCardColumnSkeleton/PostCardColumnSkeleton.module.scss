@@ -1,0 +1,131 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-card-column-skeleton-component {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include tablet {
+    height: 360px;
+  }
+
+	.image {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 1 / 0.7;
+    margin-bottom: 20px;
+    background-color: $background-color--skeleton--dark-gray;
+    border-radius: 3px;
+
+    @include tablet {
+      height: 180px;
+    }
+	}
+
+	.main {
+    display: flex;
+    flex-direction: column;
+
+		.header {
+      display: flex;
+      flex-direction: column;
+
+			.author {
+        position: relative;
+        overflow: hidden;
+        width: 40%;
+        height: 18px;
+        margin-bottom: 10px;
+        background-color: $background-color--skeleton--dark-gray;
+        border-radius: 3px;
+			}
+			.title {
+        position: relative;
+        overflow: hidden;
+        width: 90%;
+        height: 30px;
+        margin-bottom: 10px;
+        background-color: $background-color--skeleton--dark-gray;
+        border-radius: 3px;
+			}
+		}
+
+		.body {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 20px;
+
+			.content {
+        position: relative;
+        overflow: hidden;
+        height: 18px;
+        background-color: $background-color--skeleton--dark-gray;
+        border-radius: 3px;
+			}
+
+			.content.--first-line {
+        width: 100%;
+			}
+			.content.--second-line {
+        width: 40%;
+			}
+		}
+
+		.footer {
+      margin-top: auto;
+
+			.read-more-button {
+				display: flex;
+				align-items: center;
+				width: 110px;
+				padding: 0;
+				background-color: inherit;
+				border: none;
+				text-align: start;
+				font-size: 14px;
+				color: $font-color--orange;
+
+				@include tablet {
+					font-size: 16px;
+				}
+
+				> svg {
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+}
+
+.image::after,
+.author::after,
+.title::after,
+.content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 1.0s infinite;
+} 
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

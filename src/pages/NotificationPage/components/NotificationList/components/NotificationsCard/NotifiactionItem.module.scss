@@ -1,0 +1,116 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.notification-item-component {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+	padding: 25px 0 20px;
+	border-bottom: 1px solid $font-color--black;
+	text-decoration: none;
+	color: inherit;
+
+	.red-dot {
+		position: absolute;
+		top: 15px;
+		background-color: $font-color--rose;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+	}
+
+	.header {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		.author {
+			flex-grow: 1;
+			margin: 0;
+			font-size: 13px;
+
+			@include tablet {
+				font-size: 15px;
+			}
+
+			> span {
+				font-size: 12px;
+
+				@include tablet {
+					font-size: 14px;
+				}
+			}
+		}
+
+		.created-at {
+			flex-shrink: 0;
+			margin: 0;
+			font-size: 11px;
+			color: $font-color--bright-gray;
+			letter-spacing: 0.5px;
+
+			@include tablet {
+				font-size: 13px;
+			}
+		}
+	}
+
+	.body {
+		overflow: hidden;
+		display: -webkit-box;
+		flex-grow: 1;
+		font-size: 13px;
+		line-height: 1.6;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+
+		@include tablet {
+			font-size: 16px;
+		}
+
+		.content {
+			margin: 0;
+
+			> span {
+				color: $font-color--orange;
+			}
+		}
+
+		.nickname {
+			font-size: inherit;
+			color: $font-color--sky;
+		}
+
+		.target-title {
+			font-size: inherit;
+			color: $font-color--orange;
+		}
+
+		.type {
+			font-size: inherit;
+			color: $font-color--rose;
+		}
+	}
+
+	.delete-button {
+		flex-shrink: 0;
+		padding: 0;
+		background-color: inherit;
+		border: none;
+		outline: none;
+		cursor: pointer;
+
+		.cross-icon {
+			position: relative;
+			top: 1px;
+
+			@include tablet {
+				top: 2px;
+			}
+		}
+	}
+}
