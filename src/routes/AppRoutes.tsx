@@ -1,14 +1,14 @@
 import type { JSX } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { HomePage } from "@/pages/HomePage";
-import { PostListPage } from "@/pages/PostListPage";
+import { HomePage } from "@/pages/HomePage/HomePage";
+import { PostListPage } from "@/pages/PostListPage/PostListPage";
 import { PostDetailPage } from "@/pages/PostDetailPage/PostDetailPage";
 import { PostCreatePage } from "@/pages/PostCreatePage/PostCreatePage";
 import { PostEditPage } from "@/pages/PostEditPage/PostEditPage";
-import { Notificationpage } from "@/pages/NotificationPage";
-import { NotFoundPage } from "@/pages/NotFoundPage";
-import { MyInformationPage } from "@/pages/MyInformationPage";
+import { Notificationpage } from "@/pages/NotificationPage/NotificationPage";
+import { NotFoundPage } from "@/pages/NotFoundPage/NotFoundPage";
+import { MyInformationPage } from "@/pages/MyInformationPage/MyInformationPage";
 
 const AppRoutes = (): JSX.Element => {
   return (

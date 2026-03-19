@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import { createPortal } from "react-dom";
 
-import { useConfirmModalStore } from "@/zustand";
+import { useConfirmModalStore } from "@/zustand/useConfirmModalStore";
 
 import styles from "./ConfrimModal.module.scss";
 

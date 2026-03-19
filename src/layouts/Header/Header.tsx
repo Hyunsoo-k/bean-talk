@@ -4,7 +4,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { CiSearch } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
 
-import { useSidebarStore } from "@/zustand";
+import { useSidebarStore } from "@/zustand/useSidebarStore";
 
 import styles from "./Header.module.scss";
 

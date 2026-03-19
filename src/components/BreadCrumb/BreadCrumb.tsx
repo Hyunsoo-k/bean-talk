@@ -1,10 +1,10 @@
-import type { JSX } from "react";
 import { Link } from "react-router-dom";
 import { GoHome } from "react-icons/go";
 import { SlArrowRight } from "react-icons/sl";
 
-import type { Category, CategoryHavingSubCategory, SubCategory } from "@/types";
-import { SUB_CATEGORY_TO_KR_MAP } from "@/constants";
+import type { Category, CategoryHavingSubCategory } from "@/types/category";
+import type { SubCategory } from "@/types/category";
+import { SUB_CATEGORY_TO_KR_MAP } from "@/constants/subCategoryMap";
 
 import styles from "./BreadCrumb.module.scss";
 
@@ -20,7 +20,7 @@ const BreadCrumb = <T extends Category>({
   category,
   subCategory,
   usage
-}: Props<T>): JSX.Element => {
+}: Props<T>) => {
   const subCategoryKr = SUB_CATEGORY_TO_KR_MAP[subCategory]
 
   return (

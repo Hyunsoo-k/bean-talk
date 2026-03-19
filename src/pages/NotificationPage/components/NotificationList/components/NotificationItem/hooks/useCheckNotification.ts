@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 
 import { queryClient } from "@/constants/queryClient";
-import { QUERY_KEYS } from "@/constants";
-import { checkNotification } from "@/api";
+import { QUERY_KEYS } from "@/constants/queryKeys";
+import { checkNotification } from "@/api/checkNotification";
 
 const useCheckNotification = (notification_id: string) => {
   return useMutation({

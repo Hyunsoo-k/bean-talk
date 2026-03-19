@@ -1,6 +1,6 @@
-import { axiosInstance } from "@/services";
+import { axiosInstance } from "@/services/axiosInstance";
 
-import type { Category } from "@/types";
+import type { Category } from "@/types/category";
 
 const getPostDetail = async (category: Category, post_id: string) => {
   const response = await axiosInstance.get(`/categories/${category}/posts/${post_id}`);

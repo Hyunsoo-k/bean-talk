@@ -2,9 +2,9 @@ import type { Dispatch, SetStateAction } from "react";
 import type { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 
-import type { SignupFormValue } from "@/types";
-import { useAlertModalStore } from "@/zustand";
-import { signup } from "@/api";
+import type { SignupFormValue } from "@/types/singupFormValue";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
+import { signup } from "@/api/signup";
 
 const useSignup = (setFormType: Dispatch<SetStateAction<"login" | "signup">>) => {
   const {

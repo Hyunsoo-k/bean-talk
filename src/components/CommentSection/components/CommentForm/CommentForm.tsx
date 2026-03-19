@@ -2,9 +2,9 @@ import type { FieldErrors } from "react-hook-form";
 import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 
-import type { Category } from "@/types";
-import { QUERY_KEYS } from "@/constants";
-import { useAlertModalStore } from "@/zustand";
+import type { Category } from "@/types/category";
+import { QUERY_KEYS } from "@/constants/queryKeys";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
 import { queryClient } from "@/constants/queryClient";
 import { useCreateComment } from "./hooks/useCreateComment";
 

@@ -1,6 +1,6 @@
 import { useCookies } from "react-cookie";
 
-import { QUERY_KEYS } from "@/constants";
+import { QUERY_KEYS } from "@/constants/queryKeys";
 import { queryClient } from "@/constants/queryClient";
 
 const useLogout = () => {

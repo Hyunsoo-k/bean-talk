@@ -1,10 +1,9 @@
-import type { JSX } from "react";
 import { useState } from "react";
 
-import type { Category } from "@/types";
+import type { Category } from "@/types/category";
 import type { Reply } from "@/types/reply";
-import { useConfirmModalStore } from "@/zustand";
-import { useDeleteReply } from "./hooks";
+import { useConfirmModalStore } from "@/zustand/useConfirmModalStore";
+import { useDeleteReply } from "./hooks/useDeleteReply";
 import { ReplyEditForm } from "./components/ReplyEditForm/ReplyEditForm";
 import { CommentHeader } from "../../../CommentHeader/CommetHeader";
 
@@ -22,7 +21,7 @@ const ReplyItem = ({
   post_id,
   comment_id,
   reply
-}: Props): JSX.Element => {
+}: Props) => {
   const [mode, setMode] = useState<"replyItem" | "replyEditForm">("replyItem");
 
   const {

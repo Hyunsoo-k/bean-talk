@@ -2,15 +2,16 @@ import type { MouseEvent } from "react";
 import { useState } from "react";
 
 import type { Category } from "@/types/category";
-import type { Comment } from "./types";
-import { getUserMe } from "@/utils";
-import { useAlertModalStore, useConfirmModalStore } from "@/zustand";
-import { useActiveComment } from "@/components/CommentSection/zustand";
-import { useDeleteComment } from "./hooks";
+import type { Comment } from "./types/comment";
+import { getUserMe } from "@/utils/getUserMe";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
+import { useConfirmModalStore } from "@/zustand/useConfirmModalStore";
+import { useActiveComment } from "@/components/CommentSection/zustand/useActiveComment";
+import { useDeleteComment } from "./hooks/useDeleteComment";
 import { CommentEditForm } from "./components/CommentEditForm";
 import { CommentHeader } from "./components/CommentHeader/CommetHeader";
-import { ReplyForm } from "./components/ReplyForm";
-import { ReplyList } from "./components/ReplyList";
+import { ReplyForm } from "./components/ReplyForm/ReplyForm";
+import { ReplyList } from "./components/ReplyList/ReplyList";
 
 import styles from "./CommentItem.module.scss";
 

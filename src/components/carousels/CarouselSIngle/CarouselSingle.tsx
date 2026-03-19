@@ -5,7 +5,7 @@ import { PiArrowCircleRightThin } from "react-icons/pi";
 
 import type { Post } from "@/types/post";
 import { useAutoCarousel } from "./utils/useAutoSlide";
-import { CarouselSingleItem } from "./components/CarouselSingleItem";
+import { CarouselSingleItem } from "./components/CarouselSingleItem/CarouselSingleItem";
 
 import defualtImage from "@/assets/default-images/default-image.jpg";
 import styles from "./CarouselSingle.module.scss";

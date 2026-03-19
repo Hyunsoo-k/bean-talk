@@ -1,16 +1,16 @@
 import type { JSX } from "react";
 import { useLocation } from "react-router-dom";
 
-import type { Category } from "@/types";
-import { extractPost_id } from "@/utils";
-import { useGetPostDetail } from "@/hooks";
+import type { Category } from "@/types/category";
+import { extractPost_id } from "@/utils/extractPost_id";
+import { useGetPostDetail } from "@/hooks/useGetPostDetail";
 import { BreadCrumb } from "@/components/BreadCrumb/BreadCrumb";
-import { FullPageSpinner } from "@/components/spinners";
-import { PostDetailHeader } from "@/components/PostDetail/components/PostDetailHeader";
+import { FullPageSpinner } from "@/components/spinners/FullPageSpinner/FullPageSpinner";
+import { PostDetailHeader } from "@/components/PostDetail/components/PostDetailHeader/PostDetailHeader";
 import { JobDetail } from "@/components/PostDetail/components/JobDetail/JobDetail";
-import { PostDetail } from "@/components/PostDetail";
-import { PostMetaStats } from "@/components/PostMetaStats";
-import { CommentSection } from "@/components/CommentSection";
+import { PostDetail } from "@/components/PostDetail/PostDetail";
+import { PostMetaStats } from "@/components/PostMetaStats/PostMetaStats";
+import { CommentSection } from "@/components/CommentSection/CommentSection";
 
 import styles from "./PostDetailPage.module.scss";
 

@@ -1,5 +1,5 @@
-import { useGetNotifications } from "@/hooks";
-import { NotificationList } from "@/pages/NotificationPage/components/NotificationList";
+import { useGetNotifications } from "./hooks/useGetNotifications";
+import { NotificationList } from "@/pages/NotificationPage/components/NotificationList/NotificationList";
 
 import styles from "./Notification.page.module.scss";
 

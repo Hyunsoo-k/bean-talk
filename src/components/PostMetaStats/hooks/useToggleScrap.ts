@@ -1,8 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 
-import type { Category } from "@/types";
-import { toggleScrap } from "@/api";
-import { QUERY_KEYS, queryClient } from "@/constants";
+import type { Category } from "@/types/category";
+import { toggleScrap } from "@/api/toggleScrap";
+import { QUERY_KEYS } from "@/constants/queryKeys";
+import { queryClient } from "@/constants/queryClient";
 
 const useToggleScrap = (category: Category, post_id: string) => {
   return useMutation({

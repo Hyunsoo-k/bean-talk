@@ -4,8 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { PiPencilSimpleLineLight } from "react-icons/pi";
 
-import type { Category, SubCategoryKr } from "@/types";
-import { useGetUserMe } from "@/hooks";
+import type { Category } from "@/types/category";
+import type { SubCategoryKr } from "@/types/category";
+import { useGetUserMe } from "@/hooks/useGetUserMe";
 
 import styles from "./PostListHeader.module.scss";
 

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 import type { Category } from "@/types/category";
 import type { Post } from "@/types/post";
-import { formatDate } from "@/utils";
-import { CommentSection } from "@/components/CommentSection";
-import { PostMetaStats } from "@/components/PostMetaStats";
+import { formatDate } from "@/utils/formatDate";
+import { CommentSection } from "@/components/CommentSection/CommentSection";
+import { PostMetaStats } from "@/components/PostMetaStats/PostMetaStats";
 
 import defaultProfile from "@/assets/default-images/default-profile.jpg";
 import styles from "./PostCardThread.module.scss";

@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query"
 
-import type { Category, PostRequestBody } from "@/types";
-import { useAlertModalStore } from "@/zustand";
+import type { Category } from "@/types/category";
+import type { PostRequestBody } from "@/types/postRequestBody";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
 import { queryClient } from "@/constants/queryClient";
-import { QUERY_KEYS } from "@/constants";
+import { QUERY_KEYS } from "@/constants/queryKeys";
 import { createPostDetail } from "@/api/createPostDetail";
 
 const useCreatePost = (category: Category) => {

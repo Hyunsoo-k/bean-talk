@@ -1,13 +1,17 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import { QUERY_KEYS, queryClient } from "@/constants";
-import { useAuthModalStore, useSidebarStore } from "@/zustand";
-import { useGetNotifications, useGetUserMe, useLogout } from "@/hooks";
-import { BackDrop } from "@/components/BackDrop";
-import { SidebarHeader } from "./components/SidebarHeader";
-import { SidebarMenuList } from "./components/SidebarMenuList";
-import { SidebarFooter } from "./components/SidebarFooter";
+import { QUERY_KEYS } from "@/constants/queryKeys";
+import { queryClient } from "@/constants/queryClient";
+import { useAuthModalStore } from "@/zustand/useAuthModalStore";
+import { useSidebarStore } from "@/zustand/useSidebarStore";
+import { useGetNotifications } from "@/pages/NotificationPage/hooks/useGetNotifications";
+import { useGetUserMe } from "@/hooks/useGetUserMe";
+import { useLogout } from "@/hooks/useLogout";
+import { BackDrop } from "@/components/BackDrop/BackDrop";
+import { SidebarHeader } from "./components/SidebarHeader/SidebarHeader";
+import { SidebarMenuList } from "./components/SidebarMenuList/SidebarMenuList";
+import { SidebarFooter } from "./components/SidebarFooter/SidebarFooter";
 
 import styles from "./Sidebar.module.scss";
 

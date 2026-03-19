@@ -1,7 +1,7 @@
 import { PiBellSlashLight } from "react-icons/pi";
 
-import type { Notification } from "@/types";
-import { NotificationItem } from "./components/NotificationsCard";
+import type { Notification } from "@/types/notification";
+import { NotificationItem } from "./components/NotificationItem/NotificationItem";
 
 import styles from "./NotificationList.module.scss";
 

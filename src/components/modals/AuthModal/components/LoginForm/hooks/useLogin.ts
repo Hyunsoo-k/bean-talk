@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { useCookies } from "react-cookie";
 
-import type { LoginFormValue } from "@/types";
-import { QUERY_KEYS } from "@/constants";
+import type { LoginFormValue } from "@/types/loginFormValue";
+import { QUERY_KEYS } from "@/constants/queryKeys";
 import { queryClient } from "@/constants/queryClient";
-import { useAlertModalStore, useAuthModalStore } from "@/zustand";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
+import { useAuthModalStore } from "@/zustand/useAuthModalStore";
 import { login } from "@/api/login";
 
 const useLogin = () => {

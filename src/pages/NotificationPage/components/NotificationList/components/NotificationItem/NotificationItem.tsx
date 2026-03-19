@@ -2,9 +2,10 @@ import type { MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
 
-import type { Notification } from "@/types";
-import { formatDate } from "@/utils";
-import { useCheckNotification, useDeleteNotification } from "./hooks";
+import type { Notification } from "@/types/notification";
+import { formatDate } from "@/utils/formatDate";
+import { useCheckNotification } from "./hooks/useCheckNotification";
+import { useDeleteNotification } from "./hooks/useDeleteNotification";
 
 import styles from "./NotifiactionItem.module.scss";
 

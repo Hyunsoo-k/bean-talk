@@ -1,10 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-import type { Category } from "@/types";
-import { QUERY_KEYS } from "@/constants";
+import type { Category } from "@/types/category";
+import { QUERY_KEYS } from "@/constants/queryKeys";
 import { queryClient } from "@/constants/queryClient";
-import { axiosInstance } from "@/services"
+import { axiosInstance } from "@/services/axiosInstance"
 
 const mutationFn = async (category: Category, post_id: string) => {
   const response = await axiosInstance.delete(`/categories/${category}/posts/${post_id}`);

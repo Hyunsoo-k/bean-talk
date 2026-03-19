@@ -1,14 +1,13 @@
-import type { JSX } from "react";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-import { useAuthModalStore } from "@/zustand";
-import { LoginForm } from "./components/LoginForm";
-import { SignupForm } from "./components/SignupForm";
+import { useAuthModalStore } from "@/zustand/useAuthModalStore";
+import { LoginForm } from "./components/LoginForm/LoginForm";
+import { SignupForm } from "./components/SignupForm/SignupForm";
 
 import styles from "./AuthModal.module.scss";
 
-const AuthModal = (): JSX.Element => {
+const AuthModal = ()=> {
   const [formType, setFormType] = useState<"login" | "signup">("login");
   
   const { close: closeAuthModal } = useAuthModalStore();

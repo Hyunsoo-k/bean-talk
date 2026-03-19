@@ -1,17 +1,12 @@
-import type { JSX } from "react";
 import type { Path } from "react-hook-form";
 import { useFormContext } from "react-hook-form";
 
-import type {
-  Category,
-  CategoryHavingSubCategory,
-  PostRequestBody,
-  SubCategoryKr
-} from "@/types";
-import {
-  CATEGORY_TO_SUB_CATEGORY_KR_ARRAY_MAP,
-  SUB_CATEGORY_TO_ENG_MAP,
-} from "@/constants";
+import type { Category } from "@/types/category";
+import type { CategoryHavingSubCategory } from "@/types/category";
+import type { PostRequestBody } from "@/types/postRequestBody";
+import type { SubCategoryKr } from "@/types/category";
+import { CATEGORY_TO_SUB_CATEGORY_KR_ARRAY_MAP } from "@/constants/subCategoryMap";
+import { SUB_CATEGORY_TO_ENG_MAP } from "@/constants/subCategoryMap";
 import { isCategoryHavingSubCategory } from "@/utils/isCategoryHavingSubCategory";
 
 import defaultProfile from "@/assets/default-images/default-profile.jpg";
@@ -22,7 +17,7 @@ type Props = {
   isPending: boolean;
 };
 
-const PostMetaForm = ({ category, isPending }: Props): JSX.Element => {
+const PostMetaForm = ({ category, isPending }: Props) => {
   const { register, watch, setValue } = useFormContext();
 
   const subCategoriesKr = isCategoryHavingSubCategory(category)

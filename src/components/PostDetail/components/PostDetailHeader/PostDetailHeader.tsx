@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 
-import type { Category, Post } from "@/types";
-import { formatDate, getUserMe } from "@/utils";
-import { useConfirmModalStore } from "@/zustand";
-import { useDeletePost } from "./hooks";
+import type { Category } from "@/types/category";
+import type { Post } from "@/types/post";
+import { formatDate } from "@/utils/formatDate";
+import { getUserMe } from "@/api/getUserMe";
+import { useConfirmModalStore } from "@/zustand/useConfirmModalStore";
+import { useDeletePost } from "./hooks/useDeletePost";
 
 import defaultProfile from "@/assets/default-images/default-profile.jpg";
 import styles from "./PostDetailHeader.module.scss";

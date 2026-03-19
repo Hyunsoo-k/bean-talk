@@ -1,8 +1,7 @@
-import type { JSX } from "react";
 import { Link } from "react-router-dom";
 
-import type { MyPost } from "@/types";
-import { formatDate } from "@/utils";
+import type { MyPost } from "@/types/myPost";
+import { formatDate } from "@/utils/formatDate";
 
 import styles from "./MyPostCard.module.scss";
 
@@ -10,7 +9,7 @@ type Props = {
   myPost: MyPost;
 };
 
-const MyPostCard = ({ myPost }: Props): JSX.Element => {
+const MyPostCard = ({ myPost }: Props) => {
   const {
     _id,
     category,

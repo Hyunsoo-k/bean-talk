@@ -1,4 +1,4 @@
-import { axiosInstance } from "@/services";
+import { axiosInstance } from "@/services/axiosInstance";
 
 const getInfinitieScraps = async (pageParam: string | null) => {
   const response = await axiosInstance.get(

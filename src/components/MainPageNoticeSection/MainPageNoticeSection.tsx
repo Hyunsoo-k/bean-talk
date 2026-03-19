@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 
-import { MarketTrendTextItem } from "./components/NoticeSectionTextItem";
-import { MarketTrendThumbnailItem } from "./components/NoticeSectionThumbnailItem";
+import { MarketTrendTextItem } from "./components/NoticeSectionTextItem/NoticeSectionTextItem";
+import { MarketTrendThumbnailItem } from "./components/NoticeSectionThumbnailItem/NoticeSectionThumbnailItem";
 
 import styles from "./MainPageNoticeSection.module.scss";
 

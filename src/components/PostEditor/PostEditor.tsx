@@ -1,16 +1,16 @@
-import type { JSX } from "react";
 import { useFormContext } from "react-hook-form";
 
-import { usePostEditor } from "@/hooks";
-import { EditorToolbar } from "./components/EditorToolbar";
+import { usePostEditor } from "@/hooks/usePostEditor";
+import { EditorToolbar } from "./components/EditorToolbar/EditorToolbar";
 import { EditorContentWrapper } from "./components/EditorContentWrapper/EditorContentWrapper";
 
 import styles from "./PostEditor.module.scss";
+
 type Props = {
   initialContent?: string;
 };
 
-const PostEditor = ({ initialContent }: Props): JSX.Element => {
+const PostEditor = ({ initialContent }: Props) => {
   const { setValue } = useFormContext();
 
   const editor = usePostEditor(setValue, initialContent);

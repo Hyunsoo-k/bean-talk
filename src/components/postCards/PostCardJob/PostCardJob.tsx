@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 
 import type { Category } from "@/types/category";
 import type { Post } from "@/types/post";
-import { JOB_DETAIL_FORM_MAP_TO_KOR, SUB_CATEGORY_TO_KR_MAP } from "@/constants";
-import { formatDate } from "@/utils";
+import { JOB_DETAIL_FORM_MAP_TO_KOR } from "@/constants/jobDetailFormMap";
+import { SUB_CATEGORY_TO_KR_MAP } from "@/constants/subCategoryMap";
+import { formatDate } from "@/utils/formatDate";
 
 import defaultImage from "@/assets/default-images/default-image.jpg";
 import styles from "./PostCardJob.module.scss";

@@ -1,17 +1,16 @@
-import type { JSX } from "react";
 import { useEffect } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { Editor, EditorContent } from "@tiptap/react";
 
-import { handleClickEditorArea } from "./utils";
+import { handleClickEditorArea } from "./utils/handleClickEditorArea";
 
 import styles from "./EditorContentWrapper.module.scss";
 
 type Props = {
   editor: Editor;
-}
+};
 
-const EditorContentWrapper = ({ editor }: Props): JSX.Element => {
+const EditorContentWrapper = ({ editor }: Props) => {
   const { control, setValue } = useFormContext();
 
   useEffect(() => {

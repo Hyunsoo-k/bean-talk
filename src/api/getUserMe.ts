@@ -1,4 +1,4 @@
-import { axiosInstance } from "@/services";
+import { axiosInstance } from "@/services/axiosInstance";
 
 const getUserMe = async () => {
   const response = await axiosInstance.get("/me");

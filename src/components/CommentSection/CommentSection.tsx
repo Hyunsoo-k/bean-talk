@@ -1,9 +1,9 @@
 import type { JSX } from "react";
 
 import type { Category } from "@/types/category";
-import { useGetComments } from "./hooks";
-import { CommentList } from "./components/CommentList";
-import { CommentForm } from "./components/CommentForm";
+import { useGetComments } from "./hooks/useGetComments";
+import { CommentList } from "./components/CommentList/CommentList";
+import { CommentForm } from "./components/CommentForm/CommentForm";
 
 import styles from "./CommentSection.module.scss";
 

@@ -1,9 +1,10 @@
 import type { JSX } from "react";
 
+import type { Post } from "@/types/post";
+import { JOB_DETAIL_FORM_MAP_TO_KOR } from "@/constants/jobDetailFormMap";
+import { NaverMap } from "@/components/NaverMap/NaverMap";
+
 import styles from "./JobDetail.module.scss";
-import type { Post } from "@/types";
-import { JOB_DETAIL_FORM_MAP_TO_KOR } from "@/constants";
-import { NaverMap } from "@/components/NaverMap";
 
 type Props = {
   post: Post;

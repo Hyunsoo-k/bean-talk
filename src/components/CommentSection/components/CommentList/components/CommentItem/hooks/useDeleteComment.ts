@@ -1,10 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 
-import type { Category } from "@/types";
+import type { Category } from "@/types/category";
+import { QUERY_KEYS } from "@/constants/queryKeys";
 import { queryClient } from "@/constants/queryClient";
-import { QUERY_KEYS } from "@/constants";
-import { useAlertModalStore } from "@/zustand";
-import { deleteComment } from "@/api";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
+import { deleteComment } from "@/api/deleteComment";
 
 const useDeleteComment = (
   category: Category,

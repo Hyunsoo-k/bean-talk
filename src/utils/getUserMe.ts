@@ -1,6 +1,6 @@
-import type { UserMe } from "@/types";
+import type { UserMe } from "@/types/userMe";
+import { QUERY_KEYS } from "@/constants/queryKeys";
 import { queryClient } from "@/constants/queryClient";
-import { QUERY_KEYS } from "@/constants";
 
 const getUserMe = (): UserMe | null => {
   const userMe = queryClient.getQueryData<UserMe>(QUERY_KEYS.userMe );
