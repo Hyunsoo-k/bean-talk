@@ -1,9 +1,9 @@
-import type { JSX, MouseEvent } from "react";
+import type { MouseEvent } from "react";
 import { useState } from "react";
 import { GoKebabHorizontal } from "react-icons/go";
 
-import { formatDate } from "@/utils";
-import { MenuModal } from "@/components/modals";
+import { formatDate } from "@/utils/formatDate";
+import { MenuModal } from "@/components/modals/MenuModal/MenuModal";
 
 import defaultProfile from "@/assets/default-images/default-profile.jpg";
 import styles from "./CommentHeader.module.scss";
@@ -28,7 +28,7 @@ const CommentHeader = ({
   isDeletePending,
   handleClickDelete,
   deletedHavingReply
-}: Props): JSX.Element => {
+}: Props) => {
   const [isMenuModalOpen, setIsMenuModalOpen] = useState<boolean>(false);
   
   const handleClickMenu = (e: MouseEvent<HTMLDivElement>) => {

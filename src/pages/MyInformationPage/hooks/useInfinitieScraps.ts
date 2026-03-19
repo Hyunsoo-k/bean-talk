@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { QUERY_KEYS } from "@/constants";
-import { getInfinitieScraps } from "@/api";
+import { QUERY_KEYS } from "@/constants/queryKeys";
+import { getInfinitieScraps } from "@/api/getInfinitieScraps";
 
 const useInfinitieScraps = () => {
 

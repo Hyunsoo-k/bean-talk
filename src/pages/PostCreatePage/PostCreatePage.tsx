@@ -1,20 +1,18 @@
 import type { FieldErrors } from "react-hook-form";
 import { useForm, FormProvider } from "react-hook-form";
 
-import type {
-  Category,
-  CategoryHavingSubCategory,
-  PostRequestBody
-} from "@/types";
-import { CATEGORY_TO_SUB_CATEGORY_ENG_ARRAY_MAP } from "@/constants";
+import type { Category } from "@/types/category";
+import type { CategoryHavingSubCategory } from "@/types/category";
+import type { PostRequestBody } from "@/types/postRequestBody";
+import { CATEGORY_TO_SUB_CATEGORY_ENG_ARRAY_MAP } from "@/constants/subCategoryMap";
 import { isCategoryHavingSubCategory } from "@/utils/isCategoryHavingSubCategory";
-import { processHtml } from "@/utils";
-import { useAlertModalStore } from "@/zustand";
+import { processHtml } from "@/utils/processHtml";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
 import { useCreatePost } from "@/components/PostEditor/hooks/useCreatePost";
-import { BreadCrumb } from "@/components/BreadCrumb";
-import { PostMetaForm } from "@/components/PostMetaForm";
-import { JobDetailForm } from "@/components/PostEditor/components/JobDetailForm";
-import { PostEditor } from "@/components/PostEditor";
+import { BreadCrumb } from "@/components/BreadCrumb/BreadCrumb";
+import { PostMetaForm } from "@/components/PostMetaForm/PostMetaForm";
+import { JobDetailForm } from "@/components/PostEditor/components/JobDetailForm/JobDetailForm";
+import { PostEditor } from "@/components/PostEditor/PostEditor";
 
 import styles from "./PostCreatePage.module.scss";
 

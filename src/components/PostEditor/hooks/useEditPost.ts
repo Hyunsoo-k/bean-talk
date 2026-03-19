@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query"
 
-import type { Category, PostRequestBody } from "@/types";
-import { axiosInstance } from "@/services";
-import { useAlertModalStore } from "@/zustand";
+import type { Category } from "@/types/category";
+import type { PostRequestBody } from "@/types/postRequestBody";
 import { queryClient } from "@/constants/queryClient";
-import { QUERY_KEYS } from "@/constants";
+import { QUERY_KEYS } from "@/constants/queryKeys";
+import { axiosInstance } from "@/services/axiosInstance";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
 
 const mutationFn = async (
   category: Category,

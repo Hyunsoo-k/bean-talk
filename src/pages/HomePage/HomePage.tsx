@@ -4,10 +4,10 @@ import { BsFillThreadsFill } from "react-icons/bs";
 import { VscMegaphone } from "react-icons/vsc";
 import { IoNewspaperOutline } from "react-icons/io5";
 
-import { MainPageNoticeSection } from "@/components/MainPageNoticeSection";
-import { useInfinitePosts } from "@/hooks";
-import { FullPageSpinner } from "@/components/spinners";
-import { CarouselSingle } from "@/components/carousels";
+import { MainPageNoticeSection } from "@/components/MainPageNoticeSection/MainPageNoticeSection";
+import { useInfinitePosts } from "@/hooks/useInfinitiePosts";
+import { FullPageSpinner } from "@/components/spinners/FullPageSpinner/FullPageSpinner";
+import { CarouselSingle } from "@/components/carousels/CarouselSIngle/CarouselSingle";
 import { PostList } from "@/components/PostList/PostList";
 
 import styles from "./HomePage.module.scss";

@@ -1,5 +1,5 @@
-import type { Category } from "@/types";
-import { axiosInstance } from "@/services";
+import type { Category } from "@/types/category";
+import { axiosInstance } from "@/services/axiosInstance";
 
 const editComment = async (
   category: Category,

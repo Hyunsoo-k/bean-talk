@@ -1,8 +1,8 @@
 import type { RefObject } from "react";
 
-import type { MyPost } from "@/types";
-import { MyPostCard } from "./components/MyPostCard";
-import { MyPostCardSkeleton } from "./components/MyPostCardSkeleton";
+import type { MyPost } from "@/types/myPost";
+import { MyPostCard } from "./components/MyPostCard/MyPostCard";
+import { MyPostCardSkeleton } from "./components/MyPostCardSkeleton/MyPostCardSkeleton";
 
 import styles from "./MyPostList.module.scss";
 

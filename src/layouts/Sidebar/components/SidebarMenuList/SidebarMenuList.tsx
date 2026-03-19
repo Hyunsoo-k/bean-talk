@@ -4,8 +4,8 @@ import { VscMegaphone } from "react-icons/vsc";
 import { HiOutlineBuildingOffice } from "react-icons/hi2";
 import { IoNewspaperOutline } from "react-icons/io5";
 
-import { isWithinOneDay } from "@/utils";
-import { NewIcon } from "@/components/new-icon";
+import { isWithinOneDay } from "@/utils/isWithinOneDay";
+import { NewIcon } from "@/components/NewIcon/NewIcon";
 
 import styles from "./SidebarMenuList.module.scss";
 

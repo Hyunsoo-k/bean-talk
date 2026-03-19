@@ -2,14 +2,15 @@ import type { MouseEvent } from "react";
 import { useRef, useState } from "react";
 import { IoSettingsSharp } from "react-icons/io5";
 
-import type { UserMe } from "@/types";
+import type { UserMe } from "@/types/userMe";
 import { queryClient } from "@/constants/queryClient";
-import { QUERY_KEYS } from "@/constants";
-import { useEditUserModalStore } from "@/zustand";
-import { useInfiniteScrollObserver } from "@/hooks";
-import { useInfiniteMyPosts, useInfinitieScraps } from "./hooks";
-import { FullPageSpinner } from "@/components/spinners";
-import { MyPostList } from "./components/MyPostList";
+import { QUERY_KEYS } from "@/constants/queryKeys";
+import { useEditUserModalStore } from "@/zustand/useEditUserModalStore";
+import { useInfiniteScrollObserver } from "@/hooks/useInfiniteScrollObserver";
+import { useInfiniteMyPosts } from "@/hooks/useInfinitieMyPosts";
+import { useInfinitieScraps } from "./hooks/useInfinitieScraps";
+import { FullPageSpinner } from "@/components/spinners/FullPageSpinner/FullPageSpinner";
+import { MyPostList } from "./components/MyPostList/MyPostList";
 
 import defaultImage from "@/assets/default-images/default-profile.jpg"
 import styles from "./MyInformationPage.module.scss";

@@ -1,9 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 
-import type { EditUserRequestBody } from "@/types";
-import { QUERY_KEYS, queryClient } from "@/constants";
+import type { EditUserRequestBody } from "@/types/editUserRequestBody";
+import { QUERY_KEYS } from "@/constants/queryKeys";
+import { queryClient } from "@/constants/queryClient";
 import { editUser } from "@/api/editUser";
-import { useAlertModalStore, useEditUserModalStore } from "@/zustand";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
+import { useEditUserModalStore } from "@/zustand/useEditUserModalStore";
 
 const useEditUser = () => {
   const {

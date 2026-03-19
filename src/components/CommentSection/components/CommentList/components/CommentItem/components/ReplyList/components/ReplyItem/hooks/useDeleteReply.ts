@@ -1,10 +1,10 @@
 import { useMutation } from "@tanstack/react-query"
 
-import type { Category } from "@/types";
-import { QUERY_KEYS } from "@/constants";
+import type { Category } from "@/types/category";
+import { QUERY_KEYS } from "@/constants/queryKeys";
 import { queryClient } from "@/constants/queryClient";
-import { axiosInstance } from "@/services";
-import { useAlertModalStore } from "@/zustand";
+import { axiosInstance } from "@/services/axiosInstance";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
 
 const mutationFn = async (
   category: Category,

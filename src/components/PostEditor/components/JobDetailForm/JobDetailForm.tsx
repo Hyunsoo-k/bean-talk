@@ -1,15 +1,13 @@
 
-import type { JSX, MouseEvent } from "react";
+import type { MouseEvent } from "react";
 import { useState, useCallback, useMemo } from "react";
-import { useFormContext, Controller } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { SlArrowDown } from "react-icons/sl";
 
-import {
-	JOB_DETAIL_FORM_MAP_TO_ENG,
-	JOB_DETAIL_FORM_MAP_TO_KOR,
-} from "@/constants";
-import { NaverMap } from "@/components/NaverMap";
-import { DaumPostCode } from "./components";
+import { JOB_DETAIL_FORM_MAP_TO_ENG } from "@/constants/jobDetailFormMap";
+import { JOB_DETAIL_FORM_MAP_TO_KOR } from "@/constants/jobDetailFormMap";
+import { NaverMap } from "@/components/NaverMap/NaverMap";
+import { DaumPostCode } from "./components/DaumPostCode/DaumPostCode";
 import { Dropdown } from "@/components/Dropdown";
 
 import styles from "./JobDetailForm.module.scss";
@@ -22,7 +20,7 @@ const TIME_ITEMS = Array.from({ length: 48 }, (_, i) => {
 
 type DropdownType = "employmentType" | "position" | "startTime" | "endTime" | null;
 
-const JobDetailForm = (): JSX.Element => {
+const JobDetailForm = () => {
 	const {
 		watch,
 		formState: { errors },

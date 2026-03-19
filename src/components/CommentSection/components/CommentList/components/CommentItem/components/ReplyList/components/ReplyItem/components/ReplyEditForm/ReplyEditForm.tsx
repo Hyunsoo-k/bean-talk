@@ -7,9 +7,9 @@ import type { FieldErrors } from "react-hook-form";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 
-import type { Category } from "@/types";
-import { useAlertModalStore } from "@/zustand";
-import { useEditReply } from "./hooks";
+import type { Category } from "@/types/category";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
+import { useEditReply } from "./hooks/useEditReply";
 
 import styles from "./ReplyEditForm.module.scss";
 

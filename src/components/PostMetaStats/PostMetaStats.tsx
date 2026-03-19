@@ -1,4 +1,3 @@
-import type { JSX } from "react";
 import { LuMessageCircleMore } from "react-icons/lu";
 import {
   FaRegBookmark,
@@ -7,10 +6,13 @@ import {
   FaHeart
 } from "react-icons/fa6";
 
-import type { Category, UserMe } from "@/types";
-import type { Post } from "@/types";
-import { QUERY_KEYS, queryClient } from "@/constants";
-import { useToggleLike, useToggleScrap } from "./hooks";
+import type { Category } from "@/types/category";
+import type { UserMe } from "@/types/userMe";
+import type { Post } from "@/types/post";
+import { QUERY_KEYS } from "@/constants/queryKeys";
+import { queryClient } from "@/constants/queryClient";
+import { useToggleLike } from "./hooks/useToggleLike";
+import { useToggleScrap } from "./hooks/useToggleScrap";
 
 import styles from "./PostMetaStats.module.scss";
 
@@ -26,7 +28,7 @@ const PostMetaStats = <T extends Category>({
   post,
   handleClickCommentIcon,
   isLoading
-}: Props<T>): JSX.Element => {
+}: Props<T>)=> {
   const userMeData: undefined | UserMe = queryClient.getQueryData(QUERY_KEYS.userMe);
 
   const {

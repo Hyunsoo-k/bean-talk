@@ -1,6 +1,7 @@
 import axios from "axios";
 
-import { base64ToBlob, blobUrlToBlob } from "@/utils";
+import { base64ToBlob } from "@/utils/base64ToBlob";
+import { blobUrlToBlob } from "@/utils/blobUrlToBlob";
 
 const uploadImageSrc = async (src: string) => {
   let blob: Blob | undefined;

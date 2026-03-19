@@ -1,11 +1,11 @@
-import type { Dispatch, JSX, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import { TfiEmail } from "react-icons/tfi";
 import { MdOutlineDriveFileRenameOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 
-import type { SignupFormValue } from "@/types";
-import { useSignup } from "./hooks";
+import type { SignupFormValue } from "@/types/singupFormValue";
+import { useSignup } from "./hooks/useSignup";
 
 import styles from "./SignupForm.module.scss";
 
@@ -13,7 +13,7 @@ type Props = {
   setFormType: Dispatch<SetStateAction<"login" | "signup">>;
 };
 
-const SignupForm = ({ setFormType }: Props): JSX.Element => {
+const SignupForm = ({ setFormType }: Props) => {
   const {
     register,
     formState,

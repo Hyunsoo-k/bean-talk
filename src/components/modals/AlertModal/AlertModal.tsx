@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom";
 
-import { useAlertModalStore } from "@/zustand";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
 
 import styles from "./AlertModal.module.scss";
 

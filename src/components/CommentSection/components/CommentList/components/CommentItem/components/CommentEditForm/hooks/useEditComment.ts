@@ -1,10 +1,10 @@
 import type { Dispatch, SetStateAction } from "react";
 import { useMutation } from "@tanstack/react-query"
 
-import type { Category } from "@/types";
-import { QUERY_KEYS } from "@/constants";
+import type { Category } from "@/types/category";
+import { QUERY_KEYS } from "@/constants/queryKeys";
 import { queryClient } from "@/constants/queryClient";
-import { editComment } from "@/api";
+import { editComment } from "@/api/editComment";
 
 const useEditComment = (
   category: Category,

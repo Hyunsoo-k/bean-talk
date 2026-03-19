@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { QUERY_KEYS } from "@/constants";
-import { getInfinitieMyPosts } from "@/api";
+import { QUERY_KEYS } from "@/constants/queryKeys";
+import { getInfinitieMyPosts } from "@/api/getInfinitieMyPosts";
 
 
 const useInfiniteMyPosts = () => {

@@ -1,6 +1,5 @@
 import type {
   Dispatch,
-  JSX,
   MouseEvent,
   SetStateAction
 } from "react";
@@ -8,8 +7,7 @@ import { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import type { Category } from "@/types/category";
-import { getUserMe } from "@/utils";
-import { useCreateReply } from "./hooks";
+import { useCreateReply } from "./hooks/useCreateReply";
 
 import styles from "./ReplyForm.module.scss";
 
@@ -25,7 +23,7 @@ const ReplyForm = ({
   post_id,
   comment_id,
   setIsReplyFormOpen
-}: Props): JSX.Element => {
+}: Props) => {
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
   const replyFormRef = useRef<HTMLFormElement | null>(null);
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);

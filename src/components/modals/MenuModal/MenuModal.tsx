@@ -1,7 +1,7 @@
 import type { Dispatch, JSX, SetStateAction } from "react";
 import { useEffect, useRef } from "react";
 
-import { getUserMe } from "@/utils";
+import { getUserMe } from "@/utils/getUserMe";
 
 import styles from "./MenuModal.module.scss";
 

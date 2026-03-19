@@ -1,17 +1,13 @@
-import {
-  PostCardBackground,
-  PostCardColumn,
-  PostCardJob,
-  PostCardRow,
-  PostCardThread
-} from "@/components/postCards";
-import {
-  PostCardBackgroundSkeleton,
-  PostCardColumnSkeleton,
-  PostCardThreadSkeleton,
-  PostCardRowSkeleton,
-  PostCardJobSkeleton
-} from "@/components/postCardSkeletons"
+import { PostCardBackground } from "@/components/postCards/PostCardBackground/PostCardBackground";
+import { PostCardColumn } from "@/components/postCards/PostCardColumn/PostCardColumn";
+import { PostCardJob } from "@/components/postCards/PostCardJob/PostCardJob";
+import { PostCardRow } from "@/components/postCards/PostCardRow/PostCardRow";
+import { PostCardThread } from "@/components/postCards/PostCardThread/PostCardThread";
+import { PostCardBackgroundSkeleton } from "@/components/postCardSkeletons/PostCardBackgroundSkeleton/PostCardBackgroundSkeleton";
+import { PostCardColumnSkeleton } from "@/components/postCardSkeletons/PostCardColumnSkeleton/PostCardColumnSkeleton";
+import { PostCardThreadSkeleton } from "@/components/postCardSkeletons/PostCardThreadSkeleton/PostCardThreadSkeleton";
+import { PostCardRowSkeleton } from "@/components/postCardSkeletons/PostCardRowSkeleton/PostCardRowSkeleton";
+import { PostCardJobSkeleton } from "@/components/postCardSkeletons/PostCardJobSkeleton/PostCardJobSkeleton";
 
 const CARD_COMPONENT_MAP = {
   background: PostCardBackground,

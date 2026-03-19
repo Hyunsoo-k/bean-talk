@@ -2,9 +2,10 @@ import type { JSX } from "react";
 import { useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-import type { Category } from "@/types";
-import { useInfinitePosts, useInfiniteScrollObserver } from "@/hooks";
-import { PostListHeader } from "@/components/PostLIstHeader";
+import type { Category } from "@/types/category";
+import { useInfinitePosts } from "@/hooks/useInfinitiePosts";
+import { useInfiniteScrollObserver } from "@/hooks/useInfiniteScrollObserver";
+import { PostListHeader } from "@/components/PostListHeader/PostListHeader";
 import { PostList } from "@/components/PostList/PostList";
 
 import styles from "./postListPage.module.scss";

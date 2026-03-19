@@ -2,8 +2,8 @@ import type { Dispatch, SetStateAction } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import type { Category } from "@/types/category";
-import { QUERY_KEYS } from "@/constants";
-import { createReply } from "@/api";
+import { QUERY_KEYS } from "@/constants/queryKeys";
+import { createReply } from "@/api/createReply";
 
 const useCreateReply = (
   category: Category,

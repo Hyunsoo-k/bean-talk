@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
-import type { Category } from "@/types";
-import { QUERY_KEYS } from "@/constants";
-import { getComments } from "@/api";
+import type { Category } from "@/types/category";
+import { QUERY_KEYS } from "@/constants/queryKeys";
+import { getComments } from "@/api/getComments";
 
 const useGetComments = (category: Category, post_id: string) => {
   return useQuery({

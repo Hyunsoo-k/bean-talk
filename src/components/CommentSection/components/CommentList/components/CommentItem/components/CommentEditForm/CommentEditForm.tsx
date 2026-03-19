@@ -3,9 +3,9 @@ import type { FieldErrors } from "react-hook-form";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 
-import type { Category } from "@/types";
-import { useAlertModalStore } from "@/zustand";
-import { useEditComment } from "./hooks";
+import type { Category } from "@/types/category";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
+import { useEditComment } from "./hooks/useEditComment";
 
 import styles from "./CommentEditForm.module.scss";
 

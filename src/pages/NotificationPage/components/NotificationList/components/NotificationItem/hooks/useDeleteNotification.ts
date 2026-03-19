@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 
-import { QUERY_KEYS } from "@/constants";
+import { QUERY_KEYS } from "@/constants/queryKeys";
 import { queryClient } from "@/constants/queryClient";
 import { deleteNotification } from "@/api/deleteNotification";
 

@@ -1,5 +1,5 @@
-import type { PostsQueryParams } from "@/components/PostList/types";
-import { axiosInstance } from "@/services";
+import type { PostsQueryParams } from "@/components/PostList/types/postListQueryParams";
+import { axiosInstance } from "@/services/axiosInstance";
 
 const getInfinitiePosts = async (postsQueryParams: PostsQueryParams, pageParam: string | null) => {
   const {

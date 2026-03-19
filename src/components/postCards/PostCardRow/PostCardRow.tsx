@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 import type { Category } from "@/types/category";
 import type { Post } from "@/types/post";
-import { formatDate } from "@/utils";
+import { formatDate } from "@/utils/formatDate";
+import { PostMetaStats } from "@/components/PostMetaStats/PostMetaStats";
 
 import mockImage from "@/assets/default-images/mock-image.jpg";
 import styles from "./PostCardRow.module.scss";
-import { PostMetaStats } from "@/components/PostMetaStats";
 
 type Props<T extends Category> = {
   category: Category;

@@ -3,21 +3,20 @@ import type { SubmitErrorHandler } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
 
-import type {
-  Category,
-  CategoryHavingSubCategory,
-  PostRequestBody
-} from "@/types";
-import { extractPost_id, processHtml } from "@/utils";
-import { useGetPostDetail } from "@/hooks";
+import type { Category } from "@/types/category";
+import type { CategoryHavingSubCategory } from "@/types/category";
+import type { PostRequestBody } from "@/types/postRequestBody";
+import { extractPost_id } from "@/utils/extractPost_id";
+import { processHtml } from "@/utils/processHtml";
+import { useGetPostDetail } from "@/hooks/useGetPostDetail";
 import { isCategoryHavingSubCategory } from "@/utils/isCategoryHavingSubCategory";
-import { CATEGORY_TO_SUB_CATEGORY_ENG_ARRAY_MAP } from "@/constants";
+import { CATEGORY_TO_SUB_CATEGORY_ENG_ARRAY_MAP } from "@/constants/subCategoryMap";
 import { useEditPost } from "@/components/PostEditor/hooks/useEditPost";
-import { useAlertModalStore } from "@/zustand";
-import { BreadCrumb } from "@/components/BreadCrumb";
-import { PostEditor } from "@/components/PostEditor";
-import { PostMetaForm } from "@/components/PostMetaForm";
-import { JobDetailForm } from "@/components/PostEditor/components/JobDetailForm";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
+import { BreadCrumb } from "@/components/BreadCrumb/BreadCrumb";
+import { PostEditor } from "@/components/PostEditor/PostEditor";
+import { PostMetaForm } from "@/components/PostMetaForm/PostMetaForm";
+import { JobDetailForm } from "@/components/PostEditor/components/JobDetailForm/JobDetailForm";
 
 import styles from "./PostEditPage.module.scss";
 

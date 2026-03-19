@@ -1,5 +1,6 @@
-import type { Category, PostRequestBody } from "@/types";
-import { axiosInstance } from "@/services";
+import type { Category } from "@/types/category";
+import type { PostRequestBody } from "@/types/postRequestBody";
+import { axiosInstance } from "@/services/axiosInstance";
 
 const createPostDetail = async (
   category: Category,

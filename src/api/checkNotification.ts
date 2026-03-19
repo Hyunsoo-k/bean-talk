@@ -1,4 +1,4 @@
-import { axiosInstance } from "@/services";
+import { axiosInstance } from "@/services/axiosInstance";
 
 const checkNotification = async (notification_id: string) => {
   const response = await axiosInstance.patch(`/me/notifications/${notification_id}`);

@@ -3,8 +3,8 @@ import type { UseFormReset } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import type { Category } from "@/types/category";
-import { QUERY_KEYS } from "@/constants";
-import { createComment } from "@/api";
+import { QUERY_KEYS } from "@/constants/queryKeys";
+import { createComment } from "@/api/createComment";
 
 const useCreateComment = (
   category: Category,
