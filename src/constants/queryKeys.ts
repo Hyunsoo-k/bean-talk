@@ -1,8 +1,4 @@
-import type {
-  Category,
-  CategoryHavingSubCategory,
-  SubCategory
-} from "@/types/category";
+import type { Category, CategoryHavingSubCategory, SubCategory } from "@/types/category";
 import type { QueryOption } from "@/types/queryOption";
 
 const QUERY_KEYS = {

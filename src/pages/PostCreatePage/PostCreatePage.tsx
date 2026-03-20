@@ -4,7 +4,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import type { Category } from "@/types/category";
 import type { CategoryHavingSubCategory } from "@/types/category";
 import type { PostRequestBody } from "@/types/postRequestBody";
-import { CATEGORY_TO_SUB_CATEGORY_ENG_ARRAY_MAP } from "@/constants/subCategoryMap";
+import { CATEGORY_TO_SUB_CATEGORYS_MAP } from "@/constants/subCategoryMap";
 import { isCategoryHavingSubCategory } from "@/utils/isCategoryHavingSubCategory";
 import { processHtml } from "@/utils/processHtml";
 import { useAlertModalStore } from "@/zustand/useAlertModalStore";
@@ -33,7 +33,7 @@ const PostCreatePage = ({ category }: Props) => {
       title: "",
       content: "",
       ...(isCategoryHavingSubCategory(category)
-        ? { subCategory: CATEGORY_TO_SUB_CATEGORY_ENG_ARRAY_MAP[category as CategoryHavingSubCategory][0] } 
+        ? { subCategory: CATEGORY_TO_SUB_CATEGORYS_MAP[category as CategoryHavingSubCategory][0] } 
         : {}
       ),
       ...(category === "job"

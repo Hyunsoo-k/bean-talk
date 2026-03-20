@@ -1,4 +1,3 @@
-import type { JSX } from "react";
 import type { SubmitErrorHandler } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
@@ -10,7 +9,7 @@ import { extractPost_id } from "@/utils/extractPost_id";
 import { processHtml } from "@/utils/processHtml";
 import { useGetPostDetail } from "@/hooks/useGetPostDetail";
 import { isCategoryHavingSubCategory } from "@/utils/isCategoryHavingSubCategory";
-import { CATEGORY_TO_SUB_CATEGORY_ENG_ARRAY_MAP } from "@/constants/subCategoryMap";
+import { CATEGORY_TO_SUB_CATEGORYS_MAP } from "@/constants/subCategoryMap";
 import { useEditPost } from "@/components/PostEditor/hooks/useEditPost";
 import { useAlertModalStore } from "@/zustand/useAlertModalStore";
 import { BreadCrumb } from "@/components/BreadCrumb/BreadCrumb";
@@ -24,7 +23,7 @@ type Props = {
   category: Category;
 };
 
-const PostEditPage = ({ category }: Props): JSX.Element => {
+const PostEditPage = ({ category }: Props) => {
   const { pathname } = useLocation();
 
   const post_id = extractPost_id(pathname);
@@ -48,7 +47,7 @@ const PostEditPage = ({ category }: Props): JSX.Element => {
       content: queryData?.content,
       ...(isCategoryHavingSubCategory(category)
         ? {
-          subCategory: CATEGORY_TO_SUB_CATEGORY_ENG_ARRAY_MAP[category as CategoryHavingSubCategory][0]
+          subCategory: CATEGORY_TO_SUB_CATEGORYS_MAP[category as CategoryHavingSubCategory][0]
         } 
         : {}
       ),
