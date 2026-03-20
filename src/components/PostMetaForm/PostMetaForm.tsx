@@ -1,12 +1,11 @@
 import type { Path } from "react-hook-form";
 import { useFormContext } from "react-hook-form";
 
-import type { Category } from "@/types/category";
+import type { Category, SubCategory } from "@/types/category";
 import type { CategoryHavingSubCategory } from "@/types/category";
 import type { PostRequestBody } from "@/types/postRequestBody";
-import type { SubCategoryKr } from "@/types/category";
-import { CATEGORY_TO_SUB_CATEGORY_KR_ARRAY_MAP } from "@/constants/subCategoryMap";
-import { SUB_CATEGORY_TO_ENG_MAP } from "@/constants/subCategoryMap";
+import { CATEGORY_TO_SUB_CATEGORYS_MAP } from "@/constants/subCategoryMap";
+import { SUB_CATEGORY_TO_KR_MAP } from "@/constants/subCategoryMap";
 import { isCategoryHavingSubCategory } from "@/utils/isCategoryHavingSubCategory";
 
 import defaultProfile from "@/assets/default-images/default-profile.jpg";
@@ -21,11 +20,11 @@ const PostMetaForm = ({ category, isPending }: Props) => {
   const { register, watch, setValue } = useFormContext();
 
   const subCategoriesKr = isCategoryHavingSubCategory(category)
-    ? CATEGORY_TO_SUB_CATEGORY_KR_ARRAY_MAP[category as CategoryHavingSubCategory]
+    ? CATEGORY_TO_SUB_CATEGORYS_MAP[category as CategoryHavingSubCategory]
     : null
 
-  const handleClickSubCateogry = (subCategory: SubCategoryKr<CategoryHavingSubCategory>) => {
-    setValue("subCategory", SUB_CATEGORY_TO_ENG_MAP[subCategory]);
+  const handleClickSubCateogry = (subCategory: SubCategory<CategoryHavingSubCategory>) => {
+    setValue("subCategory", subCategory);
   };
 
   return (
@@ -59,16 +58,16 @@ const PostMetaForm = ({ category, isPending }: Props) => {
               분류
             </span>
             <div className={styles["boundary-line"]} />
-            {subCategoriesKr.map((subCategory: SubCategoryKr<CategoryHavingSubCategory>) => (
+            {subCategoriesKr.map((subCategory: SubCategory<CategoryHavingSubCategory>) => (
               <button
                 type="button"
                 key={subCategory}
                 onClick={() => handleClickSubCateogry(subCategory)}
                 className={`${styles["sub-category"]} ${
-                  watch("subCategory") === SUB_CATEGORY_TO_ENG_MAP[subCategory] && styles["selected"]
+                  watch("subCategory") === subCategory && styles["selected"]
                 }`}
               >
-                {subCategory}
+                {SUB_CATEGORY_TO_KR_MAP[subCategory]}
               </button>
             ))}
           </>

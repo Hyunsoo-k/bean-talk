@@ -21,7 +21,7 @@ const BreadCrumb = <T extends Category>({
   subCategory,
   usage
 }: Props<T>) => {
-  const subCategoryKr = SUB_CATEGORY_TO_KR_MAP[subCategory]
+  const subCategoryKr = SUB_CATEGORY_TO_KR_MAP[subCategory as SubCategory<CategoryHavingSubCategory>]
 
   return (
     <div className={styles["bread-crumb-component"]}>

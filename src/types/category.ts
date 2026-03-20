@@ -8,15 +8,8 @@ type SubCategory<T extends CategoryHavingSubCategory> =
   T extends "news" ? "domestic" | "international" :
   never;
 
-type SubCategoryKr<T extends CategoryHavingSubCategory> =
-  T extends "promotion" ? "카페" | "납품" :
-  T extends "job" ? "구인" | "구직" :
-  T extends "news" ? "국내" | "국외" :
-  never;
-
 export type {
   Category,
   CategoryHavingSubCategory,
   SubCategory,
-  SubCategoryKr
 };
