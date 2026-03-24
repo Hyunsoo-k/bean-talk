@@ -16,15 +16,15 @@ const HomePage = () => {
   const {
     data: newsData,
     isLoading: isNewsDataLoading
-  } = useInfinitePosts({ category: "news" });
+  } = useInfinitePosts("news");
   const {
     data: promotionsData,
     isLoading: isPromotionsDataLoading
-  } = useInfinitePosts({ category: "promotion" });
+  } = useInfinitePosts("promotion");
   const {
     data: threadsData,
     isLoading: isThreadsDataLoading
-  } = useInfinitePosts({ category: "thread" });
+  } = useInfinitePosts("thread");
 
   const newsPosts = newsData?.pages?.flatMap((page) => page.posts) ?? [];
   const promotionPosts = promotionsData?.pages?.flatMap((page) => page.posts) ?? [];

@@ -1,0 +1,53 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.recent-search-item-component {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	padding-bottom: 2px;
+	border-bottom: 1px solid $border-color--gray;
+	line-height: 30px;
+	text-decoration: none;
+	cursor: pointer;
+
+	@include tablet {
+		padding-bottom: 3px;
+		font-size: 15px;
+	}
+
+	.timer-icon {
+		position: relative;
+		flex-shrink: 0;
+	}
+
+	.search-query {
+		overflow: hidden;
+		display: -webkit-box;
+		flex-grow: 1;
+		font-size: 14px;
+		color: $font-color--dark-gray;
+		letter-spacing: 0.5px;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 1;
+	}
+
+	.created-at {
+		flex-shrink: 0;
+		margin-left: auto;
+		font-size: 13px;
+		color: $font-color--bright-gray;
+	}
+
+	.delete-search-query-button {
+		background-color: inherit;
+		border: none;
+		padding: 0;
+
+		.cross-icon {
+			position: relative;
+			top: 1px;
+			cursor: pointer;
+		}
+	}
+}

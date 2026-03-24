@@ -1,35 +1,45 @@
-import type { PostsQueryParams } from "@/components/PostList/types/postListQueryParams";
+import type {
+  Category,
+  CategoryHavingSubCategory,
+  SubCategory
+} from "@/types/category";
+import type { QueryParams } from "@/types/queryParams";
 import { axiosInstance } from "@/services/axiosInstance";
+import type { SearchTarget } from "@/types/searchTarget";
 
-const getInfinitiePosts = async (postsQueryParams: PostsQueryParams, pageParam: string | null) => {
-  const {
-    category,
-    subCategory,
-    queryOption,
-    keyword,
-  } = postsQueryParams;
+const getInfinitiePosts = async (
+  category: Category,
+  pageParam: string | null,
+  queryParams?: QueryParams,
+) => {
+  let params = {
+    cursor: pageParam
+  } as {
+    cursor: string | null,
+    "sub-category"?: SubCategory<CategoryHavingSubCategory> | null,
+    "search-target"?: SearchTarget | null,
+    "search-query"?: string | null
+  };
 
-  let endPoint = `/categories/${category}/posts`;
-  
-  const queryStrings = [];
+  if (queryParams) {
+    const {
+      subCategory,
+      searchTarget,
+      searchQuery
+    } = queryParams;
 
-  if (queryOption && keyword) {
-    queryStrings.push(`query-option=${queryOption}&keyword=${keyword}`);
+    params = {
+      ...params,
+      "sub-category": subCategory,
+      "search-target": searchTarget,
+      "search-query": searchQuery,
+    }
   }
 
-  if (subCategory) {
-    queryStrings.push(`sub-category=${subCategory}`);
-  }
-
-  if (pageParam) {
-    queryStrings.push(`cursor=${pageParam}`);
-  }
-
-  if (queryStrings.length > 0) {
-    endPoint += "?" + queryStrings.join("&");
-  }
-
-  const response = await axiosInstance.get(endPoint);
+  const response = await axiosInstance.get(
+    `/categories/${category}/posts`,
+    { params }
+  );
   
   return response.data;
 };
