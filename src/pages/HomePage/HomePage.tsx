@@ -64,7 +64,7 @@ const HomePage = () => {
           </Link>
         </div>
         <PostList
-          type="grid"
+          layout="grid"
           cardType="column"
           category="promotion"
           posts={promotionPosts}
@@ -93,7 +93,7 @@ const HomePage = () => {
           </Link>
         </div>
         <PostList
-          type="grid"
+          layout="grid"
           cardType="background"
           category="news"
           posts={newsPosts}
@@ -123,7 +123,7 @@ const HomePage = () => {
         </div>
         <div className={styles["threadsContainer-wrapper"]}>
           <PostList
-            type="flex"
+            layout="flex"
             cardType="thread"
             category="thread"
             posts={theadPosts}

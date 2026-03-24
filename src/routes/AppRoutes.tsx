@@ -9,6 +9,7 @@ import { PostEditPage } from "@/pages/PostEditPage/PostEditPage";
 import { Notificationpage } from "@/pages/NotificationPage/NotificationPage";
 import { NotFoundPage } from "@/pages/NotFoundPage/NotFoundPage";
 import { MyInformationPage } from "@/pages/MyInformationPage/MyInformationPage";
+import { IntegratedSearchPage } from "@/pages/IntegratedSearchPage/IntegratedSearchPage";
 
 const AppRoutes = (): JSX.Element => {
   return (
@@ -123,6 +124,10 @@ const AppRoutes = (): JSX.Element => {
       <Route
         path="/categories/notice/posts/:post_id/edit"
         element={<PostEditPage category="notice" />}
+      />
+      <Route
+        path="/integrated-search"
+        element={<IntegratedSearchPage />}
       />
       <Route
        path="/me/information"

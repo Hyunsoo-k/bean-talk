@@ -9,7 +9,7 @@ import type {
 import type { QueryParams } from "@/types/queryParams";
 import type { SearchTarget } from "@/types/searchTarget";
 import { useInfinitePosts } from "@/hooks/useInfinitiePosts";
-import { useInfiniteScrollObserver } from "@/hooks/useInfiniteScrollObserver";
+import { useInfinitieScrollObserver } from "@/hooks/useInfinitieScrollObserver";
 import { PostListHeader } from "@/components/PostListHeader/PostListHeader";
 import { PostList } from "@/components/PostList/PostList";
 
@@ -40,7 +40,7 @@ const PostListPage = ({ type, cardType, category }: Props)=> {
     fetchNextPage,
   } = useInfinitePosts(category, queryParams);
 
-  useInfiniteScrollObserver(
+  useInfinitieScrollObserver(
     lastPostRef,
     isMainPage,
     hasNextPage,
@@ -53,7 +53,7 @@ const PostListPage = ({ type, cardType, category }: Props)=> {
     <div className={styles["post-list-page-component"]}>
       <PostListHeader category={category} />
       <PostList
-        type={type}
+        layout={type}
         cardType={cardType}
         category={category}
         posts={posts}

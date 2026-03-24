@@ -21,6 +21,23 @@ const QUERY_KEYS = {
 
     return queryKey;
   },
+  integratedPosts: (queryParams: QueryParams) => {
+    const queryKey = ["integratedPosts"];
+
+    if (queryParams?.subCategory) {
+      queryKey.push(queryParams?.subCategory)
+    }
+
+    if (queryParams?.searchTarget) {
+      queryKey.push(queryParams?.searchTarget);
+    }
+
+    if (queryParams?.searchTarget && queryParams?.searchQuery) {
+      queryKey.push(queryParams?.searchTarget, queryParams?.searchQuery);
+    }
+
+    return queryKey;
+  },
   myPosts: ["myPosts"],
   scraps: ["scraps"],
   post: (category: Category, post_id: string) => ["post", category, post_id],

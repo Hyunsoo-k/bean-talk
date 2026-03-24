@@ -3,15 +3,12 @@ import { useLocation } from "react-router-dom";
 
 import type { Category } from "@/types/category";
 import type { Post } from "@/types/post";
-import {
-  CARD_COMPONENT_MAP,
-  CARD_SKELETON_COMPONENT_MAP
-} from "./constants/cardComponentMaps";
+import { CARD_COMPONENT_MAP, CARD_SKELETON_COMPONENT_MAP } from "./constants/cardComponentMaps";
 
 import styles from "./PostList.module.scss";
 
 type Props<T extends Category> = {
-  type: "flex" | "grid";
+  layout: "flex" | "grid";
   cardType: "background" | "column" | "job" | "row" | "thread";
   category: Category;
   posts: Post<T>[];
@@ -20,7 +17,7 @@ type Props<T extends Category> = {
 };
 
 const PostList = <T extends Category>({
-  type,
+  layout,
   cardType,
   category,
   posts,
@@ -44,7 +41,7 @@ const PostList = <T extends Category>({
   const PostSkeletonCard = CARD_SKELETON_COMPONENT_MAP[cardType];
 
   return (
-    <ul className={`${styles["post-list-component"]} ${styles[type]}`}>
+    <ul className={`${styles["post-list-component"]} ${styles[layout]}`}>
       {isLoading &&
         Array.from({ length: 8 }).map((_, index) => (
           <li

@@ -85,7 +85,7 @@ const SearchModal = () => {
     closeModal();
 
     const destination = isInHeader 
-      ? `/integrated-posts?search-target=${searchTarget}&search-query=${searchQuery}`
+      ? `/integrated-search?search-target=${searchTarget}&search-query=${searchQuery}`
       : `/categories/${category}/posts?search-target=${searchTarget}&search-query=${searchQuery}`
 
     navigate(destination);
