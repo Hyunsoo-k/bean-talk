@@ -1,0 +1,90 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.logged-in-profile-component {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	height: 100%;
+
+	@include tablet {
+		gap: 15px;
+	}
+
+	.profile-image-link {
+		position: static;
+		display: block;
+
+		.profile-image {
+			width: 55px;
+			height: 55px;
+			margin-top: 25px;
+			border: 1px solid $border-color--gray;
+			border-radius: 50%;
+			object-fit: cover;
+
+			@include tablet {
+				width: 70px;
+				height: 70px;
+				margin-top: 45px;
+			}
+		}
+	}
+
+	.notification-link {
+		text-decoration: none;
+		position: absolute;
+		top: $safe-area--mobile;
+		right: $safe-area--mobile;
+
+		@include tablet {
+			top: #{$safe-area--tablet}px;
+			right: #{$safe-area--tablet}px;
+		}
+
+		.bell-icon {
+			font-size: 20px;
+			color: $font-color--black;
+			cursor: pointer;
+
+			@include tablet {
+				font-size: 25px;
+			}
+		}
+	}
+
+	.red-dot {
+		position: absolute;
+		top: calc($safe-area--mobile - 2px);
+		right: calc($safe-area--mobile - 1px);
+		width: 4px;
+		height: 4px;
+		border-radius: 50%;
+		background-color: rgb(233, 97, 97);
+	}
+
+	.nickname {
+		margin: 0;
+		font-size: 13px;
+		text-align: center;
+		letter-spacing: 0.5px;
+
+		@include tablet {
+			font-size: 15px;
+		}
+	}
+
+	.email {
+		font-size: 12px;
+		font-weight: 350;
+		color: $font-color--dark-gray;
+		text-align: center;
+
+		@include tablet {
+			font-size: 14px;
+		}
+	}
+}

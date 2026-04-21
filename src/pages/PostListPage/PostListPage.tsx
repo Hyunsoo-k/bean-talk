@@ -1,15 +1,12 @@
 import { useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
-import type {
-  Category,
-  CategoryHavingSubCategory,
-  SubCategory
-} from "@/types/category";
-import type { QueryParams } from "@/types/queryParams";
-import type { SearchTarget } from "@/types/searchTarget";
-import { useInfinitePosts } from "@/hooks/useInfinitiePosts";
-import { useInfinitieScrollObserver } from "@/hooks/useInfinitieScrollObserver";
+import type { Category, CategoryHavingSubCategory, SubCategory } from "@/types/category";
+import type { CardType } from "@/types/cardType";
+import type { PostsParams } from "@/types/postsParams";
+import type { SearchType } from "@/types/SearchType";
+import { useInfinitePosts } from "@/hooks/useInfinitePosts";
+import { useInfiniteScrollObserver } from "@/hooks/useInfiniteScrollObserver";
 import { PostListHeader } from "@/components/PostListHeader/PostListHeader";
 import { PostList } from "@/components/PostList/PostList";
 
@@ -17,46 +14,43 @@ import styles from "./postListPage.module.scss";
 
 type Props = {
   type: "flex" | "grid";
-  cardType: "background" | "column" | "job" | "row" | "thread";
+  cardType: CardType;
   category: Category;
 };
 
 const PostListPage = ({ type, cardType, category }: Props)=> {
-  const { pathname, search } = useLocation();
+  const { pathname } = useLocation();
+  const [searchParams] = useSearchParams();
   const lastPostRef = useRef<HTMLLIElement | null>(null);
 
-  const isMainPage = pathname === "/";
-  const params = new URLSearchParams(search);
-  const queryParams: QueryParams = {
-    subCategory: params.get("sub-category") as SubCategory<CategoryHavingSubCategory> | null,
-    searchTarget: params.get("search-target") as SearchTarget | null,
-    searchQuery: params.get("search-query")
+  const params: PostsParams = {
+    "sub-category": (searchParams.get("sub-category") as SubCategory<CategoryHavingSubCategory>) ?? undefined,
+    "type": (searchParams.get("type") as SearchType) ?? undefined,
+    "query": searchParams.get("query") ?? undefined,
   };
-
   const {
-    data: queryData,
+    flattenedData,
     isLoading,
     hasNextPage,
     fetchNextPage,
-  } = useInfinitePosts(category, queryParams);
+  } = useInfinitePosts(category, params);
 
-  useInfinitieScrollObserver(
+  const isMainPage = pathname === "/";
+  useInfiniteScrollObserver(
     lastPostRef,
     isMainPage,
     hasNextPage,
     fetchNextPage
   );
 
-  const posts = queryData?.pages?.flatMap((page) => page.posts) ?? [];
-
   return (
     <div className={styles["post-list-page-component"]}>
-      <PostListHeader category={category} />
+      <PostListHeader key={category} category={category} />
       <PostList
         layout={type}
         cardType={cardType}
         category={category}
-        posts={posts}
+        posts={flattenedData}
         isLoading={isLoading}
         lastPostRef={lastPostRef}
       />

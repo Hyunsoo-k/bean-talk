@@ -2,34 +2,46 @@
 @use "@/styles/responsive.scss" as *;
 
 .bread-crumb-component {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 14px;
-  color: $font-color--black;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	width: 100%;
+	height: 25px;
+	font-family: "Pretendard";
+	font-size: 12px;
 
-  @include tablet {
-    max-width: $max-width;
-  }
+	@include tablet {
+		max-width: calc($max-width - $safe-area--tablet * 2);
+		font-size: 14px;
+	}
 
-  > a {
-    text-decoration: none;
-    font-weight: 500;
-    color: $font-color--black;
+	.link {
+    display: flex;
+    align-items: center;
+		text-decoration: none;
+		color: inherit;
+    font-size: inherit;
+	}
 
-    > svg {
-      position: relative;
-      top: 3px;
+	.icon {
+		position: relative;
+		color: inherit;
+
+		&.home {
       margin-right: 3px;
+			font-size: 16px;
 
       @include tablet {
-        margin-right: 5px;
+        font-size: 17px;
       }
-    }
-  }
+		}
 
-  > svg {
-    position: relative;
-    top: 1px;
-  }
+		&.arrow {
+			font-size: 12px;
+		}
+	}
+
+	.path {
+		font-size: inherit
+	}
 }

@@ -1,56 +1,132 @@
+/* --- Pretendard (300 ~ 700) --- */
 @font-face {
-  font-family: 'Pretendard';
-  src: url('@/assets/fonts/Pretendard-Light.woff2') format('woff2');
+  font-family: "Pretendard";
+  src: url('@/assets/fonts/pretendard/Pretendard-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Pretendard';
-  src: url('@/assets/fonts/Pretendard-Regular.woff2') format('woff2');
+  font-family: "Pretendard";
+  src: url('@/assets/fonts/pretendard/Pretendard-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Pretendard';
-  src: url('@/assets/fonts/Pretendard-Medium.woff2') format('woff2');
+  font-family: "Pretendard";
+  src: url('@/assets/fonts/pretendard/Pretendard-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
-
 @font-face {
-  font-family: 'Pretendard';
-  src: url('@/assets/fonts/Pretendard-SemiBold.woff2') format('woff2');
+  font-family: "Pretendard";
+  src: url('@/assets/fonts/pretendard/Pretendard-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Pretendard';
-  src: url('@/assets/fonts/Pretendard-Bold.woff2') format('woff2');
+  font-family: "Pretendard";
+  src: url('@/assets/fonts/pretendard/Pretendard-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
+/* --- Noto Sans KR (300 ~ 700) --- */
 @font-face {
-  font-family: 'BookkMyungjo';
-  src: url('@/assets/fonts//BookkMyungjo_Light.ttf') format('truetype');
+  font-family: "Noto Sans KR";
+  src: url('@/assets/fonts/notoSansKr/NotoSansKR-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'BookkMyungjo';
-  src: url('@/assets/fonts//BookkMyungjo_Bold.ttf') format('truetype');
+  font-family: "Noto Sans KR";
+  src: url('@/assets/fonts/notoSansKr/NotoSansKR-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  src: url('@/assets/fonts/notoSasKr/NotoSansKR-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  src: url('@/assets/fonts/notoSansKr/NotoSansKR-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans Kr";
+  src: url('@/assets/fonts/notoSansKr/NotoSansKR-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- BookkMyungjo (300, 700) --- */
+@font-face {
+  font-family: "BookkMyungjo";
+  src: url('@/assets/fonts/bookmyungjo/BookkMyungjo_Light.ttf') format('truetype');
   font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BookkMyungjo";
+  src: url('@/assets/fonts/bookmyungjo/BookkMyungjo_Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- NanumMyeongjo (400) --- */
+@font-face {
+  font-family: "NanumMyeongjo";
+  src: url('@/assets/fonts/nanumMyeongjo/NanumMyeongjo-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NanumMyeongjo";
+  src: url('@/assets/fonts/nanumMyeongjo/NanumMyeongjo-Bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Cormorant (500, 700) --- */
+@font-face {
+  font-family: "Cormorant";
+  src: url('@/assets/fonts/cormorant/Cormorant-SemiBold.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant";
+  src: url('@/assets/fonts/cormorant/Cormorant-Bold.ttf') format('truetype');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }

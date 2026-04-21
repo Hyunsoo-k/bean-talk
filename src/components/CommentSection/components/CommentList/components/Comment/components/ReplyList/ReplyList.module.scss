@@ -1,0 +1,13 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.reply-list-component {
+	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+
+	.reply-item-wrapper {
+		width: 100%;
+	}
+}

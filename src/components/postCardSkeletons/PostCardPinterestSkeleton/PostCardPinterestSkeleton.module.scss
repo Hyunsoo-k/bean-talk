@@ -1,0 +1,88 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-card-pinterest-skeleton {
+	display: flex;
+	flex-direction: column;
+	width: 180px;
+	text-decoration: none;
+	color: inherit;
+
+  @include tablet {
+    width: 240px;
+  }
+
+	.thumbnail {
+    position: relative;
+		display: block;
+		width: 100%;
+		height: 260px;
+    background-color: $background-color--skeleton--dark-gray;
+	}
+
+	.main {
+		padding-top: 30px;
+
+		.title {
+      position: relative;
+      width: 80%;
+      height: 20px;
+			margin: 0 0 15px;
+      background-color: $background-color--skeleton--dark-gray;
+		}
+
+		.content {
+      position: relative;
+      height: 20px;
+			margin-bottom: 13px;
+			padding: 0;
+      background-color: $background-color--skeleton--dark-gray;
+
+      &:first-child {
+        width: 60%;
+      }
+
+      &:last-child {
+        margin-bottom: 20px;
+      }
+		}
+	}
+
+	.footer {
+		.author {
+      position: relative;
+      width: 50%;
+      height: 20px;
+      background-color: $background-color--skeleton--dark-gray;
+		}
+	}
+}
+
+.thumbnail::after,
+.title::after,
+.content::after,
+.author::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 1.0s infinite;
+} 
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

@@ -10,15 +10,6 @@ html {
 }
 
 body {
-  position: relative;
   height: 100%;
   margin: 0;
-  padding-top: $header-height--mobile;
-  background-color: $background-color--white;
-  font-family: 'Pretendard', sans-serif;
-  color: $font-color--black;
-
-  @include tablet {
-    padding-top: $header-height--tablet;
-  }
 }

@@ -1,0 +1,44 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.comment-header-component {
+	position: relative;
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	width: 100%;
+	font-size: 13px;
+
+	.profile-image {
+		flex-shrink: 0;
+		width: 25px;
+		height: 25px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		border: 1px solid $border-color--gray;
+		border-radius: 50%;
+	}
+
+	.author {
+		font-weight: 450;
+	}
+
+	.boundary-dot {
+		width: 2px;
+		height: 2px;
+		background-color: $font-color--dark-gray;
+		border-radius: 50%;
+	}
+
+	.created-at {
+		font-size: 12px;
+		color: $font-color--dark-gray;
+	}
+
+	.menu-wrapper {
+		position: relative;
+		margin-left: auto;
+		cursor: pointer;
+	}
+}

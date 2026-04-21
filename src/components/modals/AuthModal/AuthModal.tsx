@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createPortal } from "react-dom";
 
 import { useAuthModalStore } from "@/zustand/useAuthModalStore";
+import { useScrollLock } from "@/hooks/useScrollLock";
 import { LoginForm } from "./components/LoginForm/LoginForm";
 import { SignupForm } from "./components/SignupForm/SignupForm";
 
@@ -9,16 +10,8 @@ import styles from "./AuthModal.module.scss";
 
 const AuthModal = ()=> {
   const [formType, setFormType] = useState<"login" | "signup">("login");
-  
-  const { close: closeAuthModal } = useAuthModalStore();
-
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []);
+  const { isOpen, close } = useAuthModalStore();
+  useScrollLock(isOpen);
 
   const handleClickMode = (formType: "login" | "signup") => {
     setFormType(formType);
@@ -27,7 +20,7 @@ const AuthModal = ()=> {
   return createPortal(
     <>
       <div
-        onClick={closeAuthModal}
+        onClick={close}
         className={styles["backdrop"]}
       />
       <div className={styles["auth-modal-component"]}>

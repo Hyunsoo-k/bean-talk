@@ -10,9 +10,10 @@ import styles from "./CommentSection.module.scss";
 type Props = {
   category: Category;
   post_id: string;
+  noPadding?: boolean;
 };
 
-const CommentSection = ({ category, post_id }: Props): JSX.Element => {
+const CommentSection = ({ category, post_id, noPadding }: Props): JSX.Element => {
   const { data: queryData, isLoading } = useGetComments(category, post_id);
 
   if (isLoading) {
@@ -20,13 +21,13 @@ const CommentSection = ({ category, post_id }: Props): JSX.Element => {
   }
 
   return (
-    <div  className={styles["comment-section-component"]}>
+    <div className={`${styles["comment-section-component"]} ${noPadding ? styles["no-padding"] : ""}`}>
       <CommentForm category={category} post_id={post_id} />
       <CommentList
-          category={category}
-          post_id={post_id}
-          comments={queryData}
-        />
+        category={category}
+        post_id={post_id}
+        comments={queryData}
+      />
     </div>
   );
 };

@@ -7,14 +7,14 @@ import styles from "./RecentSearchList.module.scss";
 
 type Props = {
   recentSearches: RecentSearch[];
-  handleRecentSearchItemClick: (e: MouseEvent<HTMLAnchorElement>, keyword: string) => void;
-  handleRecentSearchItemDelete: (e: MouseEvent<HTMLButtonElement>, keyword: string) => void;
+  onRecentSearchClick: (e: MouseEvent<HTMLAnchorElement>, searchQuery: string) => void;
+  onRecentSearchDelete: (e: MouseEvent<HTMLButtonElement>, searchQuery: string) => void;
 };
 
 const RecentSearchList = ({
   recentSearches,
-  handleRecentSearchItemClick,
-  handleRecentSearchItemDelete
+  onRecentSearchClick,
+  onRecentSearchDelete
 }: Props) => {
   return (
     <ul className={styles["recent-search-list-component"]}>
@@ -30,8 +30,8 @@ const RecentSearchList = ({
           >
             <RecentSearchItem
               recentSearch={recentSearch}
-              handleRecentSearchItemClick={handleRecentSearchItemClick}
-              handleRecentSearchItemDelete={handleRecentSearchItemDelete}
+              onRecentSearchClick={onRecentSearchClick}
+              onRecentSearchDelete={onRecentSearchDelete}
             />
           </li>
         ))

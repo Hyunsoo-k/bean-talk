@@ -2,24 +2,22 @@ import type { MouseEvent } from "react";
 import { useRef, useState } from "react";
 import { IoSettingsSharp } from "react-icons/io5";
 
-import type { UserMe } from "@/types/userMe";
-import { queryClient } from "@/constants/queryClient";
-import { QUERY_KEYS } from "@/constants/queryKeys";
+import { getCookie } from "@/utils/cookie";
+import { useAuthModalStore } from "@/zustand/useAuthModalStore";
 import { useEditUserModalStore } from "@/zustand/useEditUserModalStore";
-import { useInfinitieScrollObserver } from "@/hooks/useInfinitieScrollObserver";
-import { useInfiniteMyPosts } from "@/hooks/useInfinitieMyPosts";
-import { useInfinitieScraps } from "./hooks/useInfinitieScraps";
+import { useInfiniteScrollObserver } from "@/hooks/useInfiniteScrollObserver";
+import { useInfiniteMyPosts } from "@/hooks/useInfiniteMyPosts";
+import { useInfiniteScraps } from "./hooks/useInfiniteScraps";
 import { FullPageSpinner } from "@/components/spinners/FullPageSpinner/FullPageSpinner";
 import { MyPostList } from "./components/MyPostList/MyPostList";
 
 import defaultImage from "@/assets/default-images/default-profile.jpg"
 import styles from "./MyInformationPage.module.scss";
-
+import { useGetUserMe } from "@/hooks/useGetUserMe";
 const MyInformationPage = () => {
   const [currentList, setCurrentList] = useState<"myPosts" | "myScraps">("myPosts");
-
-  const userMe: UserMe | undefined = queryClient.getQueryData(QUERY_KEYS.userMe);
-
+  const { data: userMe } = useGetUserMe();
+  const { open: openAuthModal } = useAuthModalStore();
   const { open: openEditUserModal } = useEditUserModalStore();
 
   const {
@@ -33,7 +31,7 @@ const MyInformationPage = () => {
     data: myScrapsPages,
     hasNextPage: hasNextScrapsPage,
     fetchNextPage: fetchNextScrapsPage
-  } = useInfinitieScraps();
+  } = useInfiniteScraps();
 
   const myPosts = myPostsPages?.pages?.flatMap((page) => page.posts) ?? [];
   const myScraps = myScrapsPages?.pages?.flatMap((page) => page.posts) ?? [];
@@ -41,14 +39,14 @@ const MyInformationPage = () => {
   const lastMyPostRef = useRef<HTMLLIElement | null>(null);
   const lastScrapRef = useRef<HTMLLIElement | null>(null);
 
-  useInfinitieScrollObserver(
+  useInfiniteScrollObserver(
     lastMyPostRef,
     false,
     hasNextMyPostsPage,
     fetchNextMyPostsPage
   );
 
-  useInfinitieScrollObserver(
+  useInfiniteScrollObserver(
     lastMyPostRef,
     false,
     hasNextScrapsPage,
@@ -65,6 +63,12 @@ const MyInformationPage = () => {
   ) => {
     setCurrentList(list);
   };
+
+  const accessToken = getCookie("accessToken");
+
+  if (!accessToken) {
+    openAuthModal();
+  }
 
   if (!userMe) {
     return (

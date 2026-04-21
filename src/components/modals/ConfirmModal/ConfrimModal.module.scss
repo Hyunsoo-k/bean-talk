@@ -20,69 +20,86 @@
   flex-direction: column;
   justify-content: space-between;
   transform: translate(-50%, -50%);
-  width: 85%;
+  width: 80%;
   max-width: 350px;
   min-height: 180px;
-  padding: 55px 20px 30px;
+  padding-top: 40px;
   background-color: $background-color--white;
   border-radius: 4px;
 
   @include tablet {
     gap: 30px;
     min-height: 220px;
-    padding-top: 40px;
+    padding-top: 50px;
   }
 
   .body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+
+    @include tablet {
+      gap: 20px;
+    }
 
     .message {
       text-align: center;
-      font-size: 15px;
-      font-weight: 400;
+      font-size: 16px;
+      font-weight: 450;
       color: $font-color--black;
 
       @include tablet {
-        font-size: 16px;
-        padding-top: 40px;
+        font-size: 18px;
+      }
+    }
+    
+    .sub-message {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 350;
+      color: $font-color--dark-gray;
+
+      @include tablet {
+        font-weight: 400;
       }
     }
   }
 
   .footer {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: end;
+    gap: 10px;
+    padding: 15px 10px 10px;
+    border-top: 1px solid $border-color--bright-gray;
 
-    > button {
-      width: 90px;
-      height: 35px;
-      border: none;
-      border-radius: 4px;
-      letter-spacing: 1px;
-
-      @include tablet {
-        width: 80px;
-        height: 45px;
-        font-size: 15px;
-        cursor: pointer;
-
-        &:hover {
-          background-color: $font-color--bright-gray;
-          border: none;
-        }
-      }
+    @include tablet {
+      padding: 20px 10px 15px;
     }
 
-    .cancel-button {
-      background-color: inherit;
-      border: 1px solid $font-color--black;
-    }
+    .button {
+			padding: 10px 22px;
+			background-color: inherit;
+			border: 1px solid $border-color--gray;
+			border-radius: 20px;
+			letter-spacing: 1px;
+			font-size: 12px;
+			font-family: inherit;
+			color: $font-color--black;
+			cursor: pointer;
 
-    .confirm-button {
-      background-color: $font-color--rose;
-      color: $background-color--white;
-    }
-  }
+			@include tablet {
+        padding: 12px 25px;
+        font-size: 13px;
+			}
+		}
+
+		.cancel {
+
+		}
+
+		.confirm {
+			background-color: $font-color--black;
+			color: $background-color--white;
+		}
+	}
 }

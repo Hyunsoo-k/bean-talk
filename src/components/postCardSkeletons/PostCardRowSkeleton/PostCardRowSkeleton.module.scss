@@ -2,19 +2,11 @@
 @use "@/styles/responsive.scss" as *;
 
 .post-card-row-skeleton-component {
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   border-bottom: 1px solid $border-color--gray;
 
-  .header {
-    padding-bottom: 10px;
-
-    .author {
-      position: relative;
-      width: 200px;
-      height: 15px;
-      background-color: $background-color--skeleton--dark-gray;
-      border-radius: 3px;
-    }
+  @include tablet {
+    padding-bottom: 15px;
   }
 
   .body {
@@ -32,9 +24,8 @@
 
       .title {
         position: relative;
-        width: 100%;
+        width: 60%;
         height: 20px;
-        margin-bottom: 10px;
         background-color: $background-color--skeleton--dark-gray;
         border-radius: 3px;
       }
@@ -47,7 +38,11 @@
 
         &.--first-line {
           width: 70%;
-          margin-bottom: 10px;
+          margin: 7px 0 10px 0;
+
+          @include tablet {
+            margin-top: 20px;
+          }
         }
 
         &.--second-line {
@@ -59,18 +54,25 @@
     .thumbnail {
       position: relative;
       flex-shrink: 0;
-      width: 120px;
-      height: 110px;
+      width: 100px;
+      height: 80px;
       margin-left: auto;
       background-color: $background-color--skeleton--dark-gray;
       border-radius: 3px;
+
+      @include tablet {
+        width: 210px;
+				height: 150px;
+      }
     }
   }
 
   .footer {
+    padding: 10px 0 10px;
+    
     .meta-stats {
       position: relative;
-      width: 80%;
+      width: 40%;
       max-width: 300px;
       height: 15px;
       background-color: $background-color--skeleton--dark-gray;

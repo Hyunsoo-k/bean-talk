@@ -8,17 +8,9 @@ type BasePost = {
     profileImageUrl: string | null;
   };
   thumbnailUrl: string | null;
-  category: "news" | "thread" | "promotion" | "job" | "notice";
+  category: Category;
   title: string;
   content: string;
-  employmentType?: "partTime" | "fullTime";
-  position?: "barista" | "manager";
-  payAmount?: number;
-  startTime?: string;
-  endTime?: string;
-  address?: string;
-  latitude?: number;
-  longitude?: number;
   commentCount: number;
   views: number;
   likes: string[];

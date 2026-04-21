@@ -1,0 +1,78 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.comment-edit-form-component {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 90px;
+	padding: 15px 20px;
+	border: 1px solid $border-color--gray;
+
+	@include tablet {
+		min-height: 120px;
+	}
+
+	.input {
+		overflow: hidden;
+		width: 100%;
+		padding: 0;
+		border: none;
+		outline: none;
+		background-color: inherit;
+		font-family: inherit;
+		font-size: 13px;
+		color: $font-color--dark-gray;
+		resize: none;
+
+		@include tablet {
+			font-size: 14px;
+		}
+
+		&::placeholder {
+			color: $font-color--bright-gray;
+		}
+	}
+
+	.footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: end;
+		margin-top: auto;
+
+		.error-message {
+			font-size: 11px;
+			color: $font-color--rose;
+
+			@include tablet {
+				font-size: 12px;
+			}
+		}
+
+		.button {
+			padding: 8px 15px;
+			background-color: inherit;
+			border: 1px solid $border-color--gray;
+			border-radius: 20px;
+			letter-spacing: 1px;
+			font-size: 12px;
+			font-family: inherit;
+			color: $font-color--black;
+			cursor: pointer;
+
+			@include tablet {
+				font-size: 12px;
+			}
+		}
+
+		.cancel {
+			margin-left: auto;
+		}
+
+		.submit {
+			margin-left: 10px;
+			background-color: $font-color--black;
+			color: $background-color--white;
+		}
+	}
+}

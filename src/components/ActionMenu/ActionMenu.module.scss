@@ -1,0 +1,35 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.action-menu-component {
+  position: absolute;
+  top: 0;
+  left: -90px;
+  width: 90px;
+  margin: 0;
+  padding: 0;
+  background-color: $background-color--white;
+  border: 1px solid $border-color--gray;
+  list-style-type: none;
+
+  .menu-wrapper {
+    width: 100%;
+    background-color: inherit;
+
+    &:first-child {
+      border-bottom: 1px solid $border-color--gray;
+    }
+
+    .button {
+      width: 100%;
+      height: 38px;
+      background-color: inherit;
+      border: none;
+      font-family: inherit;
+      font-size: 13px;
+      color: $font-color--dark-gray;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+  }
+}

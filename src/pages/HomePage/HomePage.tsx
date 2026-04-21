@@ -1,14 +1,6 @@
-import { Link } from "react-router-dom";
-import { RxDoubleArrowRight } from "react-icons/rx";
-import { BsFillThreadsFill } from "react-icons/bs";
-import { VscMegaphone } from "react-icons/vsc";
-import { IoNewspaperOutline } from "react-icons/io5";
-
-import { MainPageNoticeSection } from "@/components/MainPageNoticeSection/MainPageNoticeSection";
-import { useInfinitePosts } from "@/hooks/useInfinitiePosts";
-import { FullPageSpinner } from "@/components/spinners/FullPageSpinner/FullPageSpinner";
+import { useInfinitePosts } from "@/hooks/useInfinitePosts";
 import { CarouselSingle } from "@/components/carousels/CarouselSIngle/CarouselSingle";
-import { PostList } from "@/components/PostList/PostList";
+import { HomeSection } from "./components/HomeSection/HomeSection";
 
 import styles from "./HomePage.module.scss";
 
@@ -18,119 +10,63 @@ const HomePage = () => {
     isLoading: isNewsDataLoading
   } = useInfinitePosts("news");
   const {
+    data: explorationData,
+    isLoading: isExplorationDataLoading
+  } = useInfinitePosts("exploration");
+  const {
+    data: essayData,
+    isLoading: isEssayDataLoading,
+  } = useInfinitePosts("essay");
+  const {
     data: promotionsData,
     isLoading: isPromotionsDataLoading
   } = useInfinitePosts("promotion");
-  const {
-    data: threadsData,
-    isLoading: isThreadsDataLoading
-  } = useInfinitePosts("thread");
 
   const newsPosts = newsData?.pages?.flatMap((page) => page.posts) ?? [];
+  const explorationPosts = explorationData?.pages?.flatMap((page) => page.posts) ?? [];
+  const essayPosts = essayData?.pages?.flatMap((page) => page.posts) ?? [];
   const promotionPosts = promotionsData?.pages?.flatMap((page) => page.posts) ?? [];
-  const theadPosts = threadsData?.pages?.flatMap((page) => page.posts) ?? [];
-
-  if (isNewsDataLoading) {
-    return <FullPageSpinner />
-  }
 
   return (
-    <div className={styles["home-page-layout-component"]}>
-      <section className={styles["news-carousel-wrapper"]}>
-        <CarouselSingle posts={newsPosts} />
+    <div className={styles["home-page-component"]}>
+      <section className={styles["news-carousel-section"]}>
+        <CarouselSingle posts={newsPosts} isLoading={isNewsDataLoading} />
       </section>
-      <section className={styles["section"]}>
-        <MainPageNoticeSection />
-      </section>
-      <section className={styles["section"]}>
-        <div className={styles["header"]}>
-          <h2 className={styles["title"]}>
-            <VscMegaphone
-              size={20}
-              color="rgb(44, 44, 44)"
-              className={styles["category-icon"]}
-            />
-            카페·납품 홍보
-          </h2>
-          <Link
-            to="/categories/promotion/posts"
-            className={styles["view-more-button"]}
-          >
-            View more
-            <RxDoubleArrowRight
-              size={20}
-              className={styles["view-more-arrow-image"]}
-            />
-          </Link>
-        </div>
-        <PostList
-          layout="grid"
-          cardType="column"
-          category="promotion"
-          posts={promotionPosts}
-          isLoading={isPromotionsDataLoading}
-        />
-      </section>
-      <section className={styles["section"]}>
-        <div className={styles["header"]}>
-          <h2 className={styles["title"]}>
-            <IoNewspaperOutline
-              size={20}
-              color="rgb(44, 44, 44)"
-              className={styles["category-icon"]}
-            />
-            뉴스
-          </h2>
-          <Link
-            to="/categories/news/posts"
-            className={styles["view-more-button"]}
-          >
-            View more
-            <RxDoubleArrowRight
-              size={20}
-              className={styles["view-more-arrow-image"]}
-            />
-          </Link>
-        </div>
-        <PostList
-          layout="grid"
-          cardType="background"
-          category="news"
-          posts={newsPosts}
-          isLoading={isNewsDataLoading}
-        />
-      </section>
-      <section className={styles["section"]}>
-        <div className={styles["header"]}>
-          <h2 className={styles["title"]}>
-            <BsFillThreadsFill
-              size={18}
-              color="rgb(44, 44, 44)"
-              className={styles["category-icon"]}
-            />
-            스레드
-          </h2>
-          <Link
-            to="/categories/thread/posts"
-            className={styles["view-more-button"]}
-          >
-            View more
-            <RxDoubleArrowRight
-              size={20}
-              className={styles["view-more-arrow-image"]}
-            />
-          </Link>
-        </div>
-        <div className={styles["threadsContainer-wrapper"]}>
-          <PostList
-            layout="flex"
-            cardType="thread"
-            category="thread"
-            posts={theadPosts}
-            isLoading={isThreadsDataLoading}
-          />
-        </div>
-      </section>
+      <HomeSection
+        category="exploration"
+        subTitle="카페 탐방 이야기를 작성해 보세요."
+        layout="overflow"
+        cardType="simple"
+        posts={explorationPosts}
+        isLoading={isExplorationDataLoading}
+        isGrayBackground={false}
+      /> 
+      <HomeSection
+        category="promotion"
+        subTitle="여러분의 카페, 제품 홍보글을 작성해 보세요."
+        layout="grid"
+        cardType="column"
+        posts={promotionPosts}
+        isLoading={isPromotionsDataLoading}
+        isGrayBackground={true}
+      /> 
+      <HomeSection
+        category="news"
+        subTitle="커피와 관련된 다양한 뉴스를 확인해 보세요."
+        layout="grid"
+        cardType="news"
+        posts={newsPosts}
+        isLoading={isNewsDataLoading}
+      /> 
+      <HomeSection
+        category="essay"
+        subTitle="자유롭게 에세이를 작성해 보세요."
+        layout="overflow"
+        cardType="pinterest"
+        posts={essayPosts}
+        isLoading={isEssayDataLoading}
+        isGrayBackground={true}
+      /> 
     </div>
   );
 };

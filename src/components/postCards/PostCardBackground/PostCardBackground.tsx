@@ -7,14 +7,14 @@ import defaultImage from "@/assets/default-images/default-image.jpg";
 import styles from "./PostCardBackground.module.scss";
 
 type Props<T extends Category> = {
-  category: Category
   post: Post<T>;
 };
 
-const PostCardBackground = <T extends Category>({ category, post }: Props<T>) => {
+const PostCardBackground = <T extends Category>({ post }: Props<T>) => {
   const {
     _id,
     thumbnailUrl,
+    category,
     title,
     content
   } = post;

@@ -1,16 +1,14 @@
-import type { JSX } from "react";
 import { useLocation } from "react-router-dom";
 
 import type { Category } from "@/types/category";
 import { extractPost_id } from "@/utils/extractPost_id";
 import { useGetPostDetail } from "@/hooks/useGetPostDetail";
-import { BreadCrumb } from "@/components/BreadCrumb/BreadCrumb";
 import { FullPageSpinner } from "@/components/spinners/FullPageSpinner/FullPageSpinner";
 import { PostDetailHeader } from "@/components/PostDetail/components/PostDetailHeader/PostDetailHeader";
-import { JobDetail } from "@/components/PostDetail/components/JobDetail/JobDetail";
-import { PostDetail } from "@/components/PostDetail/PostDetail";
+import { PostDetailContent } from "@/components/PostDetail/PostDetailContent";
 import { PostMetaStats } from "@/components/PostMetaStats/PostMetaStats";
 import { CommentSection } from "@/components/CommentSection/CommentSection";
+import { SameTopicCarousel } from "./components/SameTopicCarousel/SameTopicCarousel";
 
 import styles from "./PostDetailPage.module.scss";
 
@@ -18,7 +16,7 @@ type Props = {
   category: Category
 };
 
-const PostDetailPage = ({ category }: Props): JSX.Element => {
+const PostDetailPage = ({ category }: Props) => {
   const { pathname } = useLocation();
 
   const post_id = extractPost_id(pathname);
@@ -31,35 +29,15 @@ const PostDetailPage = ({ category }: Props): JSX.Element => {
 
   return (
     <div className={styles["post-detail-page-component"]}>
-      <BreadCrumb
-        category={category}
-        {...(post?.subCategory && {
-          subCategory: post.subCategory,
-        })}
-        usage="postDetail"
-      />
       <PostDetailHeader category={category} post={post} />
-      {category === "job" && (
-        <>
-          <h2 className={styles["section-title"]}>
-            {post?.subCategory === "hiring"
-              ? "모집 정보"
-              : "지원 정보"
-            }
-          </h2>
-          <JobDetail post={post} />
-          <h2 className={styles["section-title"]}>
-            상세 내용
-          </h2>
-        </>
-      )}
-      <PostDetail isLoading={isLoading} post={post} />
+      <PostDetailContent isLoading={isLoading} post={post} />
       <PostMetaStats
         category={category}
         post={post}
         isLoading={isLoading}
       />
       <CommentSection category={category} post_id={post_id} />
+      <SameTopicCarousel category={category} />
     </div>
   );
 };

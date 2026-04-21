@@ -1,0 +1,47 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.same-topic-carousel-component {
+  margin-top: 50px;
+  padding: 100px 0;
+  background-color: $background-color--gray;
+
+  @include tablet {
+    margin-top: 100px;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    max-width: $max-width;
+    margin: 0 auto 40px;
+    padding: 0 $safe-area--mobile;
+
+    @include tablet {
+      margin-bottom: 80px;
+      padding: 0 $safe-area--tablet;
+    }
+
+    .title {
+      margin: 0 0 20px;
+      font-size: 20px;
+      font-weight: 400;
+
+      @include tablet {
+        font-size: 24px;
+      }
+    }
+
+    .sub-title {
+      margin: 0;
+      font-size: 12px;
+			font-weight: 400;
+			color: $font-color--bright-gray;
+			letter-spacing: 0.5px;
+
+      @include tablet {
+        letter-spacing: 1px;
+      }
+    }
+  }
+}

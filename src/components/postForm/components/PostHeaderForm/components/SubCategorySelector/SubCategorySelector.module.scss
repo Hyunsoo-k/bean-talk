@@ -1,0 +1,56 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.sub-category-selector {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		height: 15px;
+		margin: 25px auto 0;
+		padding: 0 $safe-area--mobile;
+		font-size: 12px;
+		color: $font-color--dark-gray;
+		line-height: 1;
+
+		@include tablet {
+			max-width: $max-width;
+			height: 20px;
+			margin: 50px auto 0;
+			padding: 0 $safe-area--tablet;
+			font-size: 15px;
+		}
+
+		&.has-thumbnail {
+			color: $background-color--white;
+		}
+
+		.classification {
+			font-size: inherit;
+			color: inherit;
+			line-height: inherit;
+		}
+
+		.boundary-line {
+			width: 1px;
+			height: 12px;
+			background-color: $font-color--bright-gray;
+		}
+
+		.classification-button {
+			padding: 0;
+			background-color: inherit;
+			border: none;
+			font-size: inherit;
+			font-weight: 300;
+			color: inherit;
+			letter-spacing: 1px;
+			line-height: inherit;
+			cursor: pointer;
+
+			&.selected {
+				color: $font-color--rose;
+			}
+		}
+	}

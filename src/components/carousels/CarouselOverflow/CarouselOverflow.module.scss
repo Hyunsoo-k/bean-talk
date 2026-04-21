@@ -1,0 +1,44 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.container {
+  position: relative;
+  
+	.carousel-overflow-component {
+		overflow-x: auto;
+		padding: 0 $safe-area--mobile;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		will-change: scroll-position;
+		backface-visibility: hidden;
+
+		@include tablet {
+			/*
+			 * padding-top은 아이템 호버 시 위로 translateY 할 때의 여유 공간.
+			 * HomeSection 컴포넌트에서 header의 margin값 축소 필요
+			 */
+			padding: 20px $safe-area--tablet;
+		}
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		.item-list {
+			position: relative;
+			display: flex;
+			gap: 20px;
+			max-width: $max-width;
+			margin: 0 auto;
+			padding: 0;
+			list-style-type: none;
+
+			&::after {
+				content: "";
+				display: block;
+				flex-shrink: 0;
+				width: 200px;
+			}
+		}
+	}
+}

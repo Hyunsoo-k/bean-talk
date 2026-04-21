@@ -2,43 +2,49 @@ import type { RefObject } from "react";
 import { useLocation } from "react-router-dom";
 
 import type { Category } from "@/types/category";
+import type { PostListLayout } from "@/types/postListLayout";
 import type { Post } from "@/types/post";
+import type { CardType } from "@/types/cardType";
 import { CARD_COMPONENT_MAP, CARD_SKELETON_COMPONENT_MAP } from "./constants/cardComponentMaps";
+import { NoPostsView } from "./components/NoPostsView/NoPostsView";
 
 import styles from "./PostList.module.scss";
 
 type Props<T extends Category> = {
-  layout: "flex" | "grid";
-  cardType: "background" | "column" | "job" | "row" | "thread";
-  category: Category;
+  layout: PostListLayout;
+  cardType: CardType;
   posts: Post<T>[];
   isLoading: boolean;
+  category?: T;
   lastPostRef?: RefObject<HTMLLIElement | null>;
 };
 
 const PostList = <T extends Category>({
   layout,
   cardType,
-  category,
   posts,
   isLoading,
+  category,
   lastPostRef
 }: Props<T>) => {
   const { pathname } = useLocation();
-  const isMainPage = pathname === "/";
+  const isHomePage = pathname === "/";
 
-  let postsToRender: Post<typeof category>[];
-
-  if (isMainPage && (category === "promotion" || category === "news")) {
+  let postsToRender: Post<T>[] = [...posts];
+  if (isHomePage && (category === "promotion" || category === "news")) {
     postsToRender = posts.slice(0, 8);
-  } else if (isMainPage && (category === "job" || category === "thread")) {
+  } else if (isHomePage && category === "essay") {
+    postsToRender = posts.slice(0, 12);
+  } else if (isHomePage && category == "thread") {
     postsToRender = posts.slice(0, 4);
-  } else {
-    postsToRender = posts;
   }
 
-  const PostCard = CARD_COMPONENT_MAP[cardType];
-  const PostSkeletonCard = CARD_SKELETON_COMPONENT_MAP[cardType];
+  if (!isLoading && postsToRender.length === 0) {
+    return <NoPostsView />
+  }
+
+  const CardComponent = CARD_COMPONENT_MAP[cardType];
+  const SkeletonComponent = CARD_SKELETON_COMPONENT_MAP[cardType];
 
   return (
     <ul className={`${styles["post-list-component"]} ${styles[layout]}`}>
@@ -48,10 +54,15 @@ const PostList = <T extends Category>({
             key={`skeleton-${index}`}
             className={styles["post-card-wrapper"]}
           >
-            <PostSkeletonCard />
+            <SkeletonComponent {...(cardType === "simple" && { noStaticWidth: true })} />
           </li>
         ))
       }
+      {!isLoading && postsToRender.length === 0 && (
+        <p className={styles["no-posts-message"]}>
+          게시글이 없습니다.
+        </p>
+      )}
       {!isLoading && postsToRender.map((post, index) => (
         <li
           key={post._id}
@@ -61,7 +72,7 @@ const PostList = <T extends Category>({
             : null
           }
         >
-          <PostCard category={category} post={post} />
+          <CardComponent post={post} {...(cardType === "simple" && { noStaticWidth: true })} />
         </li>
       ))}
     </ul>

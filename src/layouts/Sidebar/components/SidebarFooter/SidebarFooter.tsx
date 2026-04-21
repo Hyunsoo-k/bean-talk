@@ -1,20 +1,20 @@
 import { CiLogout } from "react-icons/ci";
 
+import { useLogout } from "@/hooks/useLogout";
+
 import styles from "./SidebarFooter.module.scss";
 
-type Props = {
-  handleClickLogoutButton: () => void;
-};
+const SidebarFooter = () => {
+  const logout = useLogout();
 
-const SidebarFooter = ({ handleClickLogoutButton }: Props) => {
   return (
     <div className={styles["sidebar-footer-component"]}>
       <button
         type="button"
-        onClick={handleClickLogoutButton}
+        onClick={logout}
         className={styles["logout-button"]}
       >
-        <CiLogout size={20} />
+        <CiLogout className={styles["icon"]} />
         로그아웃
       </button>
     </div>

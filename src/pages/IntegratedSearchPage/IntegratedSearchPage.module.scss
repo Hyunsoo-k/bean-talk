@@ -17,25 +17,31 @@
 
   .header {
     margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid $font-color--black;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $border-color--gray;
+
+    @include tablet {
+      margin-bottom: 30px;
+    }
 
     .title {
       margin: 0;
       font-size: 18px;
+      font-weight: 500;
 
       @include tablet {
         font-size: 24px;
       }
 
-      .keyword {
+      .search-query {
         margin: 0 0 0 8px;
-        font-size: inherit;
+        font-size: 16px;
         font-weight: 500;
         letter-spacing: 0.5px;
 
         @include tablet {
           margin: 0 0 0 15px;
+          font-size: 22px;
         }
       }
     }

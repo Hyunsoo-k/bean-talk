@@ -1,7 +1,6 @@
 import type { JSX } from "react";
 
 import styles from "./PostCardColumnSkeleton.module.scss";
-import { SlArrowRight } from "react-icons/sl";
 
 const PostCardColumnSkeleton = (): JSX.Element => {
   return (
@@ -18,8 +17,7 @@ const PostCardColumnSkeleton = (): JSX.Element => {
         </div>
         <div className={styles["footer"]}>
           <div className={styles["read-more-button"]}>
-            Read more
-            <SlArrowRight size={11} />
+            Read More
           </div>
         </div>
       </div>
