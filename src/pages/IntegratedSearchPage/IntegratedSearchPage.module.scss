@@ -1,0 +1,43 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.integrated-search-page-component {
+  width: 100%;
+  margin: 0 auto;
+  padding:
+    $page-layout-column-blanck--mobile
+    $safe-area--mobile;
+  
+  @include tablet {
+    max-width: $max-width;
+    padding:
+      $page-layout-column-blanck--tablet
+      $safe-area--tablet;
+  }
+
+  .header {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid $font-color--black;
+
+    .title {
+      margin: 0;
+      font-size: 18px;
+
+      @include tablet {
+        font-size: 24px;
+      }
+
+      .keyword {
+        margin: 0 0 0 8px;
+        font-size: inherit;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+
+        @include tablet {
+          margin: 0 0 0 15px;
+        }
+      }
+    }
+  }
+}

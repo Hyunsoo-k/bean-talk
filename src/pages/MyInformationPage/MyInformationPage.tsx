@@ -6,7 +6,7 @@ import type { UserMe } from "@/types/userMe";
 import { queryClient } from "@/constants/queryClient";
 import { QUERY_KEYS } from "@/constants/queryKeys";
 import { useEditUserModalStore } from "@/zustand/useEditUserModalStore";
-import { useInfiniteScrollObserver } from "@/hooks/useInfiniteScrollObserver";
+import { useInfinitieScrollObserver } from "@/hooks/useInfinitieScrollObserver";
 import { useInfiniteMyPosts } from "@/hooks/useInfinitieMyPosts";
 import { useInfinitieScraps } from "./hooks/useInfinitieScraps";
 import { FullPageSpinner } from "@/components/spinners/FullPageSpinner/FullPageSpinner";
@@ -41,14 +41,14 @@ const MyInformationPage = () => {
   const lastMyPostRef = useRef<HTMLLIElement | null>(null);
   const lastScrapRef = useRef<HTMLLIElement | null>(null);
 
-  useInfiniteScrollObserver(
+  useInfinitieScrollObserver(
     lastMyPostRef,
     false,
     hasNextMyPostsPage,
     fetchNextMyPostsPage
   );
 
-  useInfiniteScrollObserver(
+  useInfinitieScrollObserver(
     lastMyPostRef,
     false,
     hasNextScrapsPage,

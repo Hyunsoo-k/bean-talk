@@ -1,15 +1,13 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import type { Category } from "@/types/category";
 import type { QueryParams } from "@/types/queryParams";
 import { QUERY_KEYS } from "@/constants/queryKeys";
-import { getInfinitiePosts } from "@/api/getInfinitiePosts";
+import { getInfinitieIntegratedPosts } from "@/api/getInfinitieIntegratedPosts";
 
-
-const useInfinitePosts = (category: Category, queryParams?: QueryParams) => {
+const useInfinitieIntegratedPosts = (queryParams: QueryParams) => {
   return useInfiniteQuery({
-    queryKey: QUERY_KEYS.posts(category, queryParams),
-    queryFn: ({ pageParam }) => getInfinitiePosts(category, pageParam, queryParams),
+    queryKey: QUERY_KEYS.integratedPosts(queryParams),
+    queryFn: ({ pageParam }) => getInfinitieIntegratedPosts(queryParams, pageParam),
     getNextPageParam: (lastPage) => {
       const { hasNextPage, nextCursor } = lastPage;
 
@@ -17,7 +15,7 @@ const useInfinitePosts = (category: Category, queryParams?: QueryParams) => {
     },
     staleTime: 10 * 60 * 1000,
     initialPageParam : null
-  });
+  })
 };
 
-export { useInfinitePosts };
+export { useInfinitieIntegratedPosts };

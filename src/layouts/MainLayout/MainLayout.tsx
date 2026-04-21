@@ -5,10 +5,12 @@ import { useAlertModalStore } from "@/zustand/useAlertModalStore";
 import { useAuthModalStore } from "@/zustand/useAuthModalStore";
 import { useConfirmModalStore } from "@/zustand/useConfirmModalStore";
 import { useEditUserModalStore } from "@/zustand/useEditUserModalStore";
+import { useSearchModalStore } from "@/zustand/useSearchModalStore";
 import { AuthModal } from "@/components/modals/AuthModal/AuthModal";
 import { EditUserModal } from "@/components/modals/EditUserModal/EditUserModal";
 import { AlertModal } from "@/components/modals/AlertModal/AlertModal";
 import { ConfirmModal } from "@/components/modals/ConfirmModal/ConfirmModal";
+import { SearchModal } from "@/components/modals/SearchModal/SearchModal";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { Sidebar } from "../Sidebar/SideBar";
@@ -27,6 +29,7 @@ const MainLayout = ({ children }: Props) => {
   const { isOpen: isAlertModalOpen } = useAlertModalStore();
   const { isOpen: isConfirmModalOpen } = useConfirmModalStore();
   const { isOpen: isEditUserModalOpen } = useEditUserModalStore();
+  const { isOpen: isSearchModalOpen } = useSearchModalStore();
 
   return (
     <div className={styles["main-layout-component"]}>
@@ -42,6 +45,7 @@ const MainLayout = ({ children }: Props) => {
       {isAlertModalOpen && <AlertModal />}
       {isConfirmModalOpen && <ConfirmModal />}
       {isEditUserModalOpen && <EditUserModal />}
+      {isSearchModalOpen && <SearchModal />}
     </div>
   );
 };

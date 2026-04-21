@@ -16,15 +16,15 @@ const HomePage = () => {
   const {
     data: newsData,
     isLoading: isNewsDataLoading
-  } = useInfinitePosts({ category: "news" });
+  } = useInfinitePosts("news");
   const {
     data: promotionsData,
     isLoading: isPromotionsDataLoading
-  } = useInfinitePosts({ category: "promotion" });
+  } = useInfinitePosts("promotion");
   const {
     data: threadsData,
     isLoading: isThreadsDataLoading
-  } = useInfinitePosts({ category: "thread" });
+  } = useInfinitePosts("thread");
 
   const newsPosts = newsData?.pages?.flatMap((page) => page.posts) ?? [];
   const promotionPosts = promotionsData?.pages?.flatMap((page) => page.posts) ?? [];
@@ -64,7 +64,7 @@ const HomePage = () => {
           </Link>
         </div>
         <PostList
-          type="grid"
+          layout="grid"
           cardType="column"
           category="promotion"
           posts={promotionPosts}
@@ -93,7 +93,7 @@ const HomePage = () => {
           </Link>
         </div>
         <PostList
-          type="grid"
+          layout="grid"
           cardType="background"
           category="news"
           posts={newsPosts}
@@ -123,7 +123,7 @@ const HomePage = () => {
         </div>
         <div className={styles["threadsContainer-wrapper"]}>
           <PostList
-            type="flex"
+            layout="flex"
             cardType="thread"
             category="thread"
             posts={theadPosts}

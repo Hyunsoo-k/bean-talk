@@ -1,23 +1,39 @@
-import type { Category, CategoryHavingSubCategory, SubCategory } from "@/types/category";
-import type { QueryOption } from "@/types/queryOption";
+import type { Category } from "@/types/category";
+import type { QueryParams } from "@/types/queryParams";
 
 const QUERY_KEYS = {
   userMe: ["userMe"],
   notifications: ["notifications"],
-  posts: (
-    category: Category,
-    subCategory?: SubCategory<CategoryHavingSubCategory>,
-    queryOption?: QueryOption,
-    keyword?: string
-  ) => {
+  posts: (category: Category, queryParams?: QueryParams) => {
     const queryKey = ["posts", category];
 
-    if (subCategory) {
-      queryKey.push(subCategory)
+    if (queryParams?.subCategory) {
+      queryKey.push(queryParams?.subCategory)
     }
 
-    if (queryOption && keyword) {
-      queryKey.push(queryOption, keyword);
+    if (queryParams?.searchTarget) {
+      queryKey.push(queryParams?.searchTarget);
+    }
+
+    if (queryParams?.searchTarget && queryParams?.searchQuery) {
+      queryKey.push(queryParams?.searchTarget, queryParams?.searchQuery);
+    }
+
+    return queryKey;
+  },
+  integratedPosts: (queryParams: QueryParams) => {
+    const queryKey = ["integratedPosts"];
+
+    if (queryParams?.subCategory) {
+      queryKey.push(queryParams?.subCategory)
+    }
+
+    if (queryParams?.searchTarget) {
+      queryKey.push(queryParams?.searchTarget);
+    }
+
+    if (queryParams?.searchTarget && queryParams?.searchQuery) {
+      queryKey.push(queryParams?.searchTarget, queryParams?.searchQuery);
     }
 
     return queryKey;

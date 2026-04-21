@@ -1,19 +1,33 @@
-import type { JSX, MouseEvent } from "react";
+import type { MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { CiSearch } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
+import { useSearchModalStore } from "@/zustand/useSearchModalStore";
 
 import { useSidebarStore } from "@/zustand/useSidebarStore";
 
 import styles from "./Header.module.scss";
 
-const Header = (): JSX.Element => {
+const Header = () => {
   const { open: openSidebar } = useSidebarStore();
+  const {
+    isOpen: isSearchModalOpen,
+    open: openSearchModal,
+    close: closeSearchModal
+  } = useSearchModalStore();
 
-  const handleClickMenu = (e: MouseEvent<SVGAElement>) => {
+  const handleMenuClick = (e: MouseEvent<SVGAElement>) => {
     e.stopPropagation();
     openSidebar();
+  };
+
+  const handleSearchClick = () => {
+    openSearchModal({ context: "header" });
+  };
+
+  const handleCloseClick = () => {
+    closeSearchModal();
   };
 
   return (
@@ -22,7 +36,7 @@ const Header = (): JSX.Element => {
         <RxHamburgerMenu
           size={22}
           color="#2C2C2C"
-          onClick={handleClickMenu}
+          onClick={handleMenuClick}
         />
         <Link to="/">
           <h1 className={styles["banner"]}>
@@ -31,10 +45,25 @@ const Header = (): JSX.Element => {
         </Link>
       </div>
       <div className={styles["right-area"]}>
-        <CiSearch
-          size={24}
-          color="#2C2C2C"
-        />
+        {isSearchModalOpen ? (
+          <button type="button" className={styles["close-button"]}>
+            <IoCloseOutline
+              size={24}
+              color="#2C2C2C"
+              onClick={handleCloseClick}
+              className={styles["close-icon"]}
+            />
+          </button>
+        ) : (
+          <button type="button" className={styles["search-button"]}>
+            <CiSearch
+              size={24}
+              color="#2C2C2C"
+              onClick={handleSearchClick}
+              className={styles["search-icon"]}
+            />
+          </button>
+        )}
       </div>
     </div>
   );

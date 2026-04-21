@@ -1,12 +1,17 @@
-import type { JSX } from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { PiPencilSimpleLineLight } from "react-icons/pi";
 
-import type { Category } from "@/types/category";
-import type { SubCategoryKr } from "@/types/category";
-import { useGetUserMe } from "@/hooks/useGetUserMe";
+import type {
+  Category,
+  CategoryHavingSubCategory,
+  SubCategory
+} from "@/types/category";
+import { CATEGORY_TO_SUB_CATEGORYS_MAP } from "@/constants/subCategoryMap";
+import { useSearchModalStore } from "@/zustand/useSearchModalStore";
+import { getUserMe } from "@/utils/getUserMe";
+import { SubCategoryNav } from "./components/SubCategoryNav/SubCategoryNav";
 
 import styles from "./PostListHeader.module.scss";
 
@@ -14,34 +19,35 @@ type Props = {
   category: Category;
 };
 
-const PostListHeader = ({ category }: Props): JSX.Element => {
+const PostListHeader = ({ category }: Props) => {
+  const { open: openSearchModal } = useSearchModalStore();
   const navigate = useNavigate();
-  
-  const [currentSubCategory, setCurrentSubCategory] = useState<SubCategoryKr>("All");
+  const [currentSubCategory, setCurrentSubCategory] =
+    useState<SubCategory<CategoryHavingSubCategory> | "All">("All");
   
   const capitalizedCategory = category.toUpperCase();
 
-  const subCategorys: SubCategoryKr[] = [];
+  const userMe = getUserMe();
 
-  switch (category) {
-    case "promotion":
-      subCategorys.push(...["카페", "납품", "All"] as SubCategoryKr[]);
-      break;
-    case "job":
-      subCategorys.push(...["구인", "구직", "All"] as SubCategoryKr[]);
-      break;
-    case "news":
-      subCategorys.push(...["국내", "해외", "All"] as SubCategoryKr[]);
-      break;
+  let subCategories: (SubCategory<CategoryHavingSubCategory> | "All")[] = [];
+  if (["promotion", "news", "job"].includes(category)) {
+    subCategories = [...CATEGORY_TO_SUB_CATEGORYS_MAP[category as CategoryHavingSubCategory], "All"];
   }
 
-  const handleClickSubCategory = (subCategory: SubCategoryKr): void => {
+  const handleSubCategoryClick = (
+    subCategory: SubCategory<CategoryHavingSubCategory> | "All"
+  ): void => {
     setCurrentSubCategory(subCategory);
   };
 
-  const userMe = useGetUserMe();
+  const handleSearchClick = () => {
+    openSearchModal({
+      context: "postListPage",
+      category: "promotion"
+    });
+  };
 
-  const handleClickCreate = () => {
+  const handleCreateClick = () => {
     navigate(`/categories/${category}/posts/create`);
   };
 
@@ -50,34 +56,37 @@ const PostListHeader = ({ category }: Props): JSX.Element => {
       <h2 className={styles["category"]}>
         {capitalizedCategory}
       </h2>
-      <ul className={styles["sub-category-list"]}>
-        {subCategorys.map((subCategory: SubCategoryKr) => (
-          <li
-            key={subCategory}
-            onClick={() => { handleClickSubCategory(subCategory); }}
-            className={styles["sub-category-item"]}
-          >
-            <Link
-              to=""
-              className={`${styles["sub-category-link"]} ${currentSubCategory === subCategory ? styles["active"] : ""}`}
-            >
-              {subCategory}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <CiSearch
-        size={24}
-        color="#2C2C2C"
-        className={styles["search-icon"]}
-      />
-      {userMe && (
-        <PiPencilSimpleLineLight
+      {subCategories && (
+        <SubCategoryNav
+          category={category}
+          currentSubCategory={currentSubCategory}
+          subCategories={subCategories}
+          onSubcategoryClick={handleSubCategoryClick}
+        />
+      )}
+      <button
+        type="button"
+        onClick={handleSearchClick}
+        className={`${styles["button"]} ${styles["search-button"]}`}
+      >
+        <CiSearch
           size={24}
           color="#2C2C2C"
-          onClick={handleClickCreate}
-          className={styles["create-icon"]}
+          className={styles["search-icon"]}
         />
+      </button>
+      {userMe && (
+        <button
+          type="button"
+          onClick={handleCreateClick}
+          className={`${styles["button"]} ${styles["create-button"]}`}
+        >
+          <PiPencilSimpleLineLight
+            size={24}
+            color="#2C2C2C"
+            className={styles["create-icon"]}
+          />
+        </button>
       )}
     </div>
   );

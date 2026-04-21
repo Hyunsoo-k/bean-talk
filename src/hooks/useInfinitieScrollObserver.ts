@@ -1,14 +1,14 @@
 import type { RefObject } from "react";
 import { useEffect } from "react";
 
-const useInfiniteScrollObserver = (
-  targetRef: RefObject<HTMLLIElement | null>,
+const useInfinitieScrollObserver = (
+  lastPostRef: RefObject<HTMLLIElement | null>,
   isRenderedOnMainPage: boolean,
   hasNextPage: boolean,
   fetchNextPage: () => void
 ) => {
   useEffect(() => {
-    const target = targetRef.current;
+    const target = lastPostRef.current;
     if (!target || isRenderedOnMainPage) {
       return;
     };
@@ -30,7 +30,7 @@ const useInfiniteScrollObserver = (
     return () => {
       return io.disconnect();
     };
-  }, [targetRef, hasNextPage, fetchNextPage, isRenderedOnMainPage]);
+  }, [lastPostRef, hasNextPage, fetchNextPage, isRenderedOnMainPage]);
 };
 
-export { useInfiniteScrollObserver };
+export { useInfinitieScrollObserver };
