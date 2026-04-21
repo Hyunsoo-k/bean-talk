@@ -1,17 +1,21 @@
-import type { JSX } from "react";
 import { createPortal } from "react-dom";
 
 import { useConfirmModalStore } from "@/zustand/useConfirmModalStore";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 import styles from "./ConfrimModal.module.scss";
 
-const ConfirmModal = (): JSX.Element => {
+const ConfirmModal = ()=> {
   const {
+    isOpen,
     message,
+    subMessage,
     handleClickCancel,
     handleClickConfirm,
     close
   } = useConfirmModalStore();
+
+  useScrollLock(isOpen);
 
   const handleClickBackdrop = (): void => {
     close();
@@ -28,23 +32,26 @@ const ConfirmModal = (): JSX.Element => {
           <span className={styles["message"]}>
             {message}
           </span>
+          <span className={styles["sub-message"]}>
+            {subMessage}
+          </span>
         </div>
-        <div className={styles["footer"]}>
+        <footer className={styles["footer"]}>
           <button
             type="button"
             onClick={handleClickCancel}
-            className={styles["cancel-button"]}
+            className={`${styles["button"]} ${styles["cancel"]}`}
           >
             취소
           </button>
           <button
             type="button"
             onClick={handleClickConfirm}
-            className={styles["confirm-button"]}
+            className={`${styles["button"]} ${styles["confirm"]}`}
           >
             확인
           </button>
-        </div>
+        </footer>
       </div>
     </>,
     document.body

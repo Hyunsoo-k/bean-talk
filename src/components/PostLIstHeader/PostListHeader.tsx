@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CiSearch } from "react-icons/ci";
 import { PiPencilSimpleLineLight } from "react-icons/pi";
+import { CiSearch } from "react-icons/ci";
+import { IoCloseOutline } from "react-icons/io5";
 
-import type {
-  Category,
-  CategoryHavingSubCategory,
-  SubCategory
-} from "@/types/category";
-import { CATEGORY_TO_SUB_CATEGORYS_MAP } from "@/constants/subCategoryMap";
-import { useSearchModalStore } from "@/zustand/useSearchModalStore";
-import { getUserMe } from "@/utils/getUserMe";
+import type { Category } from "@/types/category";
+import { isCategoryHavingSubCategory } from "@/utils/isCategoryHavingSubCategory";
+import { useGetUserMe } from "@/hooks/useGetUserMe";
 import { SubCategoryNav } from "./components/SubCategoryNav/SubCategoryNav";
+import { SearchForm } from "../SearchForm/SearchForm";
 
 import styles from "./PostListHeader.module.scss";
 
@@ -20,31 +17,18 @@ type Props = {
 };
 
 const PostListHeader = ({ category }: Props) => {
-  const { open: openSearchModal } = useSearchModalStore();
   const navigate = useNavigate();
-  const [currentSubCategory, setCurrentSubCategory] =
-    useState<SubCategory<CategoryHavingSubCategory> | "All">("All");
-  
+  const [isSearchFormOpen, setIsSerachFormOpen] = useState<boolean>(false);
+  const { data: userMe } = useGetUserMe();
   const capitalizedCategory = category.toUpperCase();
-
-  const userMe = getUserMe();
-
-  let subCategories: (SubCategory<CategoryHavingSubCategory> | "All")[] = [];
-  if (["promotion", "news", "job"].includes(category)) {
-    subCategories = [...CATEGORY_TO_SUB_CATEGORYS_MAP[category as CategoryHavingSubCategory], "All"];
-  }
-
-  const handleSubCategoryClick = (
-    subCategory: SubCategory<CategoryHavingSubCategory> | "All"
-  ): void => {
-    setCurrentSubCategory(subCategory);
-  };
+  const hasSubCategory = isCategoryHavingSubCategory(category);
 
   const handleSearchClick = () => {
-    openSearchModal({
-      context: "postListPage",
-      category: "promotion"
-    });
+    setIsSerachFormOpen(true);
+  };
+
+  const handleCloseClick = () => {
+    setIsSerachFormOpen(false);
   };
 
   const handleCreateClick = () => {
@@ -56,38 +40,40 @@ const PostListHeader = ({ category }: Props) => {
       <h2 className={styles["category"]}>
         {capitalizedCategory}
       </h2>
-      {subCategories && (
-        <SubCategoryNav
-          category={category}
-          currentSubCategory={currentSubCategory}
-          subCategories={subCategories}
-          onSubcategoryClick={handleSubCategoryClick}
-        />
+      {hasSubCategory && (
+        <SubCategoryNav category={category} isSearchFormOpen={isSearchFormOpen} />
       )}
-      <button
-        type="button"
-        onClick={handleSearchClick}
-        className={`${styles["button"]} ${styles["search-button"]}`}
-      >
-        <CiSearch
-          size={24}
-          color="#2C2C2C"
-          className={styles["search-icon"]}
-        />
-      </button>
-      {userMe && (
-        <button
-          type="button"
-          onClick={handleCreateClick}
-          className={`${styles["button"]} ${styles["create-button"]}`}
-        >
-          <PiPencilSimpleLineLight
-            size={24}
-            color="#2C2C2C"
-            className={styles["create-icon"]}
-          />
-        </button>
-      )}
+      <div className={styles["button-group"]}>
+        {userMe && !isSearchFormOpen && (
+          <button
+            type="button"
+            onClick={handleCreateClick}
+            className={`${styles["button"]} ${styles["create-button"]}`}
+          >
+            <PiPencilSimpleLineLight className={styles["button-icon"]} />
+          </button>
+        )}
+        {isSearchFormOpen ? (
+          <button
+            type="button"
+            onClick={handleCloseClick}
+            className={styles["button"]}
+          >
+            <IoCloseOutline className={styles["button-icon"]}/>
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={handleSearchClick}
+            className={styles["button"]}
+          >
+            <CiSearch className={styles["button-icon"]}/>
+          </button>
+        )}
+        {isSearchFormOpen && (
+          <SearchForm setIsSearchFormOpen={setIsSerachFormOpen} context="postListHeader" />
+        )}
+      </div>
     </div>
   );
 };

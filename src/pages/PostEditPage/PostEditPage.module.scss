@@ -2,15 +2,17 @@
 @use "@/styles/responsive.scss" as *;
 
 .post-edit-page-component {
-	margin: 0 auto;
-	padding: $page-layout-column-blanck--mobile $safe-area--mobile;
-
-	> :nth-child(1) {
-		margin-bottom: 15px;
-	}
+	display: flex;
+	flex-direction: column;
 
 	@include tablet {
-		max-width: $max-width;
-		padding: $page-layout-column-blanck--tablet $safe-area--tablet;
+		margin-bottom: 30px;
+	}
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		margin: 0 auto;
 	}
 }

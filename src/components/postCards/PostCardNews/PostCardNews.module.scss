@@ -1,0 +1,109 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-card-news-component {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 200px;
+	color: inherit;
+	text-decoration: none;
+
+	@include tablet {
+		height: 355px;
+	}
+
+	&:hover {
+		.thumbnail {
+			transform: scale(1.1);
+		}
+
+		.title {
+			text-decoration: underline;
+			text-underline-offset: 2px;
+		}
+	}
+
+	.thumbnail-wrapper {
+		overflow: hidden;
+		width: 100%;
+		height: 130px;
+		margin-bottom: 10px;
+
+    @include tablet {
+      height: 200px;
+      margin-bottom: 20px;
+    }
+
+		.thumbnail {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			transition: transform 0.2s ease-in-out;
+
+			@include tablet {
+			}
+		}
+	}
+
+	.header {
+    display: flex;
+    flex-direction: column;
+
+		.meta-data {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 10px;
+			padding-bottom: 3px;
+			border-bottom: 1px solid $font-color--black;
+			font-size: 12px;
+
+      @include tablet {
+        margin-bottom: 20px;
+        font-size: 13px;
+      }
+		}
+
+		.title {
+			overflow: hidden;
+			position: relative;
+			z-index: 1;
+			display: -webkit-box;
+      margin: 0;
+			margin-top: auto;
+			font-size: 14px;
+			font-weight: 450;
+			line-clamp: 2;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+
+			@include tablet {
+        margin: 0;
+        font-size: 16px;
+			}
+		}
+	}
+
+	.body {
+		display: none;
+
+		@include tablet {
+			display: block;
+			margin-top: auto;
+
+			.content {
+				overflow: hidden;
+				display: -webkit-box;
+				margin: 0;
+				font-size: 14px;
+				color: $font-color--dark-gray;
+				line-height: 1.6;
+				line-clamp: 2;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+			}
+		}
+	}
+}

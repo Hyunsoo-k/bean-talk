@@ -9,7 +9,7 @@ const SUB_CATEGORY_TO_KR_MAP: Record<SubCategory<CategoryHavingSubCategory>, str
   "international": "국외",
 };
 
-const CATEGORY_TO_SUB_CATEGORYS_MAP: Record<
+const CATEGORY_TO_SUB_CATEGORIES_MAP: Record<
   CategoryHavingSubCategory,
   SubCategory<CategoryHavingSubCategory>[]
 > = {
@@ -19,4 +19,4 @@ const CATEGORY_TO_SUB_CATEGORYS_MAP: Record<
 };
 
 
-export { SUB_CATEGORY_TO_KR_MAP, CATEGORY_TO_SUB_CATEGORYS_MAP };
+export { SUB_CATEGORY_TO_KR_MAP, CATEGORY_TO_SUB_CATEGORIES_MAP };

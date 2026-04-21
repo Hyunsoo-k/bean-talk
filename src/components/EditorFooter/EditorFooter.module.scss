@@ -1,0 +1,59 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.editor-footer-component {
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: $editor-footer-height--mobile;
+  padding: 0 $safe-area--mobile;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid $border-color--gray;
+
+  @include tablet {
+    gap: 20px;
+    height: $editor-footer-height--tablet;
+    padding: 0 $safe-area--tablet;
+  }
+
+  .thumbnail-input {
+    display: none;
+  }
+
+  .button {
+    width: 70px;
+    height: 35px;
+    background-color: inherit;
+    border: none;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+
+    @include tablet {
+      width: 90px;
+      height: 45px;
+      font-size: 13px;
+    }
+  }
+
+  .thumbnail-action {
+    width: 100px;
+    margin-left: auto;
+    background-color: inherit;
+    border: 1px solid $border-color--gray;
+
+    @include tablet {
+      width: 120px;
+    }
+  }
+
+  .submit {
+    background-color: $font-color--black;
+    color: $background-color--white;
+  }
+}

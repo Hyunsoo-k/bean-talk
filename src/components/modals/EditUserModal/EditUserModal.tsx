@@ -4,11 +4,11 @@ import { FormProvider, useForm } from "react-hook-form";
 
 import type { EditUserRequestBody } from "@/types/editUserRequestBody";
 import type { UserMe } from "@/types/userMe";
-import type { EditUserFormValues } from "./types/EditUserFormValues";
+import type { EditUserFormValues } from "./types/editUserFormValues";
 import { QUERY_KEYS } from "@/constants/queryKeys";
 import { queryClient } from "@/constants/queryClient";
 import { useEditUserModalStore } from "@/zustand/useEditUserModalStore";
-import { uploadImageSrc } from "@/api/uploadImageSrc";
+import { uploadBlobUrl } from "@/api/uploadBlobUrl";
 import { useEditUser } from "./hooks/useEditUser";
 import { EditUserForm } from "./components/EditUserForm/EditUserForm";
 
@@ -53,7 +53,7 @@ const EditUserModal = () => {
     let finalProfileImageUrl = profileImageUrl;
 
     if (profileImageUrl && profileImageUrl !== userMe?.profileImageUrl) {
-      finalProfileImageUrl = await uploadImageSrc(profileImageUrl);
+      finalProfileImageUrl = await uploadBlobUrl(profileImageUrl);
     }
 
     const requestBody: EditUserRequestBody = {

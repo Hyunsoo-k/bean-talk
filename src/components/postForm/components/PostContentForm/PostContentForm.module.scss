@@ -1,0 +1,136 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-content-form-component {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+
+	.editor-content {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	:global(.tiptap.ProseMirror) {
+		display: block;
+		flex-grow: 1;
+		width: 100%;
+		padding: 50px $safe-area--mobile;
+		border: none;
+		outline: none;
+		letter-spacing: 0.5px;
+		word-break: break-word;
+		white-space: pre-wrap;
+
+		@include tablet {
+			max-width: $max-width;
+			margin: 0 auto;
+			padding: 100px $safe-area--tablet;
+		}
+
+		p {
+			margin: 0;
+			font-size: 15px;
+			line-height: 2;
+			white-space: pre-wrap;
+
+			@include tablet {
+				font-size: 16px;
+			}
+
+			&:global(.is-editor-empty:first-child)::before {
+				content: attr(data-placeholder);
+				float: left;
+				height: 0;
+				color: $font-color--bright-gray;
+				pointer-events: none;
+			}
+		}
+
+		blockquote {
+			text-align: center;
+
+			&::before {
+				content: "“";
+				display: block;
+				width: 100%;
+				height: 50px;
+				font-size: 50px;
+				font-family: "Nanum Myeongjo", serif;
+				text-align: center;
+			}
+
+			p {
+				text-align: center !important;
+			}
+
+			&::after {
+				content: "”";
+				display: block;
+				width: 100%;
+				height: 50px;
+				font-size: 50px;
+				font-family: "Nanum Myeongjo", serif;
+				text-align: center;
+			}
+		}
+
+		img {
+			display: block;
+			width: 90%;
+			max-height: 700px;
+			margin: 20px 0;
+			object-fit: cover;
+			object-position: center;
+		}
+
+		hr {
+			width: 50%;
+			margin: 50px auto;
+			border: none;
+			border-bottom: 1px solid $border-color--gray;
+		}
+
+		:global(#map-wrapper) {
+			overflow: hidden;
+			width: 100%;
+			margin: 30px auto 0;
+			border: 1px solid $border-color--gray;
+
+			@include tablet {
+				max-width: 600px;
+				margin: 50px auto;
+			}
+
+			:global(#map) {
+				position: relative;
+				width: 100%;
+				height: 180px;
+
+				@include tablet {
+					height: 350px;
+				}
+			}
+
+			:global(#map-information) {
+				display: flex;
+				align-items: center;
+				width: 100%;
+				height: 40px;
+				padding: 0 10px;
+				border-top: 1px solid $border-color--gray;
+
+				:global(#address) {
+					flex-grow: 1;
+					font-size: 12px;
+
+					@include tablet {
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+}

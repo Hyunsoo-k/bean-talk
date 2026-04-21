@@ -1,0 +1,129 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-card-news-skeleton-component {
+	width: 100%;
+	height: 200px;
+
+	@include tablet {
+		height: 355px;
+	}
+
+	.thumbnail {
+		position: relative;
+		width: 100%;
+		height: 130px;
+		margin-bottom: 10px;
+		background-color: $background-color--skeleton--dark-gray;
+
+		@include tablet {
+			height: 200px;
+			margin-bottom: 20px;
+		}
+	}
+
+	.header {
+		.meta-data {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 10px;
+			padding-bottom: 3px;
+			border-bottom: 1px solid $font-color--black;
+
+			@include tablet {
+				margin-bottom: 20px;
+			}
+
+			.sub-category {
+				position: relative;
+				width: 30px;
+				height: 15px;
+				background-color: $background-color--skeleton--dark-gray;
+
+        @include tablet {
+          width: 40px;
+        }
+			}
+
+			.created-at {
+				position: relative;
+				width: 80px;
+				height: 15px;
+				background-color: $background-color--skeleton--dark-gray;
+
+        @include tablet {
+          width: 100px;
+        }
+			}
+		}
+
+		.title {
+			position: relative;
+			height: 15px;
+			margin-bottom: 5px;
+			background-color: $background-color--skeleton--dark-gray;
+
+			&.first-line {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+
+			&.second-line {
+				width: 50%;
+			}
+		}
+	}
+
+	.body {
+		display: none;
+
+		@include tablet {
+			display: block;
+		}
+
+		.content {
+			position: relative;
+			height: 15px;
+			background-color: $background-color--skeleton--dark-gray;
+
+			&.first-line {
+				width: 80%;
+				margin-bottom: 10px;
+			}
+
+			&.second-line {
+				width: 30%;
+			}
+		}
+	}
+}
+
+.thumbnail::after,
+.sub-category::after,
+.created-at::after,
+.title::after,
+.content::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(255, 255, 255, 0.3),
+		transparent
+	);
+	transform: translateX(-100%);
+	animation: shimmer 1s infinite;
+}
+
+@keyframes shimmer {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}

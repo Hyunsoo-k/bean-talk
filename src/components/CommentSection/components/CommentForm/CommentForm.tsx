@@ -7,6 +7,7 @@ import { QUERY_KEYS } from "@/constants/queryKeys";
 import { useAlertModalStore } from "@/zustand/useAlertModalStore";
 import { queryClient } from "@/constants/queryClient";
 import { useCreateComment } from "./hooks/useCreateComment";
+import { UnLoggedinForm } from "./components/UnLoggedinForm/UnLoggedinForm";
 
 import styles from "./CommentForm.module.scss";
 
@@ -17,7 +18,7 @@ type Props = {
 
 const CommentForm = ({ category, post_id }: Props) => {
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
-  const [isInputFocused, setIsInputFocused] = useState(false);
+  const [, setIsInputFocused] = useState(false);
 
   const {
     register,
@@ -49,11 +50,6 @@ const CommentForm = ({ category, post_id }: Props) => {
     const { content } = formValue;
     const requestBody = { content };
     create(requestBody);
-
-  };
-
-  const handleSubmitError = (errors: FieldErrors<Record<"content", string>>) => {
-    console.log(errors)
   };
 
   const handleResizeTextArea = () => {
@@ -63,13 +59,14 @@ const CommentForm = ({ category, post_id }: Props) => {
     }
   };
 
+  if (!userMe) {
+    return <UnLoggedinForm />
+  }
+
   return (
     <form
-      onSubmit={handleRHFSubmit(handleSubmit, handleSubmitError)}
-      className={`
-        ${styles["comment-form-component"]} 
-        ${isInputFocused ? styles["--focused"] : ""}
-      `}
+      onSubmit={handleRHFSubmit(handleSubmit)}
+      className={styles["comment-form-component"]}
     >
       <textarea
         placeholder="댓글을 입력해 주세요."
@@ -85,21 +82,21 @@ const CommentForm = ({ category, post_id }: Props) => {
           register("content").ref(el);
           textAreaRef.current = el;
         }}
-        className={styles["comment-input"]}
+        className={styles["input"]}
       />
-      <div className={styles["bottom"]}>
+      <footer className={styles["footer"]}>
         {formState.errors.content && (
-          <small className={styles["warning-message"]}>
+          <small className={styles["error-message"]}>
             {formState.errors.content?.message as string}
           </small>
         )}
         <button
-          className={styles["comment-submit-button"]}
+          className={styles["submit-button"]}
           disabled={isPending}
         >
           등록
         </button>
-      </div>
+      </footer>
     </form>
   );
 };

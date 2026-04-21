@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { useFormContext } from "react-hook-form";
 import { IoIosArrowDown } from "react-icons/io";
 
-import type { SearchTarget } from "../../../../../types/searchTarget";
+import type { SearchTarget } from "../../../../../types/SearchType";
 import { SEARCH_TARGET_TO_KR_MAP } from "./constants/searchTargetToKrMap";
 import { useClickOutside } from "@/hooks/useClickOutside";
 

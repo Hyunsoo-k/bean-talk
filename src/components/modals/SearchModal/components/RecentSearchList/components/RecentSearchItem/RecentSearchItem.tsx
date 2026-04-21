@@ -10,21 +10,21 @@ import styles from "./RecentSearchItem.module.scss";
 
 type Props = {
   recentSearch: RecentSearch;
-  handleRecentSearchItemClick: (e: MouseEvent<HTMLAnchorElement>, keyword: string) => void;
-  handleRecentSearchItemDelete: (e: MouseEvent<HTMLButtonElement>, keyword: string) => void;
+  onRecentSearchClick: (e: MouseEvent<HTMLAnchorElement>, searchQuery: string) => void;
+  onRecentSearchDelete: (e: MouseEvent<HTMLButtonElement>, searchQuery: string) => void;
 };
 
 const RecentSearchItem = ({
   recentSearch,
-  handleRecentSearchItemClick,
-  handleRecentSearchItemDelete
+  onRecentSearchClick,
+  onRecentSearchDelete
 }: Props) => {
   const { searchQuery, createdAt } = recentSearch;
 
   return (
     <Link
-      to={`/integrated-posts?keyword=${searchQuery}`}
-      onClick={(e) => { handleRecentSearchItemClick(e, searchQuery ); }}
+      to={`/integrated-search?search-query=${searchQuery}`}
+      onClick={(e) => { onRecentSearchClick(e, searchQuery ); }}
       className={styles["recent-search-item-component"]}
     >
       <CiTimer
@@ -40,7 +40,7 @@ const RecentSearchItem = ({
       </span>
       <button
         type="button"
-        onClick={(e) => { handleRecentSearchItemDelete(e, searchQuery); }}
+        onClick={(e) => { onRecentSearchDelete(e, searchQuery); }}
         className={styles["delete-search-query-button"]}
       >
         <RxCross2

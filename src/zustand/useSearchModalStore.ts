@@ -22,6 +22,7 @@ const useSearchModalStore = create<SearchModalStore>((set) => ({
   },
   close: () => {
     set({
+      category: null,
       context: null,
       isOpen: false,
     })

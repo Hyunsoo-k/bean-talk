@@ -1,4 +1,4 @@
-type Category = "thread" | "promotion" | "job" | "news" | "notice";
+type Category = "thread" | "promotion" | "job" | "news" | "notice" | "essay" | "exploration";
 
 type CategoryHavingSubCategory = "promotion" | "job" | "news";
 

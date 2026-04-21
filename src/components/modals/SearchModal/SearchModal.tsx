@@ -1,5 +1,5 @@
 import type { MouseEvent } from "react";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
 import { createPortal } from "react-dom";
@@ -13,18 +13,14 @@ import { RecentSearchList } from "./components/RecentSearchList/RecentSearchList
 
 import styles from "./SearchModal.module.scss";
 
-const LOCAL_STORAGE_KEY = "beanTalkRecentSearches";
-const INITIAL_RECENT_SEARCHES: RecentSearch[] =
-  JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "[]");
-
 const SearchModal = () => {
+  const LOCAL_STORAGE_KEY = "beanTalkRecentSearches";
+  const INITIAL_RECENT_SEARCHES: RecentSearch[] =
+    JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "[]");
+
   const navigate = useNavigate();
   const [recentSearches, setRecentSearches] = useState<RecentSearch[]>(INITIAL_RECENT_SEARCHES);
-  const {
-    close: closeModal,
-    context,
-    category
-  } = useSearchModalStore();
+  const { context, category } = useSearchModalStore();
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -82,8 +78,6 @@ const SearchModal = () => {
       JSON.stringify(updatedRecentSearches)
     );
 
-    closeModal();
-
     const destination = isInHeader 
       ? `/integrated-search?search-target=${searchTarget}&search-query=${searchQuery}`
       : `/categories/${category}/posts?search-target=${searchTarget}&search-query=${searchQuery}`
@@ -91,7 +85,7 @@ const SearchModal = () => {
     navigate(destination);
   };
 
-  const handleRecentSearchItemClick = (
+  const handleRecentSearchClick = (
     e: MouseEvent<HTMLAnchorElement>,
     searchQuery: string
   ) => {
@@ -111,7 +105,7 @@ const SearchModal = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(filteredRecentSearches));
   };
 
-  const handleRecentSearchItemDelete = (
+  const handleRecentSearchDelete = (
     e: MouseEvent<HTMLButtonElement>,
     searchQuery: string
   ) => {
@@ -172,8 +166,8 @@ const SearchModal = () => {
         </p>
         <RecentSearchList
           recentSearches={recentSearches}
-          handleRecentSearchItemClick={handleRecentSearchItemClick}
-          handleRecentSearchItemDelete={handleRecentSearchItemDelete}
+          onRecentSearchClick={handleRecentSearchClick}
+          onRecentSearchDelete={handleRecentSearchDelete}
         />
       </div>
     </div>

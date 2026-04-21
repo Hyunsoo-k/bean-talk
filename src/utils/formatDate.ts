@@ -17,10 +17,10 @@ const formatDate = (isoString: string, isPostDetail = false): string => {
     day === String(kstToday.getUTCDate()).padStart(2, "0");
 
   if (isPostDetail) {
-    return `${year}/${month}/${day} ${hours}:${minutes}`;
+    return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
   }
 
-  return isToday ? `${hours}:${minutes}` : `${year}/${month}/${day}`;
+  return isToday ? `${hours}:${minutes}` : `${year}년 ${month}월 ${day}일`;
 };
 
 export { formatDate };

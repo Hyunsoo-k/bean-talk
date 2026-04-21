@@ -1,0 +1,28 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.un-loggedin-form-component {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 90px;
+  margin-bottom: 15px;
+  padding: 13px 15px;
+  border: 1px solid $border-color--gray;
+  border-radius: 0px;
+  cursor: pointer;
+
+  @include tablet {
+    height: 120px;
+    padding: 18px 20px;
+  }
+
+  .message {
+    font-size: 12px;
+    color: $font-color--dark-gray;
+
+    @include tablet {
+      font-size: 13px;
+    }
+  }
+}

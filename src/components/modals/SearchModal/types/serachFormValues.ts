@@ -1,4 +1,4 @@
-import type { SearchTarget } from "../../../../types/searchTarget"
+import type { SearchTarget } from "../../../../types/SearchType"
 
 type SearchFormValues = {
   searchTarget: SearchTarget;

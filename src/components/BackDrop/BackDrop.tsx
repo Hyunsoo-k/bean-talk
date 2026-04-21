@@ -1,17 +1,14 @@
 import styles from "./BackDrop.module.scss";
 
 type Props = {
-  handleClickBackdrop: () => void;
+  onBackdropClick: () => void;
   isBackdropOpen: boolean;
 };
 
-const BackDrop = ({
-  handleClickBackdrop,
-  isBackdropOpen
-}: Props) => {
+const BackDrop = ({ onBackdropClick, isBackdropOpen }: Props) => {
   return (
     <div
-      onClick={handleClickBackdrop}
+      onClick={onBackdropClick}
       className={styles["backdrop-component"]}
       style={{ overflow: isBackdropOpen ? "hidden" : ""  }}
     />

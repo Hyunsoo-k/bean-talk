@@ -1,0 +1,40 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/responsive.scss' as *;
+
+.toolbar-component {
+  position: sticky;
+  z-index: 2;
+  top: $header-height--mobile;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  background-color: $background-color--white;
+  border-bottom: 1px solid $border-color--gray;
+
+  @include tablet {
+    top: $header-height--tablet;
+    padding: 15px 0;
+  }
+
+  .toolbar-button {
+    padding: 0;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+
+    .icon {
+      font-size: 18px;
+      color: $font-color--black;
+
+      @include tablet {
+        font-size: 22px;
+      }
+
+      &.active {
+        color: rgb(9, 204, 178);
+      }
+    }
+  }
+}

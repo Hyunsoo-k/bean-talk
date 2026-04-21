@@ -9,6 +9,17 @@ $header-height--tablet: 55px;
 $footer-height--mobile: 210px;
 $footer-height--tablet: 320px;
 
+/*classification height*/
+$sub-category-selector-height--mobile: 15px;
+$sub-category-selector-height--tablet: 20px;
+
+/*breadcrumb height*/
+$bread-crumb-height: 25px;
+
+/*editor footer height*/
+$editor-footer-height--mobile: 65px;
+$editor-footer-height--tablet: 70px;
+
 /*safe area*/
 $safe-area--mobile: 16px;
 $safe-area--tablet: 20px;
@@ -28,9 +39,9 @@ $page-layout-min-height--tablet: calc(100vh - $header-height--tablet - $footer-h
 $post-min-witdh: 50vh;
 
 /*font color*/
-$font-color--black : rgb(44, 44, 44);
-$font-color--dark-gray: rgb(100,116,139);
-$font-color--bright-gray: rgb(148,163,184);
+$font-color--black : rgb(52, 52, 52);
+$font-color--dark-gray: rgb(150, 150, 150);
+$font-color--bright-gray: rgb(168, 168, 168);
 $font-color--sky: rgb(48, 140, 204);
 $font-color--rose: rgb(210, 110, 105);
 $font-color--orange: rgb(223, 146, 59);
@@ -38,9 +49,10 @@ $font-color--orange: rgb(223, 146, 59);
 
 /*background color*/
 $background-color--white: rgb(255,255,255);
-$background-color--gray: rgb(243,244,245);
+$background-color--gray: rgb(249, 249, 249);
 $background-color--skeleton--bright-gray: rgb(236,236,236);
 $background-color--skeleton--dark-gray: rgb(214,214,214);
 
 /*border color*/
 $border-color--gray: rgb(207, 207, 207);
+$border-color--bright-gray: rgb(224, 224, 224);

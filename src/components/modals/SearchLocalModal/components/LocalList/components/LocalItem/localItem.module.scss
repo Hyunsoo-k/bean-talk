@@ -1,0 +1,30 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.local-item-component {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+  height: 80px;
+	padding: $safe-area--mobile;
+  border-bottom: 1px solid $border-color--gray;
+	cursor: pointer;
+
+	.place-name {
+    height: 22px;
+		font-size: 15px;
+		font-weight: 400;
+		color: $font-color--black;
+	}
+
+	.address {
+		overflow: hidden;
+		display: -webkit-box;
+    height: 18px;
+		font-size: 12px;
+		color: $font-color--dark-gray;
+		line-clamp: 1;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 1;
+	}
+}

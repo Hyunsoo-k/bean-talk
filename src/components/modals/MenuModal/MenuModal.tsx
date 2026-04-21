@@ -1,7 +1,7 @@
-import type { Dispatch, JSX, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { useEffect, useRef } from "react";
 
-import { getUserMe } from "@/utils/getUserMe";
+import { useGetUserMe } from "@/hooks/useGetUserMe";
 
 import styles from "./MenuModal.module.scss";
 
@@ -23,10 +23,10 @@ const MenuModal = ({
   handleClickEdit,
   isDeletePending,
   handleClickDelete
-}: Props): JSX.Element => {
+}: Props) => {
   const modalRef = useRef<HTMLUListElement | null>(null);
 
-  const userMe = getUserMe();
+  const { data: userMe } = useGetUserMe();
 
   const { _id: author_id } = author;
 

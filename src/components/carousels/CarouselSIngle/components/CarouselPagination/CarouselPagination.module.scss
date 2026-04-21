@@ -1,0 +1,24 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.carousel-pagination-component {
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+	width: 100px;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	padding: 0;
+	list-style-type: none;
+
+	.item {
+		cursor: pointer;
+
+		.circle-icon {
+			font-size: 10px;
+			color: $background-color--white;
+		}
+	}
+}

@@ -1,0 +1,52 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.logged-out-profile-component {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 15px;
+	margin: 0 auto;
+
+	@include tablet {
+		gap: 30px;
+	}
+
+	.phrase {
+		margin: 0;
+		text-align: center;
+		font-size: 13px;
+		font-weight: 500;
+		font-family: Georgia, "Times New Roman", Times, serif;
+
+		@include tablet {
+			font-size: 15px;
+			line-height: 2;
+		}
+	}
+
+	.login-button {
+		text-decoration: none;
+		width: 130px;
+		margin: 0 auto;
+		padding: 5px 0;
+		background-color: inherit;
+		border: 1px solid $border-color--gray;
+		border-radius: 15px;
+		text-align: center;
+		font-size: 13px;
+		color: $font-color--dark-gray;
+		cursor: pointer;
+
+		&:hover {
+			background-color: $font-color--black;
+			border: 1px solid $font-color--black;
+			color: $background-color--white;
+		}
+
+		@include tablet {
+			width: 150px;
+			padding: 8px 0;
+		}
+	}
+}

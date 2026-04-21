@@ -3,9 +3,6 @@ import styles from "./PostCardRowSkeleton.module.scss";
 const PostCardRowSkeleton = () => {
   return (
     <div className={styles["post-card-row-skeleton-component"]}>
-      <div className={styles["header"]}>
-        <div className={styles["author"]} />
-      </div>
       <div className={styles["body"]}>
         <div className={styles["text"]}>
           <div className={styles["title"]} />

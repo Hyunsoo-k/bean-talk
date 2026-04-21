@@ -17,9 +17,13 @@
 		border: 1px solid $border-color--gray;
 		border-radius: 20px;
 		background-color: inherit;
-		font-size: 13px;
+		font-size: 11px;
 		color: $font-color--dark-gray;
 		cursor: pointer;
+
+		@include tablet {
+			font-size: 12px;
+		}
 
 		&:hover {
 			background-color: $font-color--black;
@@ -27,10 +31,15 @@
 			color: $background-color--white;
 		}
 
-		> svg {
+		.icon {
 			position: relative;
 			top: 0;
 			margin-right: 5px;
+			font-size: 15px;
+
+			@include tablet {
+				font-size: 17px;
+			}
 		}
 	}
 }

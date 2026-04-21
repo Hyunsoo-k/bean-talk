@@ -1,19 +1,24 @@
-@use '@/styles/variables.scss' as *;
-@use '@/styles/responsive.scss' as *;
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
 
 .main-layout-component {
-  
-  .main {
-    max-width: $max-width;
-    min-height: calc(100vh - $header-height--mobile - $footer-height--mobile);
-    margin: 0 auto;
+	position: relative;
+	height: 100%;
+	margin: 0;
+	padding-top: $header-height--mobile;
+	background-color: $background-color--white;
+	font-family: "Pretendard", sans-serif;
+	color: $font-color--black;
 
-    @include tablet {
-      min-height: calc(100vh - $header-height--tablet - $footer-height--tablet);
-    }
+	@include tablet {
+		padding-top: $header-height--tablet;
+	}
+}
 
-    &.--main-page {
-      max-width: none;
-    }
-  }
+.main {
+	min-height: calc(100vh - $header-height--mobile - $footer-height--mobile);
+
+	@include tablet {
+		min-height: calc(100vh - $header-height--tablet - $footer-height--tablet);
+	}
 }

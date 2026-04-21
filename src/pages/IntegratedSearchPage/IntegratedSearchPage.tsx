@@ -1,25 +1,23 @@
 import { useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
-import type { SearchTarget } from "@/types/searchTarget";
-import type { QueryParams } from "@/types/queryParams";
-import { useInfinitieScrollObserver } from "@/hooks/useInfinitieScrollObserver";
-import { useInfinitieIntegratedPosts } from "./hooks/useInfinitieIntegratedPosts";
+import type { SearchType } from "@/types/SearchType";
+import type { PostsParams } from "@/types/postsParams";
+import { useInfiniteScrollObserver } from "@/hooks/useInfiniteScrollObserver";
+import { useInfiniteIntegratedSearch } from "./hooks/useInfiniteIntegratedSearch";
 import { PostList } from "@/components/PostList/PostList";
 
 import styles from "./IntegratedSearchPage.module.scss";
 
 const IntegratedSearchPage = () => {
-  const { search, pathname } = useLocation();
-  const isMainPage = pathname === "/";
-
+  const { pathname } = useLocation();
+  const [searchParams] = useSearchParams();
   const lastPostRef = useRef<HTMLLIElement | null>(null);
 
-  const searchParams = new URLSearchParams(search);
-
-  const params: QueryParams = {
-    searchTarget: searchParams.get("search-target") as SearchTarget,
-    searchQuery: searchParams.get("search-query") as string,
+  const isMainPage = pathname === "/";
+  const params: PostsParams = {
+    type: searchParams.get("type") as SearchType,
+    query: searchParams.get("query") as string,
   };
 
   const {
@@ -27,9 +25,9 @@ const IntegratedSearchPage = () => {
     isLoading,
     hasNextPage,
     fetchNextPage,
-  } = useInfinitieIntegratedPosts(params);
+  } = useInfiniteIntegratedSearch(params);
 
-  useInfinitieScrollObserver(
+  useInfiniteScrollObserver(
     lastPostRef,
     isMainPage,
     hasNextPage,
@@ -40,14 +38,14 @@ const IntegratedSearchPage = () => {
 
   return (
     <div className={styles["integrated-search-page-component"]}>
-      <div className={styles["header"]}>
+      <header className={styles["header"]}>
         <h2 className={styles["title"]}>
           통합검색 결과
-          <span className={styles["keyword"]}>
-            "{params.searchQuery}"
+          <span className={styles["search-query"]}>
+            "{params.query}"
           </span>
         </h2>
-      </div>
+      </header>
       <PostList
         layout="flex"
         cardType="row"

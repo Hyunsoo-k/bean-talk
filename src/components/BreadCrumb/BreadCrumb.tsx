@@ -13,32 +13,34 @@ type Props<T extends Category> = {
   subCategory?: T extends CategoryHavingSubCategory
     ? SubCategory<T>
     : undefined;
-  usage: "postDetail" | "create" | "edit"; 
+  usage: "postDetail" | "create" | "edit";
 };
 
 const BreadCrumb = <T extends Category>({
   category,
   subCategory,
-  usage
+  usage,
 }: Props<T>) => {
   const subCategoryKr = SUB_CATEGORY_TO_KR_MAP[subCategory as SubCategory<CategoryHavingSubCategory>]
 
   return (
     <div className={styles["bread-crumb-component"]}>
-      <Link to="/">
-        <GoHome size={16} color="rgb(44, 44, 44)"/>
+      <Link to="/" className={styles["link"]}>
+        <GoHome className={`${styles["icon"]} ${styles["home"]}`} />
         홈
       </Link>
-      <SlArrowRight size={11} color="rgb(44, 44, 44)" />
-      <Link to={`/categories/${category}/posts`}>
+      <SlArrowRight className={`${styles["icon"]} ${styles["arrow"]}`}/>
+      <Link to={`/categories/${category}/posts`} className={styles["link"]}>
         {category.toUpperCase()}
       </Link>
       {(subCategory || usage === "create" || usage === "edit") && (
-        <SlArrowRight size={11} color="rgb(44, 44, 44)" />
+        <SlArrowRight className={`${styles["icon"]} ${styles["arrow"]}`} />
       )}
-      {usage === "postDetail" && subCategory && subCategoryKr}
-      {usage === "create" && "글쓰기"}
-      {usage === "edit" && "수정"}
+      <span className={styles["path"]}>
+        {usage === "postDetail" && subCategory && subCategoryKr}
+        {usage === "create" && "글쓰기"}
+        {usage === "edit" && "수정"}
+      </span>
     </div>
   );
 };

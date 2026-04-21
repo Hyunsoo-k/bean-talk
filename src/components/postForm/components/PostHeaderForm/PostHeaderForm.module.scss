@@ -1,0 +1,136 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.post-header-form-component {
+	position: relative;
+	width: 100%;
+	padding: 120px 0 25px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border-bottom: 1px solid $border-color--gray;
+
+	@include tablet {
+		margin: 0 auto;
+		padding: 250px 0 120px;
+	}
+
+	&.has-thumbnail {
+		&::before {
+			content: "";
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			display: block;
+			width: 100%;
+			height: 100%;
+			background-image: linear-gradient(
+				to right,
+				rgba(0, 0, 0, 0.4) 0%,
+				rgba(0, 0, 0, 0.3) 50%,
+				rgba(0, 0, 0, 0.4) 100%
+			);
+		}
+
+		.title-input {
+			color: $background-color--white;
+
+			&::placeholder {
+				color: $font-color--bright-gray;
+			}
+		}
+
+		.classification-area {
+			color: $background-color--white;
+		}
+	}
+
+	&.has-sub-categories {
+
+
+		@include tablet {
+			padding-bottom: 70px;
+		}
+	}
+
+	.title-input {
+		position: relative;
+		z-index: 2;
+		display: block;
+		width: 100%;
+		margin: 0 auto 25px;
+		padding: 0 $safe-area--mobile;
+		background-color: inherit;
+		border: none;
+		outline: none;
+		font-family: "BookkMyungjo";
+		font-size: 25px;
+		font-weight: 300;
+		color: inherit;
+		line-height: 1.6;
+		letter-spacing: 1.5px;
+
+		@include tablet {
+			max-width: $max-width;
+			padding: 0 $safe-area--tablet;
+			margin: 0 auto;
+			font-size: 40px;
+		}
+
+		&::placeholder {
+			font-family: inherit;
+			font-weight: 350;
+			color: $font-color--bright-gray;
+			letter-spacing: 2px;
+		}
+	}
+
+	.classification-area {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		margin: 0 auto 0;
+		padding: 0 $safe-area--mobile;
+		font-size: 12px;
+		color: $font-color--dark-gray;
+		line-height: 1;
+
+		@include tablet {
+			max-width: $max-width;
+			margin: 50px auto 0;
+			padding: 0 $safe-area--tablet;
+			font-size: 15px;
+		}
+
+		.classification {
+			font-size: inherit;
+			color: inherit;
+			line-height: inherit;
+		}
+
+		.boundary-line {
+			width: 2px;
+			height: 12px;
+			background-color: $font-color--bright-gray;
+		}
+
+		.classification-button {
+			padding: 0;
+			background-color: inherit;
+			border: none;
+			font-size: inherit;
+			font-weight: 300;
+			color: inherit;
+			letter-spacing: 1px;
+			line-height: inherit;
+			cursor: pointer;
+
+			&.selected {
+				color: $font-color--rose;
+			}
+		}
+	}
+}
