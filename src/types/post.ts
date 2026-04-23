@@ -1,4 +1,4 @@
-import type { Category, SubCategory } from "./category";
+import type { Category, CategoryHavingSubCategory, SubCategory } from "./category";
 
 type BasePost = {
   _id: string;
@@ -19,21 +19,8 @@ type BasePost = {
   updatedAt: string;
 };
 
-type Post<T extends Category> = 
-  T extends "promotion" | "news"
-    ? BasePost & { subCategory: SubCategory<T> }
-  : T extends "job"
-    ? BasePost & {
-        subCategory: SubCategory<T>;
-        employmentType: "partTime" | "fullTime";
-        position: "barista" | "manager";
-        payAmount: number;
-        startTime: string;
-        endTime: string;
-        address?: string;
-        latitude?: number;
-        longitude?: number;
-      }
+type Post<T extends Category> = T extends CategoryHavingSubCategory
+  ? BasePost & { subCategory: SubCategory<T> }
   : BasePost;
 
 export type { Post };

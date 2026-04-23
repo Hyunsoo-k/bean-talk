@@ -6,12 +6,8 @@ type BasePostRequestBody = {
   thumbnailUrl: string | null;
 };
 
+type PostRequestBody<T extends Category> = T extends CategoryHavingSubCategory
+  ? BasePostRequestBody & { subCategory: SubCategory<T> }
+  : BasePostRequestBody;
 
-type PostRequestBody<T extends Category> =
-  BasePostRequestBody
-  & (T extends CategoryHavingSubCategory
-      ? { subCategory: SubCategory<T> }
-      : Record<string, never>
-    );
-
-export type { PostRequestBody };
+export type { BasePostRequestBody, PostRequestBody };

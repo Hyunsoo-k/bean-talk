@@ -1,19 +1,11 @@
 import type { Category } from "@/types/category";
-import type { QueryParams } from "@/types/postsParams";
+import type { PostsParams } from "@/types/postsParams";
 
 const QUERY_KEYS = {
   userMe: ["userMe"],
   notifications: ["notifications"],
-  posts: (category: Category, queryParams?: QueryParams) => {
-    const queryKey = ["posts", category, queryParams]
-
-    return queryKey;
-  },
-  integratedPosts: (queryParams: QueryParams) => {
-    const queryKey = ["integratedPosts", queryParams];
-
-    return queryKey;
-  },
+  posts: (category: Category, params?: PostsParams) => ["posts", category, params],
+  integratedPosts: (params: PostsParams) => ["integratedPosts", params],
   myPosts: ["myPosts"],
   scraps: ["scraps"],
   post: (category: Category, post_id: string) => ["post", category, post_id],
