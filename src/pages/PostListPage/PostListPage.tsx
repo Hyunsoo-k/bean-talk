@@ -10,7 +10,7 @@ import { useInfiniteScrollObserver } from "@/hooks/useInfiniteScrollObserver";
 import { PostListHeader } from "@/components/PostListHeader/PostListHeader";
 import { PostList } from "@/components/PostList/PostList";
 
-import styles from "./postListPage.module.scss";
+import styles from "./PostListPage.module.scss";
 
 type Props = {
   type: "flex" | "grid";
