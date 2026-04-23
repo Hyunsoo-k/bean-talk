@@ -1,4 +1,3 @@
-import type { JSX } from "react";
 import { useEffect, useRef } from "react";
 
 import styles from "./NaverMap.module.scss";
@@ -8,17 +7,18 @@ type Props = {
   longitude: number;
 };
 
-const NaverMap = ({ latitude, longitude }: Props): JSX.Element => {
+const NaverMap = ({ latitude, longitude }: Props) => {
   const mapRef = useRef<naver.maps.Map | null>(null);
   const markerRef = useRef<naver.maps.Marker | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const initMap = () => {
-      if (!containerRef.current) return;
+      if (!containerRef.current) {
+        return;
+      }
 
       const center = new naver.maps.LatLng(latitude, longitude);
-
       mapRef.current = new naver.maps.Map(containerRef.current, {
         center,
         zoom: 16,
@@ -28,7 +28,6 @@ const NaverMap = ({ latitude, longitude }: Props): JSX.Element => {
           position: naver.maps.Position.TOP_RIGHT,
         },
       });
-
       markerRef.current = new naver.maps.Marker({
         position: center,
         map: mapRef.current,
@@ -44,7 +43,6 @@ const NaverMap = ({ latitude, longitude }: Props): JSX.Element => {
     }
 
     const position = new naver.maps.LatLng(latitude, longitude);
-
     mapRef.current.setCenter(position);
     markerRef.current.setPosition(position);
   }, [latitude, longitude]);

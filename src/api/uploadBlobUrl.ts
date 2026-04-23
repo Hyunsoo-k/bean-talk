@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { blobUrlToBlob } from "@/utils/blobUrlToBlob";
+
 const CLOUDINARY_URL = import.meta.env.VITE_CLOUDINARY_URL;
 const PRESET_NAME = import.meta.env.VITE_PRESET_NAME
 

@@ -6,7 +6,6 @@ const processContent = async (textHTML: string) => {
   const images = Array.from(doc.querySelectorAll("img"));
   const blobUrlImages = images.filter((image: HTMLImageElement) => {
     const src = image.getAttribute("src");
-
     return src?.startsWith("blob");
   });
 
@@ -17,7 +16,6 @@ const processContent = async (textHTML: string) => {
   const uploadedUrls = await Promise.all(
     blobUrlImages.map(img => {
       const src = img.getAttribute("src")!;
-
       return uploadBlobUrl(src)
     })
   );
