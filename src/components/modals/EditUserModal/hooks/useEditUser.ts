@@ -1,3 +1,4 @@
+import type { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 
 import type { EditUserRequestBody } from "@/types/editUserRequestBody";
@@ -21,7 +22,6 @@ const useEditUser = () => {
     mutationFn: (requestBody: EditUserRequestBody) => editUser(requestBody),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.userMe });
-
       openAlertModal(
         "회원 정보가 수정되었습니다.",
         () => {
@@ -30,12 +30,10 @@ const useEditUser = () => {
         }
       );
     },
-    onError: (error) => {
-      openAlertModal(
-        error.response?.data?.message,
-        closeAlertModal
-      )
-    }
+    onError: (error: AxiosError<Record<string, string>>) => {
+      const { message } = error.response!.data;
+      openAlertModal(message, closeAlertModal);
+    },
   })
 };
 

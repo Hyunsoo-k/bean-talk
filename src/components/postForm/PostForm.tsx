@@ -1,15 +1,14 @@
 import type { UseMutateFunction } from "@tanstack/react-query";
-import type { FieldErrors } from "react-hook-form";
+import type { FieldError, FieldErrors } from "react-hook-form";
 import { FormProvider, useForm, } from "react-hook-form";
 
-import type { Category, CategoryHavingSubCategory } from "@/types/category";
+import type { Category } from "@/types/category";
 import type { Post } from "@/types/post";
 import type { PostRequestBody } from "@/types/postRequestBody";
-import { CATEGORY_TO_SUB_CATEGORIES_MAP } from "@/constants/subCategoryMap";
 import { uploadBlobUrl } from "@/api/uploadBlobUrl";
+import { getPostDefaultValues } from "./components/PostContentForm/utils/getDefaultValues";
 import { processContent } from "@/utils/processContent";
 import { useAlertModalStore } from "@/zustand/useAlertModalStore";
-import { isCategoryHavingSubCategory } from "@/utils/isCategoryHavingSubCategory";
 import { usePostEditor } from "@/hooks/usePostEditor";
 import { PostHeaderForm } from "./components/PostHeaderForm/PostHeaderForm";
 import { Toolbar } from "./components/Toolbar/Toolbar";
@@ -35,24 +34,16 @@ const PostForm = <T extends Category>({
   const methods = useForm<PostRequestBody<T>>({
     mode: "onChange",
     reValidateMode: "onChange",
-    defaultValues: {
-      thumbnailUrl: initialData?.thumbnailUrl ?? "",
-      title: initialData?.title ?? "",
-      content: initialData?.content ?? "",
-      ...(isCategoryHavingSubCategory(category)
-        ? { subCategory: initialData?.subCategory ?? CATEGORY_TO_SUB_CATEGORIES_MAP[category as CategoryHavingSubCategory][0] } 
-        : {}
-      ),
-    },
+    defaultValues: getPostDefaultValues(category, initialData),
   });
-  const { handleSubmit: handleRhfSubmit, setValue, watch } = methods;
-  const editor = usePostEditor(setValue, watch("content"));
+  const { handleSubmit: handleRhfSubmit, setValue } = methods;
+  const editor = usePostEditor(setValue, initialData?.content);
 
   const handleSubmit = async (data: PostRequestBody<T>) => {
     const { content, thumbnailUrl } = data;
     try {
       const processedThumbnail = thumbnailUrl
-        ? await uploadBlobUrl(thumbnailUrl)
+        ? await uploadBlobUrl("a")
         : thumbnailUrl;
       const processedContent = await processContent(content);
       const requestBody: PostRequestBody<T> = {
@@ -62,15 +53,18 @@ const PostForm = <T extends Category>({
       };
       mutate(requestBody);
     } catch (error) {
-      openAlertModal(error.message, closeAlertModel);
+      const message = error instanceof Error 
+        ? error.message 
+        : "알 수 없는 오류가 발생했습니다.";
+      openAlertModal(message, closeAlertModel);
     }
   };
 
-  const handleSubmitError = (error: FieldErrors<PostRequestBody<T>>) => {
-    const firstErrorKey = Object.keys(error)[0] as keyof FieldErrors<PostRequestBody<T>>;
-    const firstError = error[firstErrorKey];
+  const handleSubmitError = (erros: FieldErrors<PostRequestBody<T>>) => {
+    const firstErrorKey = Object.keys(erros)[0] as keyof FieldErrors<PostRequestBody<T>>;
+    const firstError = erros[firstErrorKey] as FieldError | undefined;
     const message = firstError?.message || "알 수 없는 오류가 발생하였습니다.";
-
+    
     openAlertModal(message, closeAlertModel);
   };
 

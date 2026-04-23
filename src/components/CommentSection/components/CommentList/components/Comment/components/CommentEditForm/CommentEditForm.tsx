@@ -25,7 +25,6 @@ const CommentEditForm = ({
   post_id,
   comment_id,
   setMode,
-  author,
   content
 }: Props) => {
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null)

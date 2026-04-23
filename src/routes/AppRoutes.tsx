@@ -20,7 +20,6 @@ const CATEGORY_ROUTES: Category_Routes = [
   { category: "promotion", type: "grid", cardType: "column" },
   { category: "essay", type: "flex", cardType: "row" },
   { category: "exploration", type: "grid", cardType: "simple" },
-  { category: "job", type: "flex", cardType: "job" },
   { category: "news", type: "grid", cardType: "news" },
   { category: "notice", type: "flex", cardType: "row" },
 ];

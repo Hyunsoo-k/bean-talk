@@ -6,7 +6,7 @@ const getInfiniteIntegratedSearch = async (queryParams: PostsParams, cursor: str
     "/integrated-search",
     {
       params: {
-        "sub-category": queryParams?.subCategory,
+        "sub-category": queryParams?.["sub-category"],
         "type": queryParams?.type,
         "query": queryParams?.query,
         cursor: cursor ?? undefined

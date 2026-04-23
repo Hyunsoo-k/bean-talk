@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { TfiEmail } from "react-icons/tfi";
 import { RiLockPasswordLine } from "react-icons/ri";
 
-import type { LoginFormValue } from "@/types";
+import type { LoginFormValues } from "@/types/loginFormValues";
 import { useLogin } from "./hooks/useLogin";
 
 import styles from "./LoginForm.module.scss";
@@ -13,13 +13,13 @@ const LoginForm = (): JSX.Element => {
     register,
     formState,
     handleSubmit: handleRHFSubmit
-  } = useForm<LoginFormValue>({ mode: "onChange" });
+  } = useForm<LoginFormValues>({ mode: "onChange" });
   
   const { isPending, mutate: login } = useLogin();
 
-  const submit = (formValue: LoginFormValue) => {
+  const submit = (formValue: LoginFormValues) => {
     if (!isPending) {
-      login(formValue as LoginFormValue);
+      login(formValue as LoginFormValues);
     }
   };
 

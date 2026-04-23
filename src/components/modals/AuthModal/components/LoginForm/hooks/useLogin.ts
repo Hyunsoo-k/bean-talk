@@ -27,7 +27,6 @@ const useLogin = () => {
     },
     onError: (error: AxiosError<Record<string, string>>) => {
       const { message } = error.response!.data;
-      
       openAlertModal(message, closeAlertModal);
     },
   });
