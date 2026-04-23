@@ -1,7 +1,7 @@
 import { Cookies } from "react-cookie";
 import { useQueryClient } from "@tanstack/react-query";
 
-import { QUERY_KEYS } from "@/constants";
+import { QUERY_KEYS } from "@/constants/queryKeys";
 
 const cookies = new Cookies();
 

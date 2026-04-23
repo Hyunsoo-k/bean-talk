@@ -24,7 +24,7 @@ const SameTopicCarousel = ({ category }: Props) => {
         </h3>
       </header>
       <div className={styles["body"]}>
-        <CarouselOverflow posts={posts} isLoading={isLoading} />
+        <CarouselOverflow posts={posts} isLoading={isLoading} cardType="simple" />
       </div>
     </div>
   );

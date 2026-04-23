@@ -1,4 +1,3 @@
-import type { MouseEvent } from "react";
 import { useRef, useState } from "react";
 import { IoSettingsSharp } from "react-icons/io5";
 
@@ -57,10 +56,7 @@ const MyInformationPage = () => {
     openEditUserModal();
   };
 
-  const handleSetCurrentList = (
-    e: MouseEvent<HTMLButtonElement>,
-    list: "myPosts" | "myScraps"
-  ) => {
+  const handleSetCurrentList = (list: "myPosts" | "myScraps") => {
     setCurrentList(list);
   };
 
@@ -108,7 +104,7 @@ const MyInformationPage = () => {
         <li className={styles["my-activity-button-wrapper"]}>
           <button
             type="button"
-            onClick={(e) => handleSetCurrentList(e, "myPosts")}
+            onClick={() => handleSetCurrentList("myPosts")}
             className={`${styles["my-activity-button"]} ${currentList === "myPosts" ? styles["active"] : ""}`}
           >
             내가 쓴 글
@@ -117,7 +113,7 @@ const MyInformationPage = () => {
         <li className={styles["my-activity-button-wrapper"]}>
           <button
             type="button"
-           onClick={(e) => handleSetCurrentList(e, "myScraps")}
+           onClick={() => handleSetCurrentList("myScraps")}
             className={`${styles["my-activity-button"]} ${currentList === "myScraps" ? styles["active"] : ""}`}
           >
             스크랩
