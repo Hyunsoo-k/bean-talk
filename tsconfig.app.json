@@ -26,8 +26,8 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
-    /* kakao map */
-    "types": ["kakao.maps.d.ts"]
+    /* naver map, kakao map */
+    "types": ["navermaps", "kakao.maps.d.ts"]
   },
   "include": ["src", "src/utils/cookie.ts"]
 }
