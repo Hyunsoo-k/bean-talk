@@ -1,4 +1,3 @@
-import type { FieldErrors } from "react-hook-form";
 import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 
@@ -27,29 +26,26 @@ const CommentForm = ({ category, post_id }: Props) => {
     handleSubmit: handleRHFSubmit
   } = useForm<Record<"content", string>>({ mode: "onChange" });
 
-  const { isPending, mutate: create } = useCreateComment(
+  const { isPending, mutate } = useCreateComment(
     category,
     post_id,
     reset,
     setIsInputFocused
   );
   
-  const {
-    open: openAlertModal,
-    close: closeAlertModal
-  } = useAlertModalStore();
+  const { open: openAlertModal, close: closeAlertModal } = useAlertModalStore();
 
   const userMe = queryClient.getQueryData(QUERY_KEYS.userMe);
 
-  const handleSubmit = (formValue: Record<"content", string>) => {
+  const handleSubmit = (values: Record<"content", string>) => {
     if (!userMe) {
       openAlertModal("로그인이 필요한 기능입니다.", closeAlertModal);
       return;
     }
 
-    const { content } = formValue;
+    const { content } = values;
     const requestBody = { content };
-    create(requestBody);
+    mutate(requestBody);
   };
 
   const handleResizeTextArea = () => {
