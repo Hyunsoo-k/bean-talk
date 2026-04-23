@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 import type { Category } from "@/types/category";
 import type { Post } from "@/types/post";
-import { JOB_DETAIL_FORM_MAP_TO_KOR } from "@/constants/jobDetailFormMap";
 import { SUB_CATEGORY_TO_KR_MAP } from "@/constants/subCategoryMap";
 import { formatDate } from "@/utils/formatDate";
 
@@ -20,12 +19,6 @@ const PostCardJob = <T extends Category>({ post }: Props<T>) => {
     author: { nickname },
     createdAt,
     title,
-    position,
-    employmentType,
-    payAmount,
-    startTime,
-    endTime,
-    address
   } = post as Post<"job">;
 
   return (
@@ -51,25 +44,6 @@ const PostCardJob = <T extends Category>({ post }: Props<T>) => {
           <h2 className={styles["title"]}>
             {title}
           </h2>
-          <div className={styles["detail"]}>
-            <span>
-              모집 분야: {JOB_DETAIL_FORM_MAP_TO_KOR[position]}
-            </span>
-            <span>
-              {employmentType === "partTime"
-                ? `시급: ${payAmount}원`
-                : `월급: ${payAmount}만원`
-              }
-            </span>
-            <span>
-              근무 시간: {startTime} ~ {endTime}
-            </span>
-            {subCategory === "hiring" && (
-              <span>
-                매장 위치: {address}
-              </span>
-            )}
-          </div>
         </div>
       </div>
       <div

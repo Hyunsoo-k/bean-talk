@@ -2,7 +2,7 @@ import type { SubmitHandler, SubmitErrorHandler } from "react-hook-form";
 import { useRef } from "react";
 import { useFormContext } from "react-hook-form";
 
-import type { EditUserFormValues } from "../../types";
+import type { EditUserFormValues } from "../../types/editUserFormValues";
 import defaultImage from "@/assets/default-images/default-profile.jpg"
 import styles from "./EditUserForm.module.scss";
 

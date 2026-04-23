@@ -4,7 +4,6 @@ import { BsFillThreadsFill } from "react-icons/bs";
 import { RiQuillPenLine } from "react-icons/ri";
 import { CiLocationOn } from "react-icons/ci";
 import { VscMegaphone } from "react-icons/vsc";
-import { HiOutlineBuildingOffice } from "react-icons/hi2";
 import { IoNewspaperOutline } from "react-icons/io5";
 
 import type { Post } from "@/types/post";
@@ -23,7 +22,6 @@ const MENU_ITEMS = [
   { to: "/categories/essay/posts", icon: RiQuillPenLine, label: "에세이", key: "essay" },
   { to: "/categories/exploration/posts", icon: CiLocationOn, label: "탐방", key: "exploration" },
   { to: "/categories/promotion/posts", icon: VscMegaphone, label: "홍보", key: "promotion" },
-  { to: "/categories/job/posts", icon: HiOutlineBuildingOffice, label: "구인·구직", key: "job" },
   { to: "/categories/news/posts", icon: IoNewspaperOutline, label: "뉴스", key: "news" },
   { to: "/categories/notice/posts", icon: null, label: "공지사항", key: "notice" },
 ];

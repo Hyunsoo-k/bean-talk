@@ -28,7 +28,6 @@ const ReplyEditForm = ({
   comment_id,
   reply_id,
   setMode,
-  author,
   content
 }: Props) => {
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
