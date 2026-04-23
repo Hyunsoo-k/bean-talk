@@ -29,5 +29,5 @@
     /* naver map, kakao map */
     "types": ["navermaps", "kakao.maps.d.ts"]
   },
-  "include": ["src", "src/utils/cookie.ts"]
+  "include": ["src"]
 }
