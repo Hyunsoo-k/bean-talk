@@ -1,0 +1,39 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/responsive.scss" as *;
+
+.sub-category-nav-component {
+	display: flex;
+	gap: 5px;
+	margin: 0 0 3px;
+	padding: 0;
+	list-style-type: none;
+
+	@include tablet {
+		gap: 8px;
+	}
+
+	&.search-form-open {
+    display: none;
+
+		@include tablet {
+			display: flex;
+		}
+  }
+
+	.sub-category-wrapper {
+		.sub-category {
+			font-size: 13px;
+			font-weight: 500;
+			color: $font-color--black;
+			text-decoration: none;
+			
+			@include tablet {
+				font-size: 15px;
+			}
+
+			&.active {
+				color: $font-color--rose;
+			}
+		}
+	}
+}
