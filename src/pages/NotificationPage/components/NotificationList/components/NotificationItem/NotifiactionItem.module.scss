@@ -7,10 +7,10 @@
 	flex-direction: column;
 	gap: 10px;
 	width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+	max-width: 800px;
+	margin: 0 auto;
 	padding: 25px 0 20px;
-	border-bottom: 1px solid $font-color--black;
+	border-bottom: 1px solid $border-color--gray;
 	text-decoration: none;
 	color: inherit;
 
@@ -37,11 +37,12 @@
 				font-size: 15px;
 			}
 
-			> span {
-				font-size: 12px;
+			.nickname {
+				color: $font-color--rose;
+				font-size: 13px;
 
 				@include tablet {
-					font-size: 14px;
+					font-size: 15px;
 				}
 			}
 		}
@@ -51,10 +52,25 @@
 			margin: 0;
 			font-size: 11px;
 			color: $font-color--bright-gray;
-			letter-spacing: 0.5px;
 
 			@include tablet {
 				font-size: 13px;
+			}
+		}
+
+		.delete-button {
+			flex-shrink: 0;
+			padding: 0;
+			background-color: inherit;
+			border: none;
+			outline: none;
+			cursor: pointer;
+
+			.cross-icon {
+				position: relative;
+				top: 1px;
+				font-size: 16px;
+				color: $font-color--bright-gray;
 			}
 		}
 	}
@@ -65,24 +81,20 @@
 		flex-grow: 1;
 		font-size: 13px;
 		line-height: 1.6;
+		line-clamp: 2;
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 2;
 
 		@include tablet {
-			font-size: 16px;
+			font-size: 15px;
 		}
 
 		.content {
 			margin: 0;
 
-			> span {
-				color: $font-color--orange;
+			.type {
+				color: $font-color--rose;
 			}
-		}
-
-		.nickname {
-			font-size: inherit;
-			color: $font-color--sky;
 		}
 
 		.target-title {
@@ -93,24 +105,6 @@
 		.type {
 			font-size: inherit;
 			color: $font-color--rose;
-		}
-	}
-
-	.delete-button {
-		flex-shrink: 0;
-		padding: 0;
-		background-color: inherit;
-		border: none;
-		outline: none;
-		cursor: pointer;
-
-		.cross-icon {
-			position: relative;
-			top: 1px;
-
-			@include tablet {
-				top: 2px;
-			}
 		}
 	}
 }
