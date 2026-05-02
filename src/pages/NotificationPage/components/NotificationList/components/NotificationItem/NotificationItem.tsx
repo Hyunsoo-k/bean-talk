@@ -52,7 +52,7 @@ const NotificationItem = ({ notification }: Props) => {
       {!isChecked && <div className={styles["red-dot"]} />}
       <div className={styles["header"]}>
         <p className={styles["author"]}>
-          {nickname} <span>님이</span>
+          <span className={styles["nickname"]}>{nickname}</span> 님이
         </p>
         <p className={styles["created-at"]}>
           {formatDate(createdAt)}
@@ -62,17 +62,12 @@ const NotificationItem = ({ notification }: Props) => {
           disabled={isDeleting}
           className={styles["delete-button"]}
         >
-          <RxCross2
-            size={17}
-            onClick={handleClickDelete}
-            className={styles["cross-icon"]}
-            color="rgb(44, 44, 44)"
-          />
+          <RxCross2 onClick={handleClickDelete} className={styles["cross-icon"]} />
         </button>
       </div>
       <div className={styles["body"]}>
         <p className={styles["content"]}>
-          {targetTitle}글에 <span>{type}</span>을 작성하였습니다.
+          {targetTitle}글에 <span className={styles["type"]}>{type}</span>을 작성하였습니다.
         </p>
       </div>
     </Link>
