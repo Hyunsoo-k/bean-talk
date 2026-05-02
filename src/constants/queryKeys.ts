@@ -4,7 +4,14 @@ import type { PostsParams } from "@/types/postsParams";
 const QUERY_KEYS = {
   userMe: ["userMe"],
   notifications: ["notifications"],
-  posts: (category: Category, params?: PostsParams) => ["posts", category, params],
+  posts: (category: Category, params?: PostsParams) => {
+    const queryKey: (string | PostsParams)[] = ["posts", category];
+    if (params) {
+      queryKey.push(params);
+    }
+
+    return queryKey;
+  },
   integratedPosts: (params: PostsParams) => ["integratedPosts", params],
   myPosts: ["myPosts"],
   scraps: ["scraps"],
