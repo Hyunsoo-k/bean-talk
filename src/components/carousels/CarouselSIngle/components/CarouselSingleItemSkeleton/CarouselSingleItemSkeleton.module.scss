@@ -2,37 +2,120 @@
 @use "@/styles/responsive.scss" as *;
 
 .carousel-single-item-skeleton-component {
-  width: 100%;
-  height: 100%;
-  background-color: $background-color--skeleton--dark-gray;
+	position: relative;
+	width: 100%;
+	height: 100%;
+  padding: 50px 0;
+	background-color: $background-color--skeleton--dark-gray;
 
-  @include tablet {
-    height: 100%;
-  }
+	@include tablet {
+		height: 100%;
+    padding: 110px 0 125px;
+	}
+
+	.header {
+    width: 100%;
+    height: 90px;
+    margin: 0 auto 30px;
+    padding: 0 $safe-area--mobile;
+
+    @include tablet {
+      max-width: $max-width;
+      height: 155px;
+      margin: 0 auto 50px;
+      padding: 0 $safe-area--tablet;
+    }
+
+		.category {
+      overflow: hidden;
+			position: relative;
+      height: 19px;
+      width: 45px;
+      margin-bottom: 15px;
+      background-color: $background-color--skeleton--bright-gray;
+      border-radius: 3px;
+
+			@include tablet {
+        width: 80px;
+				height: 20px;
+        margin-bottom: 20px;
+			}
+		}
+
+		.title {
+      overflow: hidden;
+			position: relative;
+      width: 80%;
+      height: 20px;
+      background-color: $background-color--skeleton--bright-gray;
+      border-radius: 3px;
+
+			@include tablet {
+				height: 56px;
+			}
+		}
+	}
+
+	.body {
+    width: 100%;
+    margin: auto auto 0;
+    padding: 0 $safe-area--mobile;
+
+    @include tablet {
+      max-width: $max-width;
+      padding: 0 $safe-area--tablet;
+    }
+
+		.content {
+      overflow: hidden;
+			position: relative;
+      height: 20px;
+      background-color: $background-color--skeleton--bright-gray;
+      border-radius: 3px;
+
+			@include tablet {
+        height: 23px;
+			}
+
+			&.first-line {
+        margin-bottom: 8px;
+
+        @include tablet {
+          margin-bottom: 10px;
+        }
+			}
+
+			&.second-line {
+        width: 70%;
+			}
+		}
+	}
 }
 
-.carousel-single-item-skeleton-component {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  transform: translateX(-100%);
-  animation: shimmer 1.0s infinite;
-} 
+.category::after,
+.title::after,
+.content::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(255, 255, 255, 0.3),
+		transparent
+	);
+	transform: translateX(-100%);
+	animation: shimmer 1s infinite;
+}
 
 @keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
 }

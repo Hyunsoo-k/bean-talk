@@ -3,8 +3,8 @@ import { useState, useRef } from "react";
 import type { Post } from "@/types/post";
 import { useAutoCarousel } from "./utils/useAutoCarousel";
 import { CarouselSingleItem } from "./components/CarouselSingleItem/CarouselSingleItem";
-import { CarouselSingleItemSkeleton } from "./components/CarouselSingleItemSkeleton/CarouselSingleItemSkeleton";
 import { CarouselPagination } from "./components/CarouselPagination/CarouselPagination";
+import { CarouselSingleItemSkeleton } from "./components/CarouselSingleItemSkeleton/CarouselSingleItemSkeleton";
 
 import styles from "./CarouselSingle.module.scss";
 
@@ -20,19 +20,20 @@ const CarouselSingle = ({ posts, isLoading }: Props) => {
 
   useAutoCarousel(trackRef, currentIndex, setCurrentIndex, postsToRender.length);
 
-  if (isLoading) {
-    return <CarouselSingleItemSkeleton />;
-  }
-
   return (
     <div className={styles["carousel-single-component"]}>
-      <ul ref={trackRef} className={styles["item-list"]}>
-        {postsToRender.map((post) => (
-          <li key={post._id} className={styles["item"]}>
-            <CarouselSingleItem post={post} />
-          </li>
-        ))}
-      </ul>
+      {isLoading
+          ? <CarouselSingleItemSkeleton />
+          : (
+            <ul ref={trackRef} className={styles["item-list"]}>
+              {postsToRender.map((post) => (
+                <li key={post._id} className={styles["item"]}>
+                  <CarouselSingleItem post={post} />
+                </li>
+              ))}
+            </ul>
+          )
+      }
       <CarouselPagination
         posts={postsToRender}
         currentIndex={currentIndex}

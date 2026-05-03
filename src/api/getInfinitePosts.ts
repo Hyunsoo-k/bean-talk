@@ -7,7 +7,6 @@ const getInfinitePosts = async (
   pageParam: string | undefined,
   params?: PostsParams
 ) => {
-  console.log(params)
   const response = await axiosInstance.get(`/categories/${category}/posts`, {
     params: { ...params, cursor: pageParam ?? undefined }
   });
