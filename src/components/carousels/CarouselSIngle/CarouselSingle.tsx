@@ -4,7 +4,7 @@ import type { Post } from "@/types/post";
 import { useAutoCarousel } from "./utils/useAutoCarousel";
 import { CarouselSingleItem } from "./components/CarouselSingleItem/CarouselSingleItem";
 import { CarouselPagination } from "./components/CarouselPagination/CarouselPagination";
-import { CarouselSingleItemSkeleton } from "./components/CarouselSingleSkeleton/components/CarouselSingleItemSkeleton/CarouselSingleItemSkeleton";
+import { CarouselSingleItemSkeleton } from "./components/CarouselSingleItemSkeleton/CarouselSingleItemSkeleton";
 
 import styles from "./CarouselSingle.module.scss";
 
