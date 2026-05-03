@@ -6,9 +6,18 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: calc(100vh - $header-height--mobile - $footer-height--mobile);
+  min-height: calc(100vh - $header-height--mobile);
 
   @include tablet {
-    min-height: calc(100vh - $header-height--tablet - $footer-height--tablet);
+    min-height: calc(100vh - $header-height--tablet);
+  }
+
+  .icon {
+    font-size: 16px;
+    color: $font-color--black;
+
+    @include tablet {
+      font-size: 18px;
+    }
   }
 }
