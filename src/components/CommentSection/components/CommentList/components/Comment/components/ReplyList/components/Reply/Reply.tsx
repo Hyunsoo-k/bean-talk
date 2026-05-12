@@ -6,6 +6,7 @@ import type { Reply as ReplyType } from "@/types/reply";
 import { useGetUserMe } from "@/hooks/useGetUserMe";
 import { formatDate } from "@/utils/formatDate";
 import { useConfirmModalStore } from "@/zustand/useConfirmModalStore";
+import { useFullPageSpinnerStore } from "@/zustand/useFullPageSpinnerStore";
 import { useDeleteReply } from "./hooks/useDeleteReply";
 import { useActiveComment } from "@/components/CommentSection/zustand/useActiveComment";
 import { ReplyEditForm } from "./components/ReplyEditForm/ReplyEditForm";
@@ -32,6 +33,7 @@ const Reply = ({ category, post_id, comment_id,  reply }: Props) => {
   const [mode, setMode] = useState<"view" | "edit">("view");
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const { activeComment, setActiveComment } = useActiveComment();
+  const { open: openFullPageSpinner } = useFullPageSpinnerStore();
   const { mutate: deleteReply } = useDeleteReply(
     category,
     post_id,
@@ -59,6 +61,7 @@ const Reply = ({ category, post_id, comment_id,  reply }: Props) => {
       "답글을 정말 삭제하시겠습니까?",
       closeConfirmModal,
       () => {
+        openFullPageSpinner();
         deleteReply();
         closeConfirmModal();
       }
