@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { useForm } from "react-hook-form";
 
 import type { Category } from "@/types/category";
+import { useFullPageSpinnerStore } from "@/zustand/useFullPageSpinnerStore";
 import { useEditReply } from "./hooks/useEditReply";
 import { useActiveComment } from "@/components/CommentSection/zustand/useActiveComment";
 
@@ -39,6 +40,7 @@ const ReplyEditForm = ({
     reply_id,
     setMode
   );
+  const { open: openFullPageSpinner } = useFullPageSpinnerStore();
   const { register, handleSubmit: handleRHFSubmit } = useForm<Record<"content", string>>({
     defaultValues: {
       "content": content
@@ -60,8 +62,8 @@ const ReplyEditForm = ({
   );
 
   const handleSubmit = (data: Record<"content", string>) => {
+    openFullPageSpinner();
     const requestBody = data;
-
     edit(requestBody);
   };
 
