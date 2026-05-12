@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 
 import type { Category } from "@/types/category";
 import { QUERY_KEYS } from "@/constants/queryKeys";
-import { useAlertModalStore } from "@/zustand/useAlertModalStore";
 import { queryClient } from "@/constants/queryClient";
+import { useAlertModalStore } from "@/zustand/useAlertModalStore";
+import { useFullPageSpinnerStore } from "@/zustand/useFullPageSpinnerStore";
 import { useCreateComment } from "./hooks/useCreateComment";
 import { UnLoggedinForm } from "./components/UnLoggedinForm/UnLoggedinForm";
 
@@ -32,8 +33,8 @@ const CommentForm = ({ category, post_id }: Props) => {
     reset,
     setIsInputFocused
   );
-  
   const { open: openAlertModal, close: closeAlertModal } = useAlertModalStore();
+  const { open: openFullPageSpinner } = useFullPageSpinnerStore();
 
   const userMe = queryClient.getQueryData(QUERY_KEYS.userMe);
 
@@ -43,6 +44,7 @@ const CommentForm = ({ category, post_id }: Props) => {
       return;
     }
 
+    openFullPageSpinner();
     const { content } = values;
     const requestBody = { content };
     mutate(requestBody);
