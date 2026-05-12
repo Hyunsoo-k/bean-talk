@@ -43,7 +43,7 @@ const PostForm = <T extends Category>({
     const { content, thumbnailUrl } = data;
     try {
       const processedThumbnail = thumbnailUrl
-        ? await uploadBlobUrl("a")
+        ? await uploadBlobUrl(thumbnailUrl)
         : thumbnailUrl;
       const processedContent = await processContent(content);
       const requestBody: PostRequestBody<T> = {
