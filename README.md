@@ -1,69 +1,70 @@
-# React + TypeScript + Vite
+## BeanTalk
+커피 애호가들의 커뮤니티성 웹 애플리케이션
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 개발 인원
+1인 개발
 
-Currently, two official plugins are available:
+## 기술 스택
+- typescript
+- react
+- vite
+- tiptap
+- kakao-maps
+- react-hook-form
+- tanstack-query
+- scss
+- cloudinary
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 배포 플랫폼
+Vercel
 
-## Expanding the ESLint configuration
+## 배포 URL
+https://bean-talk.vercel.app
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 설치
+```
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 개발환경 실행
 ```
+npm run dev
+```
+
+## 폴더 구조
+```
+root
+├─ eslint.config.js
+├─ index.html
+├─ package-lock.json
+├─ package.json
+├─ public
+├─ README.md
+├─ src
+│  ├─ api
+│  ├─ assets
+│  ├─ components
+│  ├─ constants
+│  ├─ hooks
+│  ├─ layouts
+│  ├─ pages
+│  ├─ routes
+│  ├─ servies
+│  ├─ types
+│  ├─ utils
+│  ├─ zustand
+│  ├─ App.module.scss
+│  ├─ App.tsx
+│  ├─ index.css
+│  ├─ main.tsx
+│  ├─ vite-env.d.ts
+├─ tsconfig.app.json
+├─ tsconfig.json
+├─ tsconfig.node.json
+└─ vite.config.ts
+```
+
+## 특징
+- tiptap과 kaka-maps를 이용한 사용자 친화적 WYSIWYG
+- 보안을 위한 API 프록시 구현
+- 유지보수를 위한 CoLocation 폴더 구조
