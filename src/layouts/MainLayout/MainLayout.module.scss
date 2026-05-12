@@ -16,9 +16,9 @@
 }
 
 .main {
-	min-height: calc(100vh - $header-height--mobile - $footer-height--mobile);
+	min-height: calc(100vh - $header-height--mobile);
 
 	@include tablet {
-		min-height: calc(100vh - $header-height--tablet - $footer-height--tablet);
+		min-height: calc(100vh - $header-height--tablet);
 	}
 }

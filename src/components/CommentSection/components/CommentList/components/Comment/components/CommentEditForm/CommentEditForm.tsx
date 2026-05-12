@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 
 import type { Category } from "@/types/category";
 import { useActiveComment } from "@/components/CommentSection/zustand/useActiveComment";
+import { useFullPageSpinnerStore } from "@/zustand/useFullPageSpinnerStore";
 import { useEditComment } from "./hooks/useEditComment";
 
 import styles from "./CommentEditForm.module.scss";
@@ -29,6 +30,7 @@ const CommentEditForm = ({
 }: Props) => {
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null)
   const { setActiveComment } = useActiveComment();
+  const { open: openFullPageSpinner } = useFullPageSpinnerStore();
   const { isPending, mutate: edit } = useEditComment(
     category,
     post_id,
@@ -56,8 +58,8 @@ const CommentEditForm = ({
   );
 
   const handleSubmit = (data: Record<"content", string>) => {
+    openFullPageSpinner();
     const requestBody = data;
-
     edit(requestBody);
   };
 

@@ -2,14 +2,19 @@
 @use "@/styles/responsive.scss" as *;
 
 .full-page-spinner-component {
+  position: fixed;
+  z-index: 999;
+  top: $header-height--mobile;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: calc(100vh - $header-height--mobile);
+  height: calc(100dvh - $header-height--mobile);
+  background-color: $background-color--white-transparent;
 
   @include tablet {
-    min-height: calc(100vh - $header-height--tablet);
+    top: $header-height--tablet;
+    height: calc(100dvh - $header-height--tablet);
   }
 
   .icon {

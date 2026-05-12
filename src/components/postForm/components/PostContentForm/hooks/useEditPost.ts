@@ -5,33 +5,19 @@ import type { Category } from "@/types/category";
 import type { PostRequestBody } from "@/types/postRequestBody";
 import { queryClient } from "@/constants/queryClient";
 import { QUERY_KEYS } from "@/constants/queryKeys";
-import { axiosInstance } from "@/services/axiosInstance";
+import { editPostDetail } from "@/api/editPostDetail";
 import { useAlertModalStore } from "@/zustand/useAlertModalStore";
-
-const mutationFn = async (
-  category: Category,
-  post_id: string,
-  requestBody: PostRequestBody<typeof category>
-) => {
-  const response = await axiosInstance.patch(
-    `/categories/${category}/posts/${post_id}`,
-    requestBody
-  );
-
-  return response.data;
-};
+import { useFullPageSpinnerStore } from "@/zustand/useFullPageSpinnerStore";
 
 const useEditPost = (category: Category, post_id: string) => {
   const navigate = useNavigate();
 
-  const {
-    open: openAlertModal,
-    close: closeAlertModel
-  } = useAlertModalStore();
+  const { open: openAlertModal,close: closeAlertModel } = useAlertModalStore();
+  const { close: closeFullPageSpinner } = useFullPageSpinnerStore();
 
   return useMutation({
     mutationFn: (requestBody: PostRequestBody<typeof category>) =>
-      mutationFn(category, post_id, requestBody),
+      editPostDetail(category, post_id, requestBody),
     onSuccess: () => {
       navigate(`/categories/${category}/posts`);
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.posts(category) });
@@ -40,7 +26,10 @@ const useEditPost = (category: Category, post_id: string) => {
     onError: () => {
       openAlertModal(
         "게시글 작성을 실패하였습니다.",
-        closeAlertModel
+        () => {
+          closeFullPageSpinner();
+          closeAlertModel();
+        }
       );
     },
   });

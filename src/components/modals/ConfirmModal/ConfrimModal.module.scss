@@ -2,7 +2,7 @@
 @use "@/styles/responsive.scss" as *;
 
 .backdrop {
-  z-index: 999;
+  z-index: 1000;
   position: fixed;
   inset: 0;
   width: 100vw;
@@ -11,7 +11,7 @@
 }
 
 .confirm-modal-component {
-  z-index: 1000;
+  z-index: 1001;
   overflow: hidden;
   position: fixed;
   top: 50%;
