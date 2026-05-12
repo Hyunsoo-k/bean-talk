@@ -3,6 +3,7 @@ import {  useRef } from "react";
 import { useForm } from "react-hook-form";
 
 import type { Category } from "@/types/category";
+import { useFullPageSpinnerStore } from "@/zustand/useFullPageSpinnerStore";
 import { useCreateReply } from "./hooks/useCreateReply";
 import { useActiveComment } from "@/components/CommentSection/zustand/useActiveComment";
 
@@ -24,6 +25,7 @@ const ReplyForm = ({
   const replyFormRef = useRef<HTMLFormElement | null>(null);
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
   const { setActiveComment } = useActiveComment();
+  const { open: openFullPageSpinner } = useFullPageSpinnerStore();
   
   const {
     register,
@@ -39,6 +41,7 @@ const ReplyForm = ({
   );
 
   const handleSubmit = (data: Record<"content", string>) => {
+    openFullPageSpinner();
     const requestBody = data;
     create(requestBody);
   };
