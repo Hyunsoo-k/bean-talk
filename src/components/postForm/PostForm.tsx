@@ -16,6 +16,7 @@ import { PostContentForm } from "./components/PostContentForm/PostContentForm";
 import { EditorFooter } from "../EditorFooter/EditorFooter";
 
 import styles from "./PostForm.module.scss";
+import { useFullPageSpinnerStore } from "@/zustand/useFullPageSpinnerStore";
 
 type Props<T extends Category> = {
   category: T;
@@ -31,6 +32,7 @@ const PostForm = <T extends Category>({
   isPending
 }: Props<T>) => {
   const { open: openAlertModal, close: closeAlertModel } = useAlertModalStore(); 
+  const { open: openFullPageSpinner } = useFullPageSpinnerStore();
   const methods = useForm<PostRequestBody<T>>({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -40,6 +42,7 @@ const PostForm = <T extends Category>({
   const editor = usePostEditor(setValue, initialData?.content);
 
   const handleSubmit = async (data: PostRequestBody<T>) => {
+    openFullPageSpinner();
     const { content, thumbnailUrl } = data;
     try {
       const processedThumbnail = thumbnailUrl

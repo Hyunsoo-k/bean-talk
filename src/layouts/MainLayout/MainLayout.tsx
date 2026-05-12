@@ -7,12 +7,14 @@ import { useAuthModalStore } from "@/zustand/useAuthModalStore";
 import { useConfirmModalStore } from "@/zustand/useConfirmModalStore";
 import { useEditUserModalStore } from "@/zustand/useEditUserModalStore";
 import { useSearchLocalModalStore } from "@/zustand/useSearchLocalModalStore";
+import { useFullPageSpinnerStore } from "@/zustand/useFullPageSpinnerStore";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 import { AuthModal } from "@/components/modals/AuthModal/AuthModal";
 import { EditUserModal } from "@/components/modals/EditUserModal/EditUserModal";
 import { AlertModal } from "@/components/modals/AlertModal/AlertModal";
 import { ConfirmModal } from "@/components/modals/ConfirmModal/ConfirmModal";
 import { SearchLocalModal } from "@/components/modals/SearchLocalModal/SearchLocalModal";
+import { FullPageSpinner } from "@/components/spinners/FullPageSpinner/FullPageSpinner";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { Sidebar } from "../Sidebar/SideBar";
@@ -29,7 +31,7 @@ const MainLayout = ({ children }: Props) => {
   const { isOpen: isConfirmModalOpen, close: closeConfirmModal } = useConfirmModalStore();
   const { isOpen: isEditUserModalOpen, close: closeEditUserModal } = useEditUserModalStore();
   const { isOpen: isSearchLocalModalOpen, close: closeSearchLocalModal } = useSearchLocalModalStore();
-
+  const { isOpen: isFullPageSpinnerOpen, close: closeFullPageSpinner } = useFullPageSpinnerStore();
   const { pathname, key } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -39,6 +41,7 @@ const MainLayout = ({ children }: Props) => {
     closeConfirmModal();
     closeEditUserModal();
     closeSearchLocalModal();
+    closeFullPageSpinner();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, key]);
 
@@ -63,6 +66,7 @@ const MainLayout = ({ children }: Props) => {
       {isConfirmModalOpen && <ConfirmModal />}
       {isEditUserModalOpen && <EditUserModal />}
       {isSearchLocalModalOpen && <SearchLocalModal />}
+      {isFullPageSpinnerOpen && <FullPageSpinner />}
     </div>
   );
 };
