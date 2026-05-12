@@ -5,6 +5,7 @@ import { QUERY_KEYS } from "@/constants/queryKeys";
 import { queryClient } from "@/constants/queryClient";
 import { axiosInstance } from "@/services/axiosInstance";
 import { useAlertModalStore } from "@/zustand/useAlertModalStore";
+import { useFullPageSpinnerStore } from "@/zustand/useFullPageSpinnerStore";
 
 const mutationFn = async (
   category: Category,
@@ -23,10 +24,8 @@ const useDeleteReply = (
   comment_id: string,
   reply_id: string
 ) => {
-  const {
-    open: openAlertModal,
-    close: closeAlertModal
-  } = useAlertModalStore();
+  const { open: openAlertModal, close: closeAlertModal } = useAlertModalStore();
+  const { close: closeFullPageSpinner } = useFullPageSpinnerStore();
 
   return useMutation({
     mutationFn: () => mutationFn(
@@ -36,10 +35,17 @@ const useDeleteReply = (
       reply_id
     ),
     onSuccess: () => {
+      closeFullPageSpinner();
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.comments(category, post_id) });
     },
     onError: (error: Error) => {
-      openAlertModal(error.message, closeAlertModal);
+      openAlertModal(
+        error.message,
+        () => {
+          closeFullPageSpinner();
+          closeAlertModal();
+        }
+      );
     }
   });
 };

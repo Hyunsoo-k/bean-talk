@@ -17,6 +17,7 @@ import defaultProfile from "@/assets/default-images/default-profile.jpg";
 import styles from "./Comment.module.scss";
 import { useAuthModalStore } from "@/zustand/useAuthModalStore";
 import { ActionMenu } from "@/components/ActionMenu/ActionMenu";
+import { useFullPageSpinnerStore } from "@/zustand/useFullPageSpinnerStore";
 
 type Props = {
   category: Category;
@@ -29,6 +30,7 @@ const Comment = ({ category, post_id, comment }: Props) => {
   const [isReplyFormOpen, setIsReplyFormOpen] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const { activeComment, setActiveComment } = useActiveComment();
+  const { open: openFullPageSpinner } = useFullPageSpinnerStore();
   const { mutate: deleteComment } = useDeleteComment(
     category,
     post_id,
@@ -64,6 +66,7 @@ const Comment = ({ category, post_id, comment }: Props) => {
       "댓글을 정말 삭제하시겠습니까?",
       closeConfirmModal,
       () => {
+        openFullPageSpinner();
         deleteComment();
         closeConfirmModal();
       }
