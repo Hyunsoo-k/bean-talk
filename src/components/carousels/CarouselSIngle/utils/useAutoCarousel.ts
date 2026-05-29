@@ -1,8 +1,7 @@
-import type { RefObject, Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { useEffect, useRef } from "react";
 
 const useAutoCarousel = (
-  trackRef: RefObject<HTMLUListElement | null>,
   currentIndex: number,
   setCurrentIndex: Dispatch<SetStateAction<number>>,
   length: number
@@ -10,22 +9,7 @@ const useAutoCarousel = (
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track || length === 0) {
-      return;
-    }
-
-    const item = track.children[currentIndex] as HTMLElement;
-    if (item) {
-      track.scrollTo({
-        left: item.offsetLeft,
-        behavior: "smooth",
-      });
-    }
-  }, [currentIndex, trackRef, length]);
-
-  useEffect(() => {
-    if (length <= 1) {
+    if (length === 0) {
       return;
     }
 

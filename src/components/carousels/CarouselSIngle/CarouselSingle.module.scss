@@ -3,10 +3,9 @@
 @use "@/styles/fonts.scss" as *;
 
 .carousel-single-component {
+  overflow: hidden;
   position: relative;
   height: 270px;
-  overflow: hidden;
-  will-change: scroll-position;
   backface-visibility: hidden;
 
   @include tablet {
@@ -16,7 +15,6 @@
   }
 
   .item-list {
-    overflow: hidden;
     position: relative;
     z-index: 9;
     display: flex;
@@ -25,8 +23,8 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
-    overflow-x: auto;
-    scrollbar-width: none;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
     -ms-overflow-style: none;
 
     @include tablet {
