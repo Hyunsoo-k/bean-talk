@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 import type { Post } from "@/types/post";
 import { useAutoCarousel } from "./utils/useAutoCarousel";
@@ -15,17 +15,16 @@ type Props = {
 
 const CarouselSingle = ({ posts, isLoading }: Props) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const trackRef = useRef<HTMLUListElement | null>(null);
   const postsToRender = posts.slice(0, 6);
 
-  useAutoCarousel(trackRef, currentIndex, setCurrentIndex, postsToRender.length);
+  useAutoCarousel(currentIndex, setCurrentIndex, postsToRender.length);
 
   return (
     <div className={styles["carousel-single-component"]}>
       {isLoading
           ? <CarouselSingleItemSkeleton />
           : (
-            <ul ref={trackRef} className={styles["item-list"]}>
+            <ul className={styles["item-list"]} style={{ transform: `translateX(-${currentIndex * 100}%)`}}>
               {postsToRender.map((post) => (
                 <li key={post._id} className={styles["item"]}>
                   <CarouselSingleItem post={post} />
